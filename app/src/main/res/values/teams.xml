@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="teams">
+        <item>"Team Number"</item>
+        <item>339</item>
+        <item>346</item>
+        <item>384</item>
+        <item>449</item>
+        <item>619</item>
+        <item>620</item>
+        <item>623</item>
+        <item>1080</item>
+        <item>1086</item>
+        <item>1123</item>
+        <item>1389</item>
+        <item>1418</item>
+        <item>1731</item>
+        <item>1885</item>
+        <item>1895</item>
+        <item>1915</item>
+        <item>2068</item>
+        <item>2363</item>
+        <item>2537</item>
+        <item>2914</item>
+        <item>3373</item>
+        <item>4099</item>
+        <item>4472</item>
+        <item>4514</item>
+        <item>4575</item>
+        <item>5115</item>
+        <item>5338</item>
+        <item>5830</item>
+        <item>5945</item>
+        <item>6584</item>
+    </string-array>
+</resources>
