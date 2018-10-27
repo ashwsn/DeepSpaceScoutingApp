@@ -37,7 +37,8 @@
     <style name="RadioButton" parent="Wrap">
         <item name="android:buttonTint">@color/fieldDefault</item>
         <item name="android:textSize">36sp</item>
-        <item name="android:textColor">@color/primaryText</item>s
+        <item name="android:textColor">@color/primaryText</item>
+        <item name="android:paddingLeft">5dp</item>
     </style>
 
     <style name="EditText" parent="Wrap">
@@ -50,7 +51,11 @@
     <style name="TitleText" parent="Wrap">
         <item name="android:textColor">@color/teamColor</item>
         <item name="android:textSize">40sp</item>
-        <item name="android:fontFamily">monospace</item>
+        <item name="android:fontFamily">serif-monospace</item>
+    </style>
+
+    <style name="PageButton" parent="Wrap">
+        <item name="android:textSize">36sp</item>
     </style>
 
 </resources>

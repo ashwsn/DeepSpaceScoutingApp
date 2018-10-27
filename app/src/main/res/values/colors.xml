@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#A7000A</color>
-    <color name="colorPrimaryDark">#303030</color>
+    <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#A7000A</color>
     <color name="teamColor">#A7000A</color>
     <color name="primaryText">#FFFFFF</color>
     <color name="fieldDefault">#FFFFFF</color>
-    <color name="hintText">#1eFFFFFF</color>
+    <color name="hintText">#46FFFFFF</color>
 </resources>

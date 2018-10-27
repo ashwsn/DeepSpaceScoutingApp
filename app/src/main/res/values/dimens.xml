@@ -2,4 +2,5 @@
 <resources>
     <dimen name="startMargin">15dp</dimen>
     <dimen name="spaceBetweenFields">35dp</dimen>
+    <dimen name="checkboxCenter">10dp</dimen>
 </resources>

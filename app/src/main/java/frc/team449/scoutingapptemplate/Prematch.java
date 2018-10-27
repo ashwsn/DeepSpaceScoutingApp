@@ -76,6 +76,14 @@ public class Prematch extends Activity implements AdapterView.OnItemSelectedList
         }
     }
 
+    public static String getTeamNum() {
+        return teamNumberValue;
+    }
+
+    public static String getMatchNum() {
+        return matchNumberValue;
+    }
+
     // Calls activity to go to auto page
     public void toAuto(View v) {
         // Saves values to PowerUpDatabase

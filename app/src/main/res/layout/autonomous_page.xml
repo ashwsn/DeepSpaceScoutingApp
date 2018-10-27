@@ -4,118 +4,84 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/Background">
 
-    <Button
-        android:id="@+id/toPrematchPage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+    <TextView
+        style="@style/TitleText"
+        android:id="@+id/matchTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="8dp"
+        android:text="Match "
+        />
+
+    <TextView
+        style="@style/TitleText"
+        android:id="@+id/teamTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/startMargin"
+        android:layout_marginTop="8dp"
+        android:text="Team "
+        />
+
+    <!--No Auto Text-->
+    <TextView
+        style="@style/Text"
+        android:id="@+id/noAutoText"
+        android:text="No Auto?"
+        app:layout_constraintTop_toBottomOf="@id/matchTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="@dimen/startMargin" />
+
+    <!--No Auto Checkbox-->
+    <CheckBox
+        style="@style/Checkbox"
+        android:id="@+id/noAuto"
+        app:layout_constraintTop_toTopOf="@id/noAutoText"
+        app:layout_constraintStart_toEndOf="@id/noAutoText"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="@dimen/checkboxCenter" />
+
+    <!--Moved Forward Text-->
+    <TextView
+        style="@style/Text"
+        android:id="@+id/movedForwardText"
+        android:text="Moved Forward?"
+        android:layout_marginStart="@dimen/startMargin"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        app:layout_constraintTop_toBottomOf="@id/noAutoText"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!--Moved Forward Checkbox-->
+    <CheckBox
+        style="@style/Checkbox"
+        android:id="@+id/movedForward"
+        android:layout_marginTop="@dimen/checkboxCenter"
+        app:layout_constraintStart_toStartOf="@id/noAuto"
+        app:layout_constraintTop_toTopOf="@id/movedForwardText" />
+
+    <!--Prematch Button-->
+    <Button
+        style="@style/PageButton"
+        android:id="@+id/toPrematchPage"
+        android:layout_marginBottom="8dp"
         android:onClick="toPrematch"
         android:text="Prematch"
-        android:textSize="36sp"
+        android:layout_marginEnd="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.99"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!--Teleop Button-->
     <Button
+        style="@style/PageButton"
         android:id="@+id/toTeleopPage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:onClick="toTeleop"
         android:text="Teleop"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.99"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <TextView
-        android:id="@+id/noAutoText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="No Auto?"
-        android:textSize="36sp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.018"
-        app:layout_constraintVertical_bias="0.025"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <TextView
-        android:id="@+id/movedForwardText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Moved Forward?"
-        android:textSize="36sp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
-        app:layout_constraintVertical_bias="0.120000005"
-        android:layout_marginStart="8dp" />
-
-    <CheckBox
-        android:id="@+id/noAuto"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:textSize="36sp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.009"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.681"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <CheckBox
-        android:id="@+id/movedForward"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:textSize="36sp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.11"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.681"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintStart_toEndOf="@id/toPrematchPage"/>
 
 </android.support.constraint.ConstraintLayout>
