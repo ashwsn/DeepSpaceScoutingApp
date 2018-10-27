@@ -1,1 +1,1 @@
-# ScoutingAppTemplate
+# BunnybotsScoutingApp
