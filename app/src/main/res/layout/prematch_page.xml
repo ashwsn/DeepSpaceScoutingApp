@@ -2,145 +2,149 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="frc.team449.scoutingapptemplate.MainActivity"
+    tools:context="frc.team449.scoutingapptemplate.Prematch"
     android:descendantFocusability="beforeDescendants"
-    android:focusableInTouchMode="true">
+    android:focusableInTouchMode="true"
+    style="@style/Background">
 
+    <!--Title-->
     <TextView
-        android:id="@+id/noShowText"
-        android:layout_width="194dp"
-        android:layout_height="41dp"
+        style="@style/TitleText"
+        android:id="@+id/title"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="No Show?"
-        android:textAlignment="viewStart"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.02"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:text="Bunnybots Scouting App"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.342" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!--Scout Name Textbox-->
     <EditText
+        style="@style/EditText"
         android:id="@+id/scoutName"
-        android:layout_width="317dp"
-        android:layout_height="71dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="@dimen/startMargin"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="Scout Name"
         android:inputType="textPersonName"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.029"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01" />
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Spinner
-        android:id="@+id/teamNumber"
-        android:layout_width="140dp"
-        android:layout_height="57dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22000003" />
-
-    <Spinner
-        android:id="@+id/matchNumber"
-        android:layout_width="140dp"
-        android:layout_height="57dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.122" />
-
+    <!--No Show Text-->
     <TextView
-        android:id="@+id/matchNumberText"
-        android:layout_width="153dp"
-        android:layout_height="46dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Match #"
-        android:textAlignment="textStart"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.02"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.125" />
+        style="@style/Text"
+        android:id="@+id/noShowText"
+        android:layout_marginStart="@dimen/startMargin"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        android:text="No Show?"
+        app:layout_constraintTop_toBottomOf="@id/scoutName"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/teamNumberText"
+    <!--No Show Checkbox-->
+    <CheckBox
+        style="@style/Checkbox"
+        android:id="@+id/noShow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Team #"
-        android:textSize="36sp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.017"
-        app:layout_constraintVertical_bias="0.229" />
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@id/noShowText"
+        app:layout_constraintTop_toTopOf="@id/noShowText"/>
 
+    <!--Team Number Text-->
+    <TextView
+        style="@style/Text"
+        android:id="@+id/teamNumberText"
+        android:text="Team #"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        android:layout_marginStart="@dimen/startMargin"
+        app:layout_constraintTop_toBottomOf="@id/noShow"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--Team Number Dropdown-->
+    <Spinner
+        style="@style/Dropdown"
+        android:id="@+id/teamNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/noShow"
+        app:layout_constraintTop_toTopOf="@id/teamNumberText"/>
+
+    <!--Match Number Text-->
+    <TextView
+        style="@style/Text"
+        android:id="@+id/matchNumberText"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        android:layout_marginStart="@dimen/startMargin"
+        android:text="Match #"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/teamNumber" />
+
+    <!--Match Number Dropdown-->
+    <Spinner
+        style="@style/Dropdown"
+        android:id="@+id/matchNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/matchNumberText"
+        app:layout_constraintStart_toStartOf="@id/noShow" />
+
+    <!--Bunny Text-->
+    <TextView
+        style="@style/Text"
+        android:id="@+id/bunnyText"
+        android:layout_marginStart="@dimen/startMargin"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        android:text="Bunny?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/matchNumberText"/>
+
+    <!--Bunny Radio Buttons-->
+    <RadioGroup
+        style="@style/Wrap"
+        android:id="@+id/bunny"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/noShow"
+        app:layout_constraintTop_toTopOf="@id/bunnyText">
+
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/bunnyNone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="None" />
+
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/bunnyRobot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="In robot" />
+
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/bunnyField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="On field" />
+
+    </RadioGroup>
+
+    <!--Auto Button-->
     <Button
         android:id="@+id/toAutoPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:onClick="toAuto"
         android:text="Auto"
         android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.99" />
-
-    <CheckBox
-        android:id="@+id/noShow"
-        android:layout_width="71dp"
-        android:layout_height="69dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintVertical_bias="0.341" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

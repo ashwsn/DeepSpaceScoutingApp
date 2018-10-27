@@ -30,18 +30,18 @@ public class Prematch extends Activity implements AdapterView.OnItemSelectedList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.prematch_page);
         // Creates and sets data trackers to PowerUpDatabase values
-        scoutNameText = (EditText) findViewById(R.id.scoutName);
+        scoutNameText = findViewById(R.id.scoutName);
         scoutNameText.setText(MainActivity.db.scoutName);
-        noShowBox = (CheckBox) findViewById(R.id.noShow);
+        noShowBox = findViewById(R.id.noShow);
         noShowBox.setChecked(MainActivity.db.noShow);
-        teamNumber = (Spinner) findViewById(R.id.teamNumber);
-        teamAdapter = ArrayAdapter.createFromResource(this, R.array.teams, android.R.layout.simple_spinner_item);
+        teamNumber = findViewById(R.id.teamNumber);
+        teamAdapter = ArrayAdapter.createFromResource(this, R.array.teams, R.layout.dropdown);
         teamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         teamNumber.setAdapter(teamAdapter);
         teamNumber.setOnItemSelectedListener(this);
         teamNumber.setSelection(MainActivity.db.teamNumber);
-        matchNumber = (Spinner) findViewById(R.id.matchNumber);
-        matchAdapter = ArrayAdapter.createFromResource(this, R.array.matches, android.R.layout.simple_spinner_item);
+        matchNumber = findViewById(R.id.matchNumber);
+        matchAdapter = ArrayAdapter.createFromResource(this, R.array.matches, R.layout.dropdown);
         matchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         matchNumber.setAdapter(matchAdapter);
         matchNumber.setOnItemSelectedListener(this);
