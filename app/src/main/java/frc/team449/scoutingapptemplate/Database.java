@@ -15,6 +15,10 @@ public class Database {                         // game will change each year
     public int matchNumber;
     public int teamNumber;
     public boolean noShow;
+    public int preloadBunny;
+    public boolean noAuto;
+    public boolean movedForward;
+    public int autoBalls;
     // the rest of the values for the game go here
 
     // Default entries
@@ -23,6 +27,10 @@ public class Database {                         // game will change each year
         matchNumber = 0;
         teamNumber = 0;
         noShow = false;
+        noAuto = false;
+        movedForward = false;
+        autoBalls = 0;
+        preloadBunny = 0;
         // the rest of the values for the game go here
     }
 

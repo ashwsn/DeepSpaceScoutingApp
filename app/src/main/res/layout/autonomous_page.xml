@@ -11,8 +11,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="8dp"
-        android:text="Match "
-        />
+        android:text="Match " />
 
     <TextView
         style="@style/TitleText"
@@ -21,8 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="@dimen/startMargin"
         android:layout_marginTop="8dp"
-        android:text="Team "
-        />
+        android:text="Team " />
 
     <!--No Auto Text-->
     <TextView
@@ -51,7 +49,7 @@
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="@dimen/spaceBetweenFields"
         app:layout_constraintTop_toBottomOf="@id/noAutoText"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <!--Moved Forward Checkbox-->
     <CheckBox
@@ -60,6 +58,50 @@
         android:layout_marginTop="@dimen/checkboxCenter"
         app:layout_constraintStart_toStartOf="@id/noAuto"
         app:layout_constraintTop_toTopOf="@id/movedForwardText" />
+
+    <!--Auto Bunny Text-->
+    <TextView
+        style="@style/Text"
+        android:id="@+id/autoCratesText"
+        android:text="Auto Crates"
+        android:layout_marginStart="@dimen/startMargin"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/movedForwardText" />
+
+    <!--Auto Crates Plus Button-->
+    <Button
+        style="@style/PageButton"
+        android:id="@+id/plusAutoCrates"
+        android:onClick="plusAutoCrates"
+        android:text="+"
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/buttonSpacing"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/autoCratesText" />
+
+    <!--Auto Crates Minus Button-->
+    <Button
+        style="@style/PageButton"
+        android:id="@+id/minusAutoCrates"
+        android:onClick="minusAutoCrates"
+        android:text="-"
+        android:textStyle="bold"
+        android:layout_marginEnd="@dimen/buttonSpacing"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        app:layout_constraintTop_toBottomOf="@id/autoCratesText"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!--Auto Ball Value Text-->
+    <TextView
+        style="@style/Text"
+        android:text="0"
+        android:id="@+id/autoBall"
+        android:layout_marginStart="@dimen/buttonSpacing"
+        android:layout_marginTop="@dimen/checkboxCenter"
+        app:layout_constraintStart_toEndOf="@id/plusAutoCrates"
+        app:layout_constraintTop_toTopOf="@id/plusAutoCrates" />
 
     <!--Prematch Button-->
     <Button
@@ -71,7 +113,7 @@
         android:layout_marginEnd="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!--Teleop Button-->
     <Button
@@ -82,6 +124,6 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/toPrematchPage"/>
+        app:layout_constraintStart_toEndOf="@id/toPrematchPage" />
 
 </android.support.constraint.ConstraintLayout>
