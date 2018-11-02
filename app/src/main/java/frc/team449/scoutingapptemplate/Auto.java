@@ -5,14 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import java.util.Locale;
 
 public class Auto extends Activity {
 
     // Text fields that display current value
-    private TextView matchTitle;
-    private TextView teamTitle;
     private TextView autoBallVal;
     // Input fields
     private CheckBox noAuto;
@@ -24,8 +23,8 @@ public class Auto extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.autonomous_page);
         // Create and set data trackers to values from Database
-        matchTitle = findViewById(R.id.matchTitle);
-        teamTitle = findViewById(R.id.teamTitle);
+        TextView matchTitle = findViewById(R.id.matchTitle);
+        TextView teamTitle = findViewById(R.id.teamTitle);
         if (MainActivity.db.matchNumber != 0) {
             matchTitle.setText("Match " + Prematch.getMatchNum());
         }
@@ -37,18 +36,20 @@ public class Auto extends Activity {
         movedForward = findViewById(R.id.movedForward);
         movedForward.setChecked(MainActivity.db.movedForward);
         autoBallVal = findViewById(R.id.autoBall);
-        autoBallVal.setText(Integer.toString(MainActivity.db.autoBalls));
+        autoBallVal.setText(String.format(Locale.US, "%d", MainActivity.db.autoBalls));
     }
 
 
     public void plusAutoCrates(View v) {
         MainActivity.db.autoBalls++;
-        autoBallVal.setText(Integer.toString(MainActivity.db.autoBalls));
+        autoBallVal.setText(String.format(Locale.US, "%d", MainActivity.db.autoBalls));
     }
 
     public void minusAutoCrates(View v) {
-        MainActivity.db.autoBalls--;
-        autoBallVal.setText(Integer.toString(MainActivity.db.autoBalls));
+        if (MainActivity.db.autoBalls > 0) {
+            MainActivity.db.autoBalls--;
+            autoBallVal.setText(String.format(Locale.US, "%d", MainActivity.db.autoBalls));
+        }
     }
 
     // Calls activity to go to teleop page

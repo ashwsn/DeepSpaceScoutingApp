@@ -19,6 +19,8 @@ public class Database {                         // game will change each year
     public boolean noAuto;
     public boolean movedForward;
     public int autoBalls;
+    public boolean achievedNothing;
+    public int dead;
     // the rest of the values for the game go here
 
     // Default entries
@@ -31,6 +33,8 @@ public class Database {                         // game will change each year
         movedForward = false;
         autoBalls = 0;
         preloadBunny = 0;
+        achievedNothing = false;
+        dead = 0;
         // the rest of the values for the game go here
     }
 

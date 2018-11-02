@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class MainActivity extends Activity {
 
-    public static Database db;                             // type will change each year
+    public static Database db;
     public static BluetoothAdapter adapter;
     public static Set<BluetoothDevice> pairedDevices;
     public static boolean bluetooth;
@@ -22,22 +22,22 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        db = new Database();                               // type will change each year
+        db = new Database();
         adapter = BluetoothAdapter.getDefaultAdapter();
         // Enables bluetooth and resets discovery
-        if (adapter == null) {
-            bluetooth = false;
-            Log.i("onCreate", "no bluetooth");
-        }
-        else {
-            bluetooth = true;
-            if (!adapter.isEnabled()) {
-                adapter.enable();
-            }
-            if (adapter.isDiscovering()) {
-                adapter.cancelDiscovery();
-            }
-        }
+//        if (adapter == null) {
+//            bluetooth = false;
+//            Log.i("onCreate", "no bluetooth");
+//        }
+//        else {
+//            bluetooth = true;
+//            if (!adapter.isEnabled()) {
+//                adapter.enable();
+//            }
+//            if (adapter.isDiscovering()) {
+//                adapter.cancelDiscovery();
+//            }
+//        }
         Intent initPrematch = new Intent(this, Prematch.class);
         startActivity(initPrematch);
     }
