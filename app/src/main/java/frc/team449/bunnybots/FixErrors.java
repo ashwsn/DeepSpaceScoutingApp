@@ -1,4 +1,4 @@
-package frc.team449.scoutingapptemplate;
+package frc.team449.bunnybots;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,7 +14,15 @@ public class FixErrors extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.error_page);
-        errors = (TextView) findViewById(R.id.errors);
+        TextView matchTitle = findViewById(R.id.matchTitle);
+        TextView teamTitle = findViewById(R.id.teamTitle);
+        if (MainActivity.db.matchNumber != 0) {
+            matchTitle.setText("Match " + Prematch.getMatchNum());
+        }
+        if (MainActivity.db.teamNumber != 0) {
+            teamTitle.setText("Team " + Prematch.getTeamNum());
+        }
+        errors = findViewById(R.id.errors);
         errors.setText(MainActivity.db.checkData());
     }
 

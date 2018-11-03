@@ -1,4 +1,4 @@
-package frc.team449.scoutingapptemplate;
+package frc.team449.bunnybots;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,7 +9,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public class Submit extends Activity {
 

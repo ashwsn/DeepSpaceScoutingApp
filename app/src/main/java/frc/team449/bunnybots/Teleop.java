@@ -1,4 +1,4 @@
-package frc.team449.scoutingapptemplate;
+package frc.team449.bunnybots;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -72,7 +72,7 @@ public class Teleop extends Activity {
     }
 
     // Calls activity to go to endgame page
-    public void toEndgame(View v) {
+    public void submit(View v) {
         // Save values to Database
         MainActivity.db.achievedNothing = achievedNothing.isChecked();
         switch (dead.getCheckedRadioButtonId()) {
@@ -90,7 +90,7 @@ public class Teleop extends Activity {
                 break;
         }
         // Switches pages
-        Intent toEndgame = new Intent(this, Endgame.class);
-        startActivity(toEndgame);
+        Intent submit = new Intent(this, Submit.class);
+        startActivity(submit);
     }
 }

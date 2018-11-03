@@ -1,4 +1,4 @@
-package frc.team449.scoutingapptemplate;
+package frc.team449.bunnybots;
 
 import android.app.Activity;
 import android.content.Intent;

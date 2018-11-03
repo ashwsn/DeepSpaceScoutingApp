@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="frc.team449.scoutingapptemplate">
+    package="frc.team449.bunnybots">
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -12,20 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity">
+        <activity android:name="frc.team449.bunnybots.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".Prematch" />
-        <activity android:name=".Auto" />
-        <activity android:name=".Teleop" />
-        <activity android:name=".Endgame" />
-        <activity android:name=".FixErrors" />
-        <activity android:name=".Submit" />
-        <activity android:name=".Submitted" />
+        <activity android:name="frc.team449.bunnybots.Prematch" />
+        <activity android:name="frc.team449.bunnybots.Auto" />
+        <activity android:name="frc.team449.bunnybots.Teleop" />
+        <activity android:name="frc.team449.bunnybots.FixErrors" />
+        <activity android:name="frc.team449.bunnybots.Submit" />
+        <activity android:name="frc.team449.bunnybots.Submitted" />
 
     </application>
 </manifest>

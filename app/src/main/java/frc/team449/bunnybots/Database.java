@@ -1,4 +1,4 @@
-package frc.team449.scoutingapptemplate;
+package frc.team449.bunnybots;
 
 /*
  * PowerUpDatabase is a class that stores all data being collected.
@@ -46,6 +46,21 @@ public class Database {                         // game will change each year
     public static String checkData() {
         String errors = "";
         // check for errors
+        if (MainActivity.db.scoutName.equals("")) {
+            errors += "Scout name cannot be empty\n";
+        }
+        if (MainActivity.db.matchNumber == 0) {
+            errors += "Please select a match number\n";
+        }
+        if (MainActivity.db.teamNumber == 0) {
+            errors += "Please select a team number\n";
+        }
+        if (MainActivity.db.preloadBunny == 0) {
+            errors += "Please select an option for preloaded bunny\n";
+        }
+        if (MainActivity.db.dead == 0) {
+            errors += "Please select an option for deadness\n";
+        }
         return errors;
     }
 }
