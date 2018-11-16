@@ -1,4 +1,4 @@
-package frc.team449.bunnybots;
+package frc.team449.scoutingappframe;
 
 /*
  * PowerUpDatabase is a class that stores all data being collected.

@@ -1,4 +1,4 @@
-package frc.team449.bunnybots;
+package frc.team449.scoutingappframe;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

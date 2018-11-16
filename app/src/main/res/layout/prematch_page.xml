@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="frc.team449.bunnybots.Prematch"
+    tools:context="frc.team449.scoutingappframe.Prematch"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
     style="@style/Background">

@@ -1,4 +1,4 @@
-package frc.team449.bunnybots;
+package frc.team449.scoutingappframe;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
