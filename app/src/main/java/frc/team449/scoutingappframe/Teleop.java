@@ -72,7 +72,7 @@ public class Teleop extends Activity {
     }
 
     // Calls activity to go to endgame page
-    public void submit(View v) {
+    public void toEndgame(View v) {
         // Save values to Database
         MainActivity.db.achievedNothing = achievedNothing.isChecked();
         switch (dead.getCheckedRadioButtonId()) {
@@ -90,7 +90,7 @@ public class Teleop extends Activity {
                 break;
         }
         // Switches pages
-        Intent submit = new Intent(this, Submit.class);
-        startActivity(submit);
+        Intent toEndgame = new Intent(this, Endgame.class);
+        startActivity(toEndgame);
     }
 }

@@ -91,49 +91,6 @@
         app:layout_constraintTop_toTopOf="@id/matchNumberText"
         app:layout_constraintStart_toStartOf="@id/noShow" />
 
-    <!--Bunny Text-->
-    <TextView
-        style="@style/Text"
-        android:id="@+id/bunnyText"
-        android:layout_marginStart="@dimen/startMargin"
-        android:layout_marginTop="@dimen/spaceBetweenFields"
-        android:text="Bunny?"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/matchNumberText"/>
-
-    <!--Bunny Radio Buttons-->
-    <RadioGroup
-        style="@style/Wrap"
-        android:id="@+id/bunny"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/spaceBetweenFields"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bunnyText">
-
-        <RadioButton
-            style="@style/RadioButton"
-            android:id="@+id/bunnyNone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="None" />
-
-        <RadioButton
-            style="@style/RadioButton"
-            android:id="@+id/bunnyRobot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="In robot" />
-
-        <RadioButton
-            style="@style/RadioButton"
-            android:id="@+id/bunnyField"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="On field" />
-
-    </RadioGroup>
-
     <!--Auto Button-->
     <Button
         style="@style/PageButton"

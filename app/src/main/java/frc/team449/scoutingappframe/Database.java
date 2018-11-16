@@ -1,26 +1,25 @@
 package frc.team449.scoutingappframe;
 
 /*
- * PowerUpDatabase is a class that stores all data being collected.
+ * Database is a class that stores all data being collected.
  *
  * Used for preventing data loss between page flips and for submission.
  *
  * Created by Nate on 10/10/2017.
  */
 
-public class Database {                         // game will change each year
+public class Database {
 
     // All data being collected
     public String scoutName;
     public int matchNumber;
     public int teamNumber;
     public boolean noShow;
-    public int preloadBunny;
     public boolean noAuto;
     public boolean movedForward;
-    public int autoBalls;
     public boolean achievedNothing;
     public int dead;
+    public String comments;
     // the rest of the values for the game go here
 
     // Default entries
@@ -31,10 +30,9 @@ public class Database {                         // game will change each year
         noShow = false;
         noAuto = false;
         movedForward = false;
-        autoBalls = 0;
-        preloadBunny = 0;
         achievedNothing = false;
         dead = 0;
+        comments = "";
         // the rest of the values for the game go here
     }
 
@@ -54,9 +52,6 @@ public class Database {                         // game will change each year
         }
         if (MainActivity.db.teamNumber == 0) {
             errors += "Please select a team number\n";
-        }
-        if (MainActivity.db.preloadBunny == 0) {
-            errors += "Please select an option for preloaded bunny\n";
         }
         if (MainActivity.db.dead == 0) {
             errors += "Please select an option for deadness\n";

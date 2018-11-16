@@ -24,7 +24,6 @@ public class Prematch extends Activity implements AdapterView.OnItemSelectedList
     private ArrayAdapter<CharSequence> teamAdapter;
     private Spinner matchNumber;
     private ArrayAdapter<CharSequence> matchAdapter;
-    private RadioGroup preloadBunny;
 
     // Displays prematch page on activity call
     @Override
@@ -50,21 +49,6 @@ public class Prematch extends Activity implements AdapterView.OnItemSelectedList
         matchNumber.setSelection(MainActivity.db.matchNumber);
         teamNumberValue = teamNumber.getItemAtPosition(0).toString();
         matchNumberValue = matchNumber.getItemAtPosition(0).toString();
-        preloadBunny = findViewById(R.id.bunny);
-        switch (MainActivity.db.preloadBunny) {
-            case 0:
-                preloadBunny.clearCheck();
-                break;
-            case 1:
-                preloadBunny.check(R.id.bunnyNone);
-                break;
-            case 2:
-                preloadBunny.check(R.id.bunnyRobot);
-                break;
-            case 3:
-                preloadBunny.check(R.id.bunnyField);
-                break;
-        }
     }
 
     @Override
@@ -106,20 +90,6 @@ public class Prematch extends Activity implements AdapterView.OnItemSelectedList
         // Saves values to PowerUpDatabase
         MainActivity.db.scoutName = scoutNameText.getText().toString();
         MainActivity.db.noShow = noShowBox.isChecked();
-        switch (preloadBunny.getCheckedRadioButtonId()) {
-            case R.id.bunnyNone:
-                MainActivity.db.preloadBunny = 1;
-                break;
-            case R.id.bunnyRobot:
-                MainActivity.db.preloadBunny = 2;
-                break;
-            case R.id.bunnyField:
-                MainActivity.db.preloadBunny = 3;
-                break;
-            default:
-                MainActivity.db.preloadBunny = 0;
-                break;
-        }
         // Switches pages
         Intent toAuto = new Intent(this, Auto.class);
         startActivity(toAuto);

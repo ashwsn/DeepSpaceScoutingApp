@@ -12,7 +12,6 @@ import java.util.Locale;
 public class Auto extends Activity {
 
     // Text fields that display current value
-    private TextView autoBallVal;
     // Input fields
     private CheckBox noAuto;
     private CheckBox movedForward;
@@ -35,21 +34,6 @@ public class Auto extends Activity {
         noAuto.setChecked(MainActivity.db.noAuto);
         movedForward = findViewById(R.id.movedForward);
         movedForward.setChecked(MainActivity.db.movedForward);
-        autoBallVal = findViewById(R.id.autoBall);
-        autoBallVal.setText(String.format(Locale.US, "%d", MainActivity.db.autoBalls));
-    }
-
-
-    public void plusAutoCrates(View v) {
-        MainActivity.db.autoBalls++;
-        autoBallVal.setText(String.format(Locale.US, "%d", MainActivity.db.autoBalls));
-    }
-
-    public void minusAutoCrates(View v) {
-        if (MainActivity.db.autoBalls > 0) {
-            MainActivity.db.autoBalls--;
-            autoBallVal.setText(String.format(Locale.US, "%d", MainActivity.db.autoBalls));
-        }
     }
 
     // Calls activity to go to teleop page

@@ -60,4 +60,9 @@
         <item name="android:textSize">36sp</item>
     </style>
 
+    <style name="TextBox" parent="Text">
+        <item name="android:layout_width">500dp</item>
+        <item name="android:layout_height">100dp</item>
+    </style>
+
 </resources>

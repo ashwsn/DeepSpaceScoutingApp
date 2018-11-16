@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Scouting App Frame</string>
+    <string name="title_activity_endgame">Endgame</string>
 </resources>
