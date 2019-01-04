@@ -24,23 +24,23 @@ public class Auto extends Activity {
         // Create and set data trackers to values from Database
         TextView matchTitle = findViewById(R.id.matchTitle);
         TextView teamTitle = findViewById(R.id.teamTitle);
-        if (MainActivity.db.matchNumber != 0) {
+        if (MainActivity.match.matchNumber != 0) {
             matchTitle.setText("Match " + Prematch.getMatchNum());
         }
-        if (MainActivity.db.teamNumber != 0) {
+        if (MainActivity.match.teamNumber != 0) {
             teamTitle.setText("Team " + Prematch.getTeamNum());
         }
         noAuto = findViewById(R.id.noAuto);
-        noAuto.setChecked(MainActivity.db.noAuto);
+        noAuto.setChecked(MainActivity.match.noAuto);
         movedForward = findViewById(R.id.movedForward);
-        movedForward.setChecked(MainActivity.db.movedForward);
+        movedForward.setChecked(MainActivity.match.movedForward);
     }
 
     // Calls activity to go to teleop page
     public void toTeleop(View v) {
         // Save values into Database
-        MainActivity.db.noAuto = noAuto.isChecked();
-        MainActivity.db.movedForward = movedForward.isChecked();
+        MainActivity.match.noAuto = noAuto.isChecked();
+        MainActivity.match.movedForward = movedForward.isChecked();
         // Switch pages
         Intent toTeleop = new Intent(this, Teleop.class);
         startActivity(toTeleop);
@@ -49,8 +49,8 @@ public class Auto extends Activity {
     // Calls activity to go to prematch page
     public void toPrematch(View v) {
         // Save values to Database
-        MainActivity.db.noAuto = noAuto.isChecked();
-        MainActivity.db.movedForward = movedForward.isChecked();
+        MainActivity.match.noAuto = noAuto.isChecked();
+        MainActivity.match.movedForward = movedForward.isChecked();
         // Switches pages
         Intent toPrematch = new Intent(this, Prematch.class);
         startActivity(toPrematch);

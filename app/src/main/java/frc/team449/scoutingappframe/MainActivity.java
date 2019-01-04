@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class MainActivity extends Activity {
 
-    public static Database db;
+    public static Match match;
     public static BluetoothAdapter adapter;
     public static Set<BluetoothDevice> pairedDevices;
     public static boolean bluetooth;
@@ -21,7 +21,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        db = new Database();
+        match = new Match();
         adapter = BluetoothAdapter.getDefaultAdapter();
         // Enables bluetooth and resets discovery
 //        if (adapter == null) {

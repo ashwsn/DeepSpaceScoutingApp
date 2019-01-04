@@ -15,7 +15,7 @@ public class Submit extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (!MainActivity.db.checkData().equals("")) {
+        if (!MainActivity.match.checkData().equals("")) {
             Intent viewErrors = new Intent(this, FixErrors.class);
             startActivity(viewErrors);
         }
@@ -31,7 +31,7 @@ public class Submit extends Activity {
                 // File with all data previously pushed from kindle
 //                BufferedWriter pushedWriter = new BufferedWriter(
 //                        new FileWriter(root.getAbsolutePath() + "/download/" + "dataPushed.csv", true));
-                String csvString = MainActivity.db.toString();
+                String csvString = MainActivity.match.toString();
                 toPushWriter.append(csvString + "\n");
                 toPushWriter.close();
 

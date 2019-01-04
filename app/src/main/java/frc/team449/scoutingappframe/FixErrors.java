@@ -16,14 +16,14 @@ public class FixErrors extends Activity {
         setContentView(R.layout.error_page);
         TextView matchTitle = findViewById(R.id.matchTitle);
         TextView teamTitle = findViewById(R.id.teamTitle);
-        if (MainActivity.db.matchNumber != 0) {
+        if (MainActivity.match.matchNumber != 0) {
             matchTitle.setText("Match " + Prematch.getMatchNum());
         }
-        if (MainActivity.db.teamNumber != 0) {
+        if (MainActivity.match.teamNumber != 0) {
             teamTitle.setText("Team " + Prematch.getTeamNum());
         }
         errors = findViewById(R.id.errors);
-        errors.setText(MainActivity.db.checkData());
+        errors.setText(MainActivity.match.checkData());
     }
 
     // Switches pages

@@ -23,16 +23,16 @@ public class Teleop extends Activity {
         // Create and set data trackers to their Database values
         TextView matchTitle = findViewById(R.id.matchTitle);
         TextView teamTitle = findViewById(R.id.teamTitle);
-        if (MainActivity.db.matchNumber != 0) {
+        if (MainActivity.match.matchNumber != 0) {
             matchTitle.setText("Match " + Prematch.getMatchNum());
         }
-        if (MainActivity.db.teamNumber != 0) {
+        if (MainActivity.match.teamNumber != 0) {
             teamTitle.setText("Team " + Prematch.getTeamNum());
         }
         achievedNothing = findViewById(R.id.achievedNothing);
-        achievedNothing.setChecked(MainActivity.db.achievedNothing);
+        achievedNothing.setChecked(MainActivity.match.achievedNothing);
         dead = findViewById(R.id.dead);
-        switch (MainActivity.db.dead) {
+        switch (MainActivity.match.dead) {
             case 0:
                 dead.clearCheck();
                 break;
@@ -51,19 +51,19 @@ public class Teleop extends Activity {
     // Calls activity to go to auto page
     public void toAuto(View v) {
         // Save values to Database
-        MainActivity.db.achievedNothing = achievedNothing.isChecked();
+        MainActivity.match.achievedNothing = achievedNothing.isChecked();
         switch (dead.getCheckedRadioButtonId()) {
             case R.id.deadNone:
-                MainActivity.db.dead = 1;
+                MainActivity.match.dead = 1;
                 break;
             case R.id.deadPart:
-                MainActivity.db.dead = 2;
+                MainActivity.match.dead = 2;
                 break;
             case R.id.deadAll:
-                MainActivity.db.dead = 3;
+                MainActivity.match.dead = 3;
                 break;
             default:
-                MainActivity.db.dead = 0;
+                MainActivity.match.dead = 0;
                 break;
         }
         // Switches pages
@@ -74,19 +74,19 @@ public class Teleop extends Activity {
     // Calls activity to go to endgame page
     public void toEndgame(View v) {
         // Save values to Database
-        MainActivity.db.achievedNothing = achievedNothing.isChecked();
+        MainActivity.match.achievedNothing = achievedNothing.isChecked();
         switch (dead.getCheckedRadioButtonId()) {
             case R.id.deadNone:
-                MainActivity.db.dead = 1;
+                MainActivity.match.dead = 1;
                 break;
             case R.id.deadPart:
-                MainActivity.db.dead = 2;
+                MainActivity.match.dead = 2;
                 break;
             case R.id.deadAll:
-                MainActivity.db.dead = 3;
+                MainActivity.match.dead = 3;
                 break;
             default:
-                MainActivity.db.dead = 0;
+                MainActivity.match.dead = 0;
                 break;
         }
         // Switches pages
