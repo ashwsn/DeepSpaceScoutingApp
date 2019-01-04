@@ -9,6 +9,7 @@ package frc.team449.scoutingappframe;
  */
 
 public class Database {
+    //TODO: make this a singleton
 
     // All data being collected
     public String scoutName;
@@ -38,7 +39,8 @@ public class Database {
 
     public String toString() {
         // each instance variable separated by a comma
-        return "";
+        //TODO: add them all
+        return scoutName+","+String.valueOf(matchNumber)+","+String.valueOf(teamNumber);
     }
 
     public static String checkData() {

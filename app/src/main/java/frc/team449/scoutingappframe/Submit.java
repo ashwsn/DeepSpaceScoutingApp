@@ -22,18 +22,20 @@ public class Submit extends Activity {
         else {
             try {
                 // Writes data to files
-                File root = Environment.getExternalStorageDirectory();
-                File dir = new File (root.getAbsolutePath() + "/download");
-                dir.mkdirs();
-                // File with data yet to be pushed from kindle
-                BufferedWriter toPushWriter = new BufferedWriter(
-                        new FileWriter(root.getAbsolutePath() + "/download/" + "dataToPush.csv", true));
-                // File with all data previously pushed from kindle
-//                BufferedWriter pushedWriter = new BufferedWriter(
-//                        new FileWriter(root.getAbsolutePath() + "/download/" + "dataPushed.csv", true));
-                String csvString = MainActivity.db.toString();
-                toPushWriter.append(csvString + "\n");
-                toPushWriter.close();
+//                File root = Environment.getExternalStorageDirectory();
+//                File dir = new File (root.getAbsolutePath() + "/download");
+//                dir.mkdirs();
+//                // File with data yet to be pushed from kindle
+//                BufferedWriter toPushWriter = new BufferedWriter(
+//                        new FileWriter(root.getAbsolutePath() + "/download/" + "dataToPush.csv", true));
+//                // File with all data previously pushed from kindle
+////                BufferedWriter pushedWriter = new BufferedWriter(
+////                        new FileWriter(root.getAbsolutePath() + "/download/" + "dataPushed.csv", true));
+//                String csvString = MainActivity.db.toString();
+//                toPushWriter.append(csvString + "\n");
+//                toPushWriter.close();
+
+                BluetoothHelper.getInstance().write(MainActivity.db.toString());
 
                 // Go to confirmation page
                 Intent toSubmitted = new Intent(this, Submitted.class);
