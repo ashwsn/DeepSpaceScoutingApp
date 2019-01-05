@@ -22,17 +22,17 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         db = new Database();
 
-        if (!BluetoothHelper.getInstance().isConnected()) {
-            Log.i("MainActivity.onCreate", "Attempting to initialize bluetooth connection.");
-            try {
-                boolean connected = BluetoothHelper.getInstance().initializeConnection(MASTERNAME);
-                if (connected) Log.i("MainActivity.onCreate", "Initialized bluetooth connection.");
-                else Log.i("MainActivity.onCreate", "Failed to initialize bluetooth connection.");
-            } catch (IOException e) {
-                e.printStackTrace();
-                Log.e("MainActivity.onCreate", "IOException when initializing bluetooth connection.");
-            }
-        }
+//        if (!BluetoothHelper.getInstance().isConnected()) {
+//            Log.i("MainActivity.onCreate", "Attempting to initialize bluetooth connection.");
+//            try {
+//                boolean connected = BluetoothHelper.getInstance().initializeConnection(MASTERNAME);
+//                if (connected) Log.i("MainActivity.onCreate", "Initialized bluetooth connection.");
+//                else Log.i("MainActivity.onCreate", "Failed to initialize bluetooth connection.");
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//                Log.e("MainActivity.onCreate", "IOException when initializing bluetooth connection.");
+//            }
+//        }
 
         Intent initPrematch = new Intent(this, Prematch.class);
         startActivity(initPrematch);

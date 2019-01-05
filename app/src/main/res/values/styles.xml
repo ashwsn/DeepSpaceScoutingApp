@@ -15,7 +15,7 @@
     </style>
 
     <style name="Background" parent="Base.Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:background">@color/background</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
     </style>
@@ -32,7 +32,9 @@
     <style name="Dropdown" parent="Wrap">
         <item name="android:textColor">@color/primaryText</item>
         <item name="android:textSize">36sp</item>
+        <!--<item name="android:background">@color/popupBg</item>-->
     </style>
+
 
     <style name="RadioButton" parent="Wrap">
         <item name="android:buttonTint">@color/fieldDefault</item>

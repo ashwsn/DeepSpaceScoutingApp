@@ -3,32 +3,51 @@ package frc.team449.scoutingappframe;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.Intent;
 import android.os.ParcelUuid;
 import android.util.Log;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class BluetoothHelper {
     private static BluetoothHelper bluetoothHelper = new BluetoothHelper();
 
-    private BluetoothHelper(){}
-
     public static BluetoothHelper getInstance(){
         return bluetoothHelper;
     }
 
+    BluetoothAdapter blueAdapter = BluetoothAdapter.getDefaultAdapter();
     private BluetoothSocket socket;
     private OutputStream outputStream;
 
     private boolean connected = false;
     public boolean isConnected() {return connected;}
 
+    public List<String> getPairedDevices(){
+        List<String> paired = new ArrayList<>();
+        if (blueAdapter != null) {
+            if (blueAdapter.isEnabled()) {
+                //These are the devices that the tablet is paired with
+                for (BluetoothDevice device : blueAdapter.getBondedDevices()){
+                    paired.add(device.getName());
+                }
+            } else {
+                Log.e("BluetoothHelper.initCon", "Bluetooth is disabled.");
+                //Intent enableBluetooth = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                //startActivityForResult(enableBluetooth, 0);
+                //Log.i("BtH.getPairedDevices", "Bluetooth enabled.");
+            }
+        } else Log.e("BluetoothHelper.initCon","blueAdapter is null");
+        return paired;
+    }
+
     public boolean initializeConnection(String targetMasterName) throws IOException {
         connected = false;
-        BluetoothAdapter blueAdapter = BluetoothAdapter.getDefaultAdapter();
         if (blueAdapter != null) {
             if (blueAdapter.isEnabled()) {
                 //These are the devices that the tablet is paired with
