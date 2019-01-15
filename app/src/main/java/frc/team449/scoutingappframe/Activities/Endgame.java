@@ -1,13 +1,16 @@
-package frc.team449.scoutingappframe;
+package frc.team449.scoutingappframe.Activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class Endgame extends Activity {
+import frc.team449.scoutingappframe.Prematch;
+import frc.team449.scoutingappframe.R;
+import frc.team449.scoutingappframe.Submit;
+
+public class Endgame extends BaseActivity {
 
     private EditText comments;
 

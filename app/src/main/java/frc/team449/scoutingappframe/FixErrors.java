@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import frc.team449.scoutingappframe.Activities.MainActivity;
+
 public class FixErrors extends Activity {
 
     private TextView errors;

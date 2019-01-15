@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,12 +20,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".Prematch" />
-        <activity android:name=".Auto" />
-        <activity android:name=".Teleop" />
+        <activity android:name=".Activities.Auto" />
+        <activity android:name=".Activities.Teleop" />
         <activity android:name=".FixErrors" />
         <activity android:name=".Submit" />
-        <activity android:name=".Submitted" />
-        <activity android:name=".Endgame" />
+        <activity android:name=".Activities.Submitted" />
+        <activity android:name=".Activities.Endgame" />
     </application>
 
 </manifest>

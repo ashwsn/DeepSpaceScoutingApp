@@ -1,6 +1,5 @@
-package frc.team449.scoutingappframe;
+package frc.team449.scoutingappframe.Activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,7 +7,10 @@ import android.widget.CheckBox;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-public class Teleop extends Activity {
+import frc.team449.scoutingappframe.Prematch;
+import frc.team449.scoutingappframe.R;
+
+public class Teleop extends BaseActivity {
 
     // Input fields
     private CheckBox achievedNothing;

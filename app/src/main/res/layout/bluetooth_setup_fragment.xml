@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/popupBg"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <!--not sure why this is the only way to control width, but it works-->
+    <View
+        android:layout_width="430dp"
+        android:layout_height="0dp" />
+
+    <TextView
+        style="@style/Text"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:text="@string/bluetooth_setup_title"/>
+
+    <Spinner
+        android:id="@+id/masterName"
+        android:background="@color/popupBg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/connectButton"
+            style="@style/PageButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="CONNECT" />
+
+        <Button
+            android:id="@+id/closeButton"
+            style="@style/PageButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:onClick="close"
+            android:text="CANCEL" />
+
+    </LinearLayout>
+</LinearLayout>

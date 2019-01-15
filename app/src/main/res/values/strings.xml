@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Scouting App Frame</string>
     <string name="title_activity_endgame">Endgame</string>
+
+    <string name="bluetooth_setup_title">Connect over Bluetooth</string>
 </resources>

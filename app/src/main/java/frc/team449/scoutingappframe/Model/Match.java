@@ -1,4 +1,4 @@
-package frc.team449.scoutingappframe;
+package frc.team449.scoutingappframe.Model;
 
 /*
  * Database is a class that stores all data being collected.
@@ -7,6 +7,9 @@ package frc.team449.scoutingappframe;
  *
  * Created by Nate on 10/10/2017.
  */
+
+
+import frc.team449.scoutingappframe.Activities.MainActivity;
 
 public class Match {
 

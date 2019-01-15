@@ -1,6 +1,5 @@
 package frc.team449.scoutingappframe;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,10 +7,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 
-public class Prematch extends Activity implements AdapterView.OnItemSelectedListener {
+import frc.team449.scoutingappframe.Activities.Auto;
+import frc.team449.scoutingappframe.Activities.BaseActivity;
+import frc.team449.scoutingappframe.Activities.MainActivity;
+
+
+public class Prematch extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
     // Team and match #
     private static String matchNumberValue;
@@ -49,6 +52,13 @@ public class Prematch extends Activity implements AdapterView.OnItemSelectedList
         matchNumber.setSelection(MainActivity.match.matchNumber);
         teamNumberValue = teamNumber.getItemAtPosition(0).toString();
         matchNumberValue = matchNumber.getItemAtPosition(0).toString();
+//
+//        if (!BluetoothHelper.getInstance().isConnected()) {
+//            //show bluetooth dialog
+//            FragmentManager fm = getSupportFragmentManager();
+//            DialogFragment fragment = new BluetoothSetupFragment();
+//            fragment.show(fm, "dialog");
+//        }
     }
 
     @Override
