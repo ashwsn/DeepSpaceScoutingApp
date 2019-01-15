@@ -3,14 +3,15 @@ package frc.team449.scoutingappframe;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 
-public class Submit extends Activity {
+import frc.team449.scoutingappframe.Activities.BaseActivity;
+import frc.team449.scoutingappframe.Activities.MainActivity;
+import frc.team449.scoutingappframe.Activities.Submitted;
+import frc.team449.scoutingappframe.Helpers.BluetoothHelper;
+
+public class Submit extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

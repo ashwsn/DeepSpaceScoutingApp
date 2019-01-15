@@ -1,15 +1,15 @@
-package frc.team449.scoutingappframe;
+package frc.team449.scoutingappframe.Activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import java.util.Locale;
+import frc.team449.scoutingappframe.Prematch;
+import frc.team449.scoutingappframe.R;
 
-public class Auto extends Activity {
+public class Auto extends BaseActivity {
 
     // Text fields that display current value
     // Input fields

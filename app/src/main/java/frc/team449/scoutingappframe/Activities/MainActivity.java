@@ -1,16 +1,12 @@
-package frc.team449.scoutingappframe;
+package frc.team449.scoutingappframe.Activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
-import java.io.IOException;
+import frc.team449.scoutingappframe.Model.Database;
+import frc.team449.scoutingappframe.Prematch;
 
-public class MainActivity extends Activity {
-
-    //add app functionality to change this in app
-    private static final String MASTERNAME = "essuomelpmap";
+public class MainActivity extends BaseActivity {
 
     public static Database db;
 

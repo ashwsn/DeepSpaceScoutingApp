@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/bluetooth_icon"
+        android:icon="@android:drawable/stat_sys_data_bluetooth"
+        android:title="Bluetooth"
+        android:iconTint="@color/colorAccent"
+        app:showAsAction="ifRoom"/>
+
+    <!--&lt;!&ndash; Settings, should always be in the overflow &ndash;&gt;-->
+    <!--<item android:id="@+id/action_settings"-->
+        <!--android:title="@string/action_settings"-->
+        <!--app:showAsAction="never"/>-->
+
+</menu>

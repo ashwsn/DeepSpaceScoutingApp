@@ -1,84 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.constraint.ConstraintLayout style="@style/Background"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/Background">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        style="@style/TitleText"
         android:id="@+id/matchTitle"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        style="@style/TitleText"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="8dp"
-        android:text="Match " />
+        android:text="Match "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        style="@style/TitleText"
         android:id="@+id/teamTitle"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="@dimen/startMargin"
+        style="@style/TitleText"
         android:layout_marginTop="8dp"
-        android:text="Team " />
+        android:layout_marginEnd="@dimen/startMargin"
+        android:text="Team "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!--No Auto Text-->
     <TextView
-        style="@style/Text"
         android:id="@+id/noAutoText"
-        android:text="No Auto?"
-        app:layout_constraintTop_toBottomOf="@id/matchTitle"
-        app:layout_constraintStart_toStartOf="parent"
+        style="@style/Text"
+        android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="15dp"
-        android:layout_marginStart="@dimen/startMargin" />
+        android:text="No Auto?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/matchTitle" />
 
     <!--No Auto Checkbox-->
     <CheckBox
-        style="@style/Checkbox"
         android:id="@+id/noAuto"
-        app:layout_constraintTop_toTopOf="@id/noAutoText"
-        app:layout_constraintStart_toEndOf="@id/noAutoText"
+        style="@style/Checkbox"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="@dimen/checkboxCenter" />
+        android:layout_marginTop="@dimen/checkboxCenter"
+        app:layout_constraintStart_toEndOf="@id/noAutoText"
+        app:layout_constraintTop_toTopOf="@id/noAutoText" />
 
     <!--Moved Forward Text-->
     <TextView
-        style="@style/Text"
         android:id="@+id/movedForwardText"
-        android:text="Moved Forward?"
+        style="@style/Text"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="@dimen/spaceBetweenFields"
-        app:layout_constraintTop_toBottomOf="@id/noAutoText"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:text="Moved Forward?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/noAutoText" />
 
     <!--Moved Forward Checkbox-->
     <CheckBox
-        style="@style/Checkbox"
         android:id="@+id/movedForward"
+        style="@style/Checkbox"
         android:layout_marginTop="@dimen/checkboxCenter"
         app:layout_constraintStart_toStartOf="@id/noAuto"
         app:layout_constraintTop_toTopOf="@id/movedForwardText" />
 
     <!--Prematch Button-->
     <Button
-        style="@style/PageButton"
         android:id="@+id/toPrematchPage"
+        style="@style/PageButton"
+        android:layout_marginEnd="200dp"
         android:layout_marginBottom="8dp"
         android:onClick="toPrematch"
         android:text="Prematch"
-        android:layout_marginEnd="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <!--Teleop Button-->
     <Button
-        style="@style/PageButton"
         android:id="@+id/toTeleopPage"
+        style="@style/PageButton"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="8dp"
         android:onClick="toTeleop"
         android:text="Teleop"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/toPrematchPage" />
 

@@ -1,9 +1,8 @@
-package frc.team449.scoutingappframe;
+package frc.team449.scoutingappframe.Helpers;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
-import android.content.Intent;
 import android.os.ParcelUuid;
 import android.util.Log;
 

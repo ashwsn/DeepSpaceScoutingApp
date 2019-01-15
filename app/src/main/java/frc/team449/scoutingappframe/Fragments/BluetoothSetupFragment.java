@@ -1,8 +1,7 @@
-package frc.team449.scoutingappframe;
+package frc.team449.scoutingappframe.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,9 @@ import android.widget.Spinner;
 
 import java.io.IOException;
 import java.util.List;
+
+import frc.team449.scoutingappframe.Helpers.BluetoothHelper;
+import frc.team449.scoutingappframe.R;
 
 public class BluetoothSetupFragment extends DialogFragment {
 

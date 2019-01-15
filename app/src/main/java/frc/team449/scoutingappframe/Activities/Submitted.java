@@ -1,11 +1,12 @@
-package frc.team449.scoutingappframe;
+package frc.team449.scoutingappframe.Activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class Submitted extends Activity {
+import frc.team449.scoutingappframe.R;
+
+public class Submitted extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
