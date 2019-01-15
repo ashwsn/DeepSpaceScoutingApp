@@ -1,4 +1,4 @@
-package frc.team449.scoutingappframe;
+package frc.team449.scoutingappframe.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import frc.team449.scoutingappframe.Activities.MainActivity;
+import frc.team449.scoutingappframe.R;
+import frc.team449.scoutingappframe.model.Match;
 
 public class FixErrors extends Activity {
 
@@ -18,14 +19,14 @@ public class FixErrors extends Activity {
         setContentView(R.layout.error_page);
         TextView matchTitle = findViewById(R.id.matchTitle);
         TextView teamTitle = findViewById(R.id.teamTitle);
-        if (MainActivity.match.matchNumber != 0) {
+        if (Match.getInstance().getMatchNumber() != 0) {
             matchTitle.setText("Match " + Prematch.getMatchNum());
         }
-        if (MainActivity.match.teamNumber != 0) {
+        if (Match.getInstance().getTeamNumber() != 0) {
             teamTitle.setText("Team " + Prematch.getTeamNum());
         }
         errors = findViewById(R.id.errors);
-        errors.setText(MainActivity.match.checkData());
+        errors.setText(Match.getInstance().checkData());
     }
 
     // Switches pages

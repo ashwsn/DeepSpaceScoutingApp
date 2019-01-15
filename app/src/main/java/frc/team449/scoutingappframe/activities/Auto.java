@@ -1,4 +1,4 @@
-package frc.team449.scoutingappframe.Activities;
+package frc.team449.scoutingappframe.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import frc.team449.scoutingappframe.Prematch;
 import frc.team449.scoutingappframe.R;
+import frc.team449.scoutingappframe.model.Match;
 
 public class Auto extends BaseActivity {
 
@@ -24,23 +24,26 @@ public class Auto extends BaseActivity {
         // Create and set data trackers to values from Database
         TextView matchTitle = findViewById(R.id.matchTitle);
         TextView teamTitle = findViewById(R.id.teamTitle);
-        if (MainActivity.match.matchNumber != 0) {
+        if (Match.getInstance().getMatchNumber() != 0) {
             matchTitle.setText("Match " + Prematch.getMatchNum());
         }
-        if (MainActivity.match.teamNumber != 0) {
+        if (Match.getInstance().getTeamNumber() != 0) {
             teamTitle.setText("Team " + Prematch.getTeamNum());
         }
         noAuto = findViewById(R.id.noAuto);
-        noAuto.setChecked(MainActivity.match.noAuto);
+        noAuto.setChecked(Match.getInstance().isNoAuto());
         movedForward = findViewById(R.id.movedForward);
-        movedForward.setChecked(MainActivity.match.movedForward);
+        movedForward.setChecked(Match.getInstance().isMovedForward());
+    }
+
+    public void saveData(){
+        Match.getInstance().setNoAuto(noAuto.isChecked());
+        Match.getInstance().setMovedForward(movedForward.isChecked());
     }
 
     // Calls activity to go to teleop page
     public void toTeleop(View v) {
-        // Save values into Database
-        MainActivity.match.noAuto = noAuto.isChecked();
-        MainActivity.match.movedForward = movedForward.isChecked();
+        saveData();
         // Switch pages
         Intent toTeleop = new Intent(this, Teleop.class);
         startActivity(toTeleop);
@@ -48,9 +51,7 @@ public class Auto extends BaseActivity {
 
     // Calls activity to go to prematch page
     public void toPrematch(View v) {
-        // Save values to Database
-        MainActivity.match.noAuto = noAuto.isChecked();
-        MainActivity.match.movedForward = movedForward.isChecked();
+        saveData();
         // Switches pages
         Intent toPrematch = new Intent(this, Prematch.class);
         startActivity(toPrematch);

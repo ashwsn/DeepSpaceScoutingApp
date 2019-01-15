@@ -1,4 +1,4 @@
-package frc.team449.scoutingappframe.Activities;
+package frc.team449.scoutingappframe.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ public class Submitted extends BaseActivity {
     }
 
     public void nextMatch(View v) {
-        Intent nextMatch = new Intent(this, MainActivity.class);
+        Intent nextMatch = new Intent(this, Prematch.class);
         startActivity(nextMatch);
     }
 }

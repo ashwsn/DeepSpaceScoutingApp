@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="frc.team449.scoutingappframe.FixErrors"
+    tools:context="frc.team449.scoutingappframe.activities.FixErrors"
     style="@style/Background">
 
     <!--Match Title-->

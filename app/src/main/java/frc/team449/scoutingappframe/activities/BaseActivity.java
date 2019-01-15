@@ -1,6 +1,5 @@
-package frc.team449.scoutingappframe.Activities;
+package frc.team449.scoutingappframe.activities;
 
-import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
@@ -10,8 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
-import frc.team449.scoutingappframe.Fragments.BluetoothSetupFragment;
-import frc.team449.scoutingappframe.Helpers.BluetoothHelper;
+import frc.team449.scoutingappframe.fragments.BluetoothSetupFragment;
+import frc.team449.scoutingappframe.helpers.BluetoothHelper;
 import frc.team449.scoutingappframe.R;
 
 public abstract class BaseActivity extends AppCompatActivity {

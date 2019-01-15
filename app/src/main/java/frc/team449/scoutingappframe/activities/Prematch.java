@@ -1,4 +1,4 @@
-package frc.team449.scoutingappframe;
+package frc.team449.scoutingappframe.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +9,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import frc.team449.scoutingappframe.Activities.Auto;
-import frc.team449.scoutingappframe.Activities.BaseActivity;
-import frc.team449.scoutingappframe.Activities.MainActivity;
+import frc.team449.scoutingappframe.R;
+import frc.team449.scoutingappframe.model.Match;
 
 
 public class Prematch extends BaseActivity implements AdapterView.OnItemSelectedListener {
@@ -33,23 +32,23 @@ public class Prematch extends BaseActivity implements AdapterView.OnItemSelected
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.prematch_page);
-        // Creates and sets data trackers to PowerUpDatabase values
+        // Creates and sets data trackers to Match values
         scoutNameText = findViewById(R.id.scoutName);
-        scoutNameText.setText(MainActivity.match.scoutName);
+        scoutNameText.setText(Match.getInstance().getScoutName());
         noShowBox = findViewById(R.id.noShow);
-        noShowBox.setChecked(MainActivity.match.noShow);
+        noShowBox.setChecked(Match.getInstance().isNoShow());
         teamNumber = findViewById(R.id.teamNumber);
         teamAdapter = ArrayAdapter.createFromResource(this, R.array.teams, R.layout.dropdown);
         teamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         teamNumber.setAdapter(teamAdapter);
         teamNumber.setOnItemSelectedListener(this);
-        teamNumber.setSelection(MainActivity.match.teamNumber);
+        teamNumber.setSelection(Match.getInstance().getTeamNumber());
         matchNumber = findViewById(R.id.matchNumber);
         matchAdapter = ArrayAdapter.createFromResource(this, R.array.matches, R.layout.dropdown);
         matchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         matchNumber.setAdapter(matchAdapter);
         matchNumber.setOnItemSelectedListener(this);
-        matchNumber.setSelection(MainActivity.match.matchNumber);
+        matchNumber.setSelection(Match.getInstance().getMatchNumber());
         teamNumberValue = teamNumber.getItemAtPosition(0).toString();
         matchNumberValue = matchNumber.getItemAtPosition(0).toString();
 //
@@ -63,26 +62,26 @@ public class Prematch extends BaseActivity implements AdapterView.OnItemSelected
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        // Checks which dropdown was selected and changes the PowerUpDatabase value accordingly
+        // Checks which dropdown was selected and changes the Match value accordingly
         if (parent.getId() == R.id.matchNumber) {
-            MainActivity.match.matchNumber = pos;
+            Match.getInstance().setMatchNumber(pos);
             matchNumberValue = parent.getItemAtPosition(pos).toString();
         }
         else if (parent.getId() == R.id.teamNumber) {
-            MainActivity.match.teamNumber = pos;
+            Match.getInstance().setTeamNumber(pos);
             teamNumberValue = parent.getItemAtPosition(pos).toString();
         }
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        // Checks which dropdown was selected and changes the PowerUpDatabase value accordingly
+        // Checks which dropdown was selected and changes the Match value accordingly
         if (parent.getId() == R.id.matchNumber) {
-            MainActivity.match.matchNumber = 0;
+            Match.getInstance().setMatchNumber(0);
             matchNumberValue = parent.getItemAtPosition(0).toString();
         }
         else if (parent.getId() == R.id.teamNumber) {
-            MainActivity.match.teamNumber = 0;
+            Match.getInstance().setTeamNumber(0);
             teamNumberValue = parent.getItemAtPosition(0).toString();
         }
     }
@@ -97,9 +96,9 @@ public class Prematch extends BaseActivity implements AdapterView.OnItemSelected
 
     // Calls activity to go to auto page
     public void toAuto(View v) {
-        // Saves values to PowerUpDatabase
-        MainActivity.match.scoutName = scoutNameText.getText().toString();
-        MainActivity.match.noShow = noShowBox.isChecked();
+        // Saves values to Match
+        Match.getInstance().setScoutName(scoutNameText.getText().toString());
+        Match.getInstance().setNoShow(noShowBox.isChecked());
         // Switches pages
         Intent toAuto = new Intent(this, Auto.class);
         startActivity(toAuto);

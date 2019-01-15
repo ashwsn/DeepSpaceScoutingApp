@@ -1,4 +1,4 @@
-package frc.team449.scoutingappframe.Activities;
+package frc.team449.scoutingappframe.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,8 +7,8 @@ import android.widget.CheckBox;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import frc.team449.scoutingappframe.Prematch;
 import frc.team449.scoutingappframe.R;
+import frc.team449.scoutingappframe.model.Match;
 
 public class Teleop extends BaseActivity {
 
@@ -25,16 +25,16 @@ public class Teleop extends BaseActivity {
         // Create and set data trackers to their Database values
         TextView matchTitle = findViewById(R.id.matchTitle);
         TextView teamTitle = findViewById(R.id.teamTitle);
-        if (MainActivity.match.matchNumber != 0) {
+        if (Match.getInstance().getMatchNumber() != 0) {
             matchTitle.setText("Match " + Prematch.getMatchNum());
         }
-        if (MainActivity.match.teamNumber != 0) {
+        if (Match.getInstance().getTeamNumber() != 0) {
             teamTitle.setText("Team " + Prematch.getTeamNum());
         }
         achievedNothing = findViewById(R.id.achievedNothing);
-        achievedNothing.setChecked(MainActivity.match.achievedNothing);
+        achievedNothing.setChecked(Match.getInstance().isAchievedNothing());
         dead = findViewById(R.id.dead);
-        switch (MainActivity.match.dead) {
+        switch (Match.getInstance().getDead()) {
             case 0:
                 dead.clearCheck();
                 break;
@@ -50,24 +50,27 @@ public class Teleop extends BaseActivity {
         }
     }
 
-    // Calls activity to go to auto page
-    public void toAuto(View v) {
-        // Save values to Database
-        MainActivity.match.achievedNothing = achievedNothing.isChecked();
+    private void saveData(){
+        Match.getInstance().setAchievedNothing(achievedNothing.isChecked());
         switch (dead.getCheckedRadioButtonId()) {
             case R.id.deadNone:
-                MainActivity.match.dead = 1;
+                Match.getInstance().setDead(1);
                 break;
             case R.id.deadPart:
-                MainActivity.match.dead = 2;
+                Match.getInstance().setDead(2);
                 break;
             case R.id.deadAll:
-                MainActivity.match.dead = 3;
+                Match.getInstance().setDead(3);
                 break;
             default:
-                MainActivity.match.dead = 0;
+                Match.getInstance().setDead(0);
                 break;
         }
+    }
+
+    // Calls activity to go to auto page
+    public void toAuto(View v) {
+        saveData();
         // Switches pages
         Intent toAuto = new Intent(this, Auto.class);
         startActivity(toAuto);
@@ -75,22 +78,7 @@ public class Teleop extends BaseActivity {
 
     // Calls activity to go to endgame page
     public void toEndgame(View v) {
-        // Save values to Database
-        MainActivity.match.achievedNothing = achievedNothing.isChecked();
-        switch (dead.getCheckedRadioButtonId()) {
-            case R.id.deadNone:
-                MainActivity.match.dead = 1;
-                break;
-            case R.id.deadPart:
-                MainActivity.match.dead = 2;
-                break;
-            case R.id.deadAll:
-                MainActivity.match.dead = 3;
-                break;
-            default:
-                MainActivity.match.dead = 0;
-                break;
-        }
+        saveData();
         // Switches pages
         Intent toEndgame = new Intent(this, Endgame.class);
         startActivity(toEndgame);

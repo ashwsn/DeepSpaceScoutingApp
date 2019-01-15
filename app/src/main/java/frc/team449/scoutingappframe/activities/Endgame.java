@@ -1,4 +1,4 @@
-package frc.team449.scoutingappframe.Activities;
+package frc.team449.scoutingappframe.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,9 +6,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import frc.team449.scoutingappframe.Prematch;
 import frc.team449.scoutingappframe.R;
-import frc.team449.scoutingappframe.Submit;
+import frc.team449.scoutingappframe.helpers.SubmitHelper;
+import frc.team449.scoutingappframe.model.Match;
 
 public class Endgame extends BaseActivity {
 
@@ -20,20 +20,24 @@ public class Endgame extends BaseActivity {
         setContentView(R.layout.endgame_page);
         TextView matchTitle = findViewById(R.id.matchTitle);
         TextView teamTitle = findViewById(R.id.teamTitle);
-        if (MainActivity.match.matchNumber != 0) {
+        if (Match.getInstance().getMatchNumber() != 0) {
             matchTitle.setText("Match " + Prematch.getMatchNum());
         }
-        if (MainActivity.match.teamNumber != 0) {
+        if (Match.getInstance().getTeamNumber() != 0) {
             teamTitle.setText("Team " + Prematch.getTeamNum());
         }
         comments = findViewById(R.id.comments);
-        comments.setText(MainActivity.match.comments);
+        comments.setText(Match.getInstance().getComments());
+    }
+
+    private void saveData(){
+        // Save values to Database
+        Match.getInstance().setComments(comments.getText().toString());
     }
 
     // Calls activity to go to auto page
     public void toTeleop(View v) {
-        // Save values to Database
-        MainActivity.match.comments = comments.getText().toString();
+        saveData();
         // Switches pages
         Intent toTeleop = new Intent(this, Teleop.class);
         startActivity(toTeleop);
@@ -41,11 +45,10 @@ public class Endgame extends BaseActivity {
 
     // Calls activity to go to endgame page
     public void submit(View v) {
-        // Save values to Database
-        MainActivity.match.comments = comments.getText().toString();
-        // Switches pages
-        Intent submit = new Intent(this, Submit.class);
-        startActivity(submit);
+        saveData();
+
+        // Submit
+        SubmitHelper.submit(this);
     }
 
 }

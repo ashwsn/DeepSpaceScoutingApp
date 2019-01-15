@@ -1,4 +1,4 @@
-package frc.team449.scoutingappframe.Helpers;
+package frc.team449.scoutingappframe.helpers;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
