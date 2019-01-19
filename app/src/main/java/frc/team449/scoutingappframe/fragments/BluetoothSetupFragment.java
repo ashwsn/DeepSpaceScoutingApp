@@ -13,8 +13,8 @@ import android.widget.Spinner;
 import java.io.IOException;
 import java.util.List;
 
-import frc.team449.scoutingappframe.helpers.BluetoothHelper;
 import frc.team449.scoutingappframe.R;
+import frc.team449.scoutingappframe.helpers.BluetoothHelper;
 
 public class BluetoothSetupFragment extends DialogFragment {
 

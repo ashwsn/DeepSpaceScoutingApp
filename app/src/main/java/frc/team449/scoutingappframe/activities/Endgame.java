@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import frc.team449.scoutingappframe.R;
 import frc.team449.scoutingappframe.helpers.SubmitHelper;
@@ -18,14 +17,7 @@ public class Endgame extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.endgame_page);
-        TextView matchTitle = findViewById(R.id.matchTitle);
-        TextView teamTitle = findViewById(R.id.teamTitle);
-        if (Match.getInstance().getMatchNumber() != 0) {
-            matchTitle.setText("Match " + Prematch.getMatchNum());
-        }
-        if (Match.getInstance().getTeamNumber() != 0) {
-            teamTitle.setText("Team " + Prematch.getTeamNum());
-        }
+
         comments = findViewById(R.id.comments);
         comments.setText(Match.getInstance().getComments());
     }

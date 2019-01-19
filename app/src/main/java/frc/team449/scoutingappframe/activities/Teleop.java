@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import frc.team449.scoutingappframe.R;
 import frc.team449.scoutingappframe.model.Match;
@@ -22,15 +21,8 @@ public class Teleop extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.teleop_page);
+
         // Create and set data trackers to their Database values
-        TextView matchTitle = findViewById(R.id.matchTitle);
-        TextView teamTitle = findViewById(R.id.teamTitle);
-        if (Match.getInstance().getMatchNumber() != 0) {
-            matchTitle.setText("Match " + Prematch.getMatchNum());
-        }
-        if (Match.getInstance().getTeamNumber() != 0) {
-            teamTitle.setText("Team " + Prematch.getTeamNum());
-        }
         achievedNothing = findViewById(R.id.achievedNothing);
         achievedNothing.setChecked(Match.getInstance().isAchievedNothing());
         dead = findViewById(R.id.dead);

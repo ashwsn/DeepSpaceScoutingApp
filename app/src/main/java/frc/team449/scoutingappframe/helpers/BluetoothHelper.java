@@ -37,6 +37,7 @@ public class BluetoothHelper {
                 }
             } else {
                 Log.e("BluetoothHelper.initCon", "Bluetooth is disabled.");
+                //TODO: provide feedback to user via popup
                 //Intent enableBluetooth = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 //startActivityForResult(enableBluetooth, 0);
                 //Log.i("BtH.getPairedDevices", "Bluetooth enabled.");

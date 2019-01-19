@@ -8,6 +8,7 @@
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
     style="@style/Background">
+
     <!--Title-->
     <TextView
         style="@style/TitleText"

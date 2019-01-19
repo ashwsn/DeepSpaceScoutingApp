@@ -1,6 +1,21 @@
 <resources>
     <string name="app_name">Scouting App Frame</string>
+
     <string name="title_activity_endgame">Endgame</string>
 
+    <!--Popup strings-->
     <string name="bluetooth_setup_title">Connect over Bluetooth</string>
+
+    <string name="data_errors_title">Your data has errors.</string>
+
+    <string name="not_connected_title">Bluetooth not connected.</string>
+    <string name="not_connected_prompt">This device is not connected to bluetooth. The data you submit will be stored locally, but not sent to the scouting laptop.\nWould you like to connect now?</string>
+
+    <string name="bluetooth_send_failed_title">Bluetooth submission failed.</string>
+    <string name="bluetooth_send_failed_prompt">Please talk to Telon, Carter, or other scouting leader</string>
+
+    <string name="info_popup_button">Okay</string>
+    <string name="bluetooth_popup_connect_rename">Connect</string>
+    <string name="bluetooth_warning_ignore_button">Submit anyway</string>
+    <string name="popup_cancel_button">Cancel</string>
 </resources>

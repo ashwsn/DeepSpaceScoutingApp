@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.TextView;
 
 import frc.team449.scoutingappframe.R;
 import frc.team449.scoutingappframe.model.Match;
@@ -21,15 +20,7 @@ public class Auto extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.autonomous_page);
-        // Create and set data trackers to values from Database
-        TextView matchTitle = findViewById(R.id.matchTitle);
-        TextView teamTitle = findViewById(R.id.teamTitle);
-        if (Match.getInstance().getMatchNumber() != 0) {
-            matchTitle.setText("Match " + Prematch.getMatchNum());
-        }
-        if (Match.getInstance().getTeamNumber() != 0) {
-            teamTitle.setText("Team " + Prematch.getTeamNum());
-        }
+
         noAuto = findViewById(R.id.noAuto);
         noAuto.setChecked(Match.getInstance().isNoAuto());
         movedForward = findViewById(R.id.movedForward);

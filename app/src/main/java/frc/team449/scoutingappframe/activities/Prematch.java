@@ -51,13 +51,9 @@ public class Prematch extends BaseActivity implements AdapterView.OnItemSelected
         matchNumber.setSelection(Match.getInstance().getMatchNumber());
         teamNumberValue = teamNumber.getItemAtPosition(0).toString();
         matchNumberValue = matchNumber.getItemAtPosition(0).toString();
-//
-//        if (!BluetoothHelper.getInstance().isConnected()) {
-//            //show bluetooth dialog
-//            FragmentManager fm = getSupportFragmentManager();
-//            DialogFragment fragment = new BluetoothSetupFragment();
-//            fragment.show(fm, "dialog");
-//        }
+
+        findViewById(R.id.matchTitle).setVisibility(View.GONE);
+        findViewById(R.id.teamTitle).setVisibility(View.GONE);
     }
 
     @Override

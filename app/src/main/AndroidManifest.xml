@@ -23,7 +23,6 @@
         </activity>
         <activity android:name=".activities.Auto" />
         <activity android:name=".activities.Teleop" />
-        <activity android:name=".activities.FixErrors" />
         <activity android:name=".activities.Submitted" />
         <activity android:name=".activities.Endgame" />
     </application>
