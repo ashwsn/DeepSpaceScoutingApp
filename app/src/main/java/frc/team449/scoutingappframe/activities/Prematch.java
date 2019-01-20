@@ -10,10 +10,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import frc.team449.scoutingappframe.R;
+import frc.team449.scoutingappframe.helpers.PopupHelper;
 import frc.team449.scoutingappframe.model.Match;
 
 
 public class Prematch extends BaseActivity implements AdapterView.OnItemSelectedListener {
+
+    private static boolean justLaunched = true;
 
     // Team and match #
     private static String matchNumberValue;
@@ -54,6 +57,11 @@ public class Prematch extends BaseActivity implements AdapterView.OnItemSelected
 
         findViewById(R.id.matchTitle).setVisibility(View.GONE);
         findViewById(R.id.teamTitle).setVisibility(View.GONE);
+
+        if (justLaunched) {
+            justLaunched = false;
+            PopupHelper.bluetoothPopup(this);
+        }
     }
 
     @Override

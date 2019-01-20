@@ -12,13 +12,13 @@
     <string name="not_connected_prompt">This device is not connected to bluetooth. The data you submit will be stored locally, but not sent to the scouting laptop.\nWould you like to connect now?</string>
 
     <string name="bluetooth_connected_title">Bluetooth Connected</string>
-    <string name="bluetooth_connected_prompt">Bluetooth has sucessfully connected to %1$s</string>
+    <string name="bluetooth_connected_prompt">Bluetooth has successfully connected to %1$s</string>
 
     <string name="bluetooth_send_failed_title">Bluetooth submission failed.</string>
     <string name="bluetooth_send_failed_prompt">Please talk to Telon, Carter, or other scouting leader</string>
 
     <string name="bluetooth_connect_error_title">Bluetooth Error</string>
-    <string name="bluetooth_connect_error_prompt">An error occurred connecting to Bluetooth.\nPlease check that Bluetooth is enabled on this device, that the server is running on the scouting computer, and that you have selected that computer from the dropdown.\nIf errors persist, please get Carter for help</string>
+    <string name="bluetooth_connect_error_prompt">An error occurred connecting to Bluetooth.\nPlease check that Bluetooth is enabled on this device, that the server is running on the scouting computer, and that you have selected that computer from the dropdown.\nIf errors persist, please get Carter for help.</string>
 
     <string name="info_popup_button">Okay</string>
     <string name="bluetooth_popup_connect_button">Connect</string>
