@@ -18,10 +18,6 @@ public class Prematch extends BaseActivity implements AdapterView.OnItemSelected
 
     private static boolean justLaunched = true;
 
-    // Team and match #
-    private static String matchNumberValue;
-    private static String teamNumberValue;
-
     // Input fields
     private EditText scoutNameText;
     private CheckBox noShowBox;
@@ -52,8 +48,6 @@ public class Prematch extends BaseActivity implements AdapterView.OnItemSelected
         matchNumber.setAdapter(matchAdapter);
         matchNumber.setOnItemSelectedListener(this);
         matchNumber.setSelection(Match.getInstance().getMatchNumber());
-        teamNumberValue = teamNumber.getItemAtPosition(0).toString();
-        matchNumberValue = matchNumber.getItemAtPosition(0).toString();
 
         findViewById(R.id.matchTitle).setVisibility(View.GONE);
         findViewById(R.id.teamTitle).setVisibility(View.GONE);
@@ -69,11 +63,9 @@ public class Prematch extends BaseActivity implements AdapterView.OnItemSelected
         // Checks which dropdown was selected and changes the Match value accordingly
         if (parent.getId() == R.id.matchNumber) {
             Match.getInstance().setMatchNumber(pos);
-            matchNumberValue = parent.getItemAtPosition(pos).toString();
         }
         else if (parent.getId() == R.id.teamNumber) {
             Match.getInstance().setTeamNumber(pos);
-            teamNumberValue = parent.getItemAtPosition(pos).toString();
         }
     }
 
@@ -82,20 +74,10 @@ public class Prematch extends BaseActivity implements AdapterView.OnItemSelected
         // Checks which dropdown was selected and changes the Match value accordingly
         if (parent.getId() == R.id.matchNumber) {
             Match.getInstance().setMatchNumber(0);
-            matchNumberValue = parent.getItemAtPosition(0).toString();
         }
         else if (parent.getId() == R.id.teamNumber) {
             Match.getInstance().setTeamNumber(0);
-            teamNumberValue = parent.getItemAtPosition(0).toString();
         }
-    }
-
-    public static String getTeamNum() {
-        return teamNumberValue;
-    }
-
-    public static String getMatchNum() {
-        return matchNumberValue;
     }
 
     // Calls activity to go to auto page

@@ -39,12 +39,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         TextView matchTitle = findViewById(R.id.matchTitle);
         TextView teamTitle = findViewById(R.id.teamTitle);
-        if (Match.getInstance().getMatchNumber() != 0) {
-            matchTitle.setText(String.format("Match %1$s", Prematch.getMatchNum()));
-        }
-        if (Match.getInstance().getTeamNumber() != 0) {
-            teamTitle.setText(String.format("Team %1$s", Prematch.getTeamNum()));
-        }
+
+        if (Match.getInstance().getMatchNumber() != 0)
+            matchTitle.setText(String.format("Match %1$s", getResources().getStringArray(R.array.matches)[Match.getInstance().getMatchNumber()]));
+        if (Match.getInstance().getTeamNumber() != 0)
+            teamTitle.setText(String.format("Team %1$s", getResources().getStringArray(R.array.teams)[Match.getInstance().getTeamNumber()]));
+
         matchTitle.setVisibility(View.VISIBLE);
         teamTitle.setVisibility(View.VISIBLE);
     }

@@ -60,7 +60,8 @@ public class Match {
         // each instance variable separated by a comma
         return scoutName+","+  ctxt.getResources().getStringArray(R.array.matches)[matchNumber]+","+
                 ctxt.getResources().getStringArray(R.array.teams)[teamNumber]+","+(noShow ? 1 : 0)
-                +","+(noAuto ? 1 : 0)+","+(movedForward ? 1 : 0)+","+(achievedNothing ? 1 : 0)+","+dead+","+comments;
+                +","+(noAuto ? 1 : 0)+","+(movedForward ? 1 : 0)+","+(achievedNothing ? 1 : 0)+","+
+                dead+","+(comments==null ? "" : comments);
     }
 
     public String checkData() {

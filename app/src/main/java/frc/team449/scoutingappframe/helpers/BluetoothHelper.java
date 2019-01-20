@@ -4,7 +4,6 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.os.ParcelUuid;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import java.io.IOException;
@@ -13,8 +12,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
-import frc.team449.scoutingappframe.R;
 
 public class BluetoothHelper {
     private static BluetoothHelper bluetoothHelper = new BluetoothHelper();
@@ -27,8 +24,7 @@ public class BluetoothHelper {
     private BluetoothSocket socket;
     private OutputStream outputStream;
 
-    private boolean connected = false;
-    public boolean isConnected() {return connected;}
+    public boolean isConnected() {return socket.isConnected();}
 
     public List<String> getPairedDevices(){
         List<String> paired = new ArrayList<>();
@@ -71,7 +67,6 @@ public class BluetoothHelper {
                             }
                             socket.connect();
                             outputStream = socket.getOutputStream();
-                            connected = true;
                             Log.i("BluetoothHelper.initCon", "Connected to "+device.getName());
                         }
                     }
@@ -88,7 +83,7 @@ public class BluetoothHelper {
     }
 
     public boolean write(String s) throws IOException {
-        if (connected) {
+        if (isConnected()) {
             try {
                 outputStream.write(s.getBytes());
                 return true;
