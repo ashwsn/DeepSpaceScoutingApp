@@ -21,7 +21,7 @@ public class SubmitHelper {
                 submitData(ctxt);
             } else {
                 PopupHelper.prompt(ctxt.getString(R.string.not_connected_title), ctxt.getString(R.string.not_connected_prompt),
-                        ctxt.getString(R.string.bluetooth_popup_connect_rename), new Runnable() {
+                        ctxt.getString(R.string.bluetooth_popup_connect_button), new Runnable() {
                             @Override
                             public void run() {
                                 PopupHelper.bluetoothPopup((AppCompatActivity) ctxt);
