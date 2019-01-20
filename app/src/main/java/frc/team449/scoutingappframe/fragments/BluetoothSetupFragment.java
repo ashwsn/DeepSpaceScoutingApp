@@ -2,23 +2,28 @@ package frc.team449.scoutingappframe.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 
 import java.io.IOException;
 import java.util.List;
 
-import frc.team449.scoutingappframe.helpers.BluetoothHelper;
 import frc.team449.scoutingappframe.R;
+import frc.team449.scoutingappframe.helpers.BluetoothHelper;
+import frc.team449.scoutingappframe.helpers.PopupHelper;
 
 public class BluetoothSetupFragment extends DialogFragment {
 
     private String master;
+
+    private ProgressBar progressBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,6 +69,8 @@ public class BluetoothSetupFragment extends DialogFragment {
             }
         });
 
+        progressBar = v.findViewById(R.id.progressBar);
+
         Button connectButton = v.findViewById(R.id.connectButton);
         connectButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,13 +83,36 @@ public class BluetoothSetupFragment extends DialogFragment {
     }
 
     public void connect(View v){
-        try {
-            BluetoothHelper.getInstance().initializeConnection(master);
-        } catch (IOException e) {
-            e.printStackTrace();
-            //TODO: Give feedback to user
-        }
-        dismiss();
+        progressBar.setVisibility(View.VISIBLE);
+        final Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    BluetoothHelper.getInstance().initializeConnection(master);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        t.start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    t.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                if (BluetoothHelper.getInstance().isConnected()) {
+                    PopupHelper.info(getString(R.string.bluetooth_connected_title),String.format(getString(R.string.bluetooth_connected_prompt),master), (AppCompatActivity) getContext());
+                } else {
+                    PopupHelper.info(getString(R.string.bluetooth_connect_error_title),getString(R.string.bluetooth_connect_error_prompt), (AppCompatActivity) getContext());
+                }
+                dismiss();
+            }
+        }).start();
+
     }
 
 }

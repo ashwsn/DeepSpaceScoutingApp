@@ -10,10 +10,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import frc.team449.scoutingappframe.R;
+import frc.team449.scoutingappframe.helpers.PopupHelper;
 import frc.team449.scoutingappframe.model.Match;
 
 
 public class Prematch extends BaseActivity implements AdapterView.OnItemSelectedListener {
+
+    private static boolean justLaunched = true;
 
     // Team and match #
     private static String matchNumberValue;
@@ -51,13 +54,14 @@ public class Prematch extends BaseActivity implements AdapterView.OnItemSelected
         matchNumber.setSelection(Match.getInstance().getMatchNumber());
         teamNumberValue = teamNumber.getItemAtPosition(0).toString();
         matchNumberValue = matchNumber.getItemAtPosition(0).toString();
-//
-//        if (!BluetoothHelper.getInstance().isConnected()) {
-//            //show bluetooth dialog
-//            FragmentManager fm = getSupportFragmentManager();
-//            DialogFragment fragment = new BluetoothSetupFragment();
-//            fragment.show(fm, "dialog");
-//        }
+
+        findViewById(R.id.matchTitle).setVisibility(View.GONE);
+        findViewById(R.id.teamTitle).setVisibility(View.GONE);
+
+        if (justLaunched) {
+            justLaunched = false;
+            PopupHelper.bluetoothPopup(this);
+        }
     }
 
     @Override

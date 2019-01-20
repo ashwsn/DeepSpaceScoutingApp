@@ -2,8 +2,6 @@ package frc.team449.scoutingappframe.activities;
 
 import android.app.Activity;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -14,10 +12,11 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
-import frc.team449.scoutingappframe.fragments.BluetoothSetupFragment;
-import frc.team449.scoutingappframe.helpers.BluetoothHelper;
 import frc.team449.scoutingappframe.R;
+import frc.team449.scoutingappframe.helpers.PopupHelper;
+import frc.team449.scoutingappframe.model.Match;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -29,19 +28,29 @@ public abstract class BaseActivity extends AppCompatActivity {
         getLayoutInflater().inflate(layoutResID, activityContainer, true);
 
         super.setContentView(coordinatorLayout);
-        addToolbar();
 
         setupUI(coordinatorLayout);
+
+        setup();
     }
 
-    protected void addToolbar() {
+    private void setup(){
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-        //getSupportActionBar().setIcon(R.drawable.icon);
+
+        TextView matchTitle = findViewById(R.id.matchTitle);
+        TextView teamTitle = findViewById(R.id.teamTitle);
+        if (Match.getInstance().getMatchNumber() != 0) {
+            matchTitle.setText(String.format("Match %1$s", Prematch.getMatchNum()));
+        }
+        if (Match.getInstance().getTeamNumber() != 0) {
+            teamTitle.setText(String.format("Team %1$s", Prematch.getTeamNum()));
+        }
+        matchTitle.setVisibility(View.VISIBLE);
+        teamTitle.setVisibility(View.VISIBLE);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
@@ -50,17 +59,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.bluetooth_icon:
-                if (!BluetoothHelper.getInstance().isConnected()) {
-                    //show bluetooth dialog
-                    FragmentManager fm = getSupportFragmentManager();
-                    DialogFragment fragment = new BluetoothSetupFragment();
-                    fragment.show(fm, "dialog");
-                }
+                PopupHelper.bluetoothPopup(this);
                 return true;
 
             default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
 
         }

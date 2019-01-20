@@ -4,26 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/Background">
 
-    <!--Match Title-->
-    <TextView
-        style="@style/TitleText"
-        android:id="@+id/matchTitle"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="@dimen/startMargin"
-        android:layout_marginTop="8dp"
-        android:text="Match " />
-
-    <!--Team Title-->
-    <TextView
-        style="@style/TitleText"
-        android:id="@+id/teamTitle"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="@dimen/startMargin"
-        android:layout_marginTop="8dp"
-        android:text="Team " />
-
     <!--Achieved Nothing Text-->
     <TextView
         style="@style/Text"
@@ -31,7 +11,7 @@
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="15dp"
         android:text="Achieved Nothing?"
-        app:layout_constraintTop_toBottomOf="@id/matchTitle"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <CheckBox

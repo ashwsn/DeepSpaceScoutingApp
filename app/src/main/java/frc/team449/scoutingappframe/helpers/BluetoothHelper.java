@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.os.ParcelUuid;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import java.io.IOException;
@@ -12,6 +13,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+import frc.team449.scoutingappframe.R;
 
 public class BluetoothHelper {
     private static BluetoothHelper bluetoothHelper = new BluetoothHelper();
@@ -37,6 +40,7 @@ public class BluetoothHelper {
                 }
             } else {
                 Log.e("BluetoothHelper.initCon", "Bluetooth is disabled.");
+                //TODO: provide feedback to user via popup
                 //Intent enableBluetooth = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 //startActivityForResult(enableBluetooth, 0);
                 //Log.i("BtH.getPairedDevices", "Bluetooth enabled.");
@@ -45,8 +49,7 @@ public class BluetoothHelper {
         return paired;
     }
 
-    public boolean initializeConnection(String targetMasterName) throws IOException {
-        connected = false;
+    public void initializeConnection(String targetMasterName) throws IOException {
         if (blueAdapter != null) {
             if (blueAdapter.isEnabled()) {
                 //These are the devices that the tablet is paired with
@@ -67,13 +70,10 @@ public class BluetoothHelper {
                                 Log.e("BluetoothHelper.initCon","Error connecting to "+device.getName());
                             }
                             socket.connect();
-                            connected = true;
                             outputStream = socket.getOutputStream();
+                            connected = true;
                             Log.i("BluetoothHelper.initCon", "Connected to "+device.getName());
                         }
-                    }
-                    if (!connected){
-                        Log.e("BluetoothHelper.initCon","Target device is not paired.");
                     }
                 } else {
                     Log.e("BluetoothHelper.initCon", "No appropriate paired devices.");
@@ -85,7 +85,6 @@ public class BluetoothHelper {
             Log.i("myStuff", "Bluetooth Enabled");*/
             }
         } else Log.e("BluetoothHelper.initCon","blueAdapter is null");
-        return connected;
     }
 
     public boolean write(String s) throws IOException {

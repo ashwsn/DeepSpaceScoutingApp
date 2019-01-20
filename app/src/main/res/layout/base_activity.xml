@@ -4,7 +4,9 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:clickable="true"
-    android:focusableInTouchMode="true" >
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    style="@style/Background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,6 +21,33 @@
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <!--Match Title-->
+            <TextView
+                style="@style/TitleText"
+                android:id="@+id/matchTitle"
+                android:layout_marginStart="@dimen/startMargin"
+                android:text="Match " />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <!--Team Title-->
+            <TextView
+                style="@style/TitleText"
+                android:id="@+id/teamTitle"
+                android:layout_marginEnd="@dimen/startMargin"
+                android:text="Team "/>
+
+        </LinearLayout>
 
         <FrameLayout
             android:id="@+id/layout_container"
