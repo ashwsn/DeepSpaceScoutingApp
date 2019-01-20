@@ -78,7 +78,7 @@ public class Match {
         if (dead == 0) {
             errors += "Please select an option for deadness\n";
         }
-        return errors;
+        return errors.trim();
     }
 
     public String getScoutName() {

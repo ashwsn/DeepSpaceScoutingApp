@@ -2,6 +2,7 @@ package frc.team449.scoutingappframe.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,18 +84,35 @@ public class BluetoothSetupFragment extends DialogFragment {
 
     public void connect(View v){
         progressBar.setVisibility(View.VISIBLE);
-        new Thread(new Runnable() {
+        final Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     BluetoothHelper.getInstance().initializeConnection(master);
                 } catch (IOException e) {
                     e.printStackTrace();
-                    //PopupHelper.info("Bluetooth Error","");
+                }
+            }
+        });
+        t.start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    t.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                if (BluetoothHelper.getInstance().isConnected()) {
+                    PopupHelper.info(getString(R.string.bluetooth_connected_title),String.format(getString(R.string.bluetooth_connected_prompt),master), (AppCompatActivity) getContext());
+                } else {
+                    PopupHelper.info(getString(R.string.bluetooth_connect_error_title),getString(R.string.bluetooth_connect_error_prompt), (AppCompatActivity) getContext());
                 }
                 dismiss();
             }
         }).start();
+
     }
 
 }
