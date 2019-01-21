@@ -57,14 +57,14 @@ public class Prematch extends BaseActivity {
         }
     }
 
-    // Calls activity to go to auto page
-    public void toAuto(View v) {
-        // Saves values to Match
+    private void saveData() {
         Match.getInstance().setScoutName(scoutNameText.getText().toString());
         Match.getInstance().setNoShow(noShowBox.isChecked());
-        // Switches pages
-        Intent toAuto = new Intent(this, Auto.class);
-        startActivity(toAuto);
+    }
+
+    public void toAuto(View v) {
+        saveData();
+        startActivity(new Intent(this, Auto.class));
     }
 
     private static final AdapterView.OnItemSelectedListener onItemSelectedListener = new AdapterView.OnItemSelectedListener(){

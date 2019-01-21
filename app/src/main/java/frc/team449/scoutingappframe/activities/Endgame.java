@@ -28,22 +28,17 @@ public class Endgame extends InmatchBaseActivity {
     protected void setupNavButtons() {
         prevButton.setText("Teleop");
         nextButton.setText("Submit");
+        prevActivity = Teleop.class;
     }
 
+    @Override
     protected void saveData(){
         Match.getInstance().setComments(comments.getText().toString());
     }
 
     @Override
-    public void toPrev(View v) {
-        super.toPrev(v);
-
-        startActivity(new Intent(this, Teleop.class));
-    }
-
-    @Override
     public void toNext(View v) {
-        super.toNext(v);
+        saveData();
 
         // Submit
         SubmitHelper.submit(this);

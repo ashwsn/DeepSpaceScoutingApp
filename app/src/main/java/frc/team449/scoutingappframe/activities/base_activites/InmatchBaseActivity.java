@@ -1,5 +1,6 @@
 package frc.team449.scoutingappframe.activities.base_activites;
 
+import android.content.Intent;
 import android.support.design.widget.CoordinatorLayout;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,9 @@ import frc.team449.scoutingappframe.R;
 import frc.team449.scoutingappframe.model.Match;
 
 public abstract class InmatchBaseActivity extends BaseActivity {
+
+    protected Class prevActivity;
+    protected Class nextActivity;
 
     protected Button nextButton;
     protected Button prevButton;
@@ -39,11 +43,17 @@ public abstract class InmatchBaseActivity extends BaseActivity {
     protected abstract void setupNavButtons();
 
     protected abstract void saveData();
+
     protected void toPrev(View v){
-        saveData();
+        gotoPage(prevActivity);
     }
 
     protected void toNext(View v) {
+        gotoPage(nextActivity);
+    }
+
+    private void gotoPage(Class activityToGoto){
         saveData();
+        startActivity(new Intent(this, activityToGoto));
     }
 }

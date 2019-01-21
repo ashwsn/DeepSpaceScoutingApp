@@ -48,6 +48,8 @@ public class Teleop extends InmatchBaseActivity {
     protected void setupNavButtons() {
         prevButton.setText("Auto");
         nextButton.setText("Endgame");
+        prevActivity = Auto.class;
+        nextActivity = Endgame.class;
     }
 
     @Override
@@ -69,17 +71,4 @@ public class Teleop extends InmatchBaseActivity {
         }
     }
 
-    @Override
-    protected void toPrev(View v) {
-        super.toPrev(v);
-
-        startActivity(new Intent(this, Auto.class));
-    }
-
-    @Override
-    protected void toNext(View v) {
-        super.toNext(v);
-
-        startActivity(new Intent(this, Endgame.class));
-    }
 }

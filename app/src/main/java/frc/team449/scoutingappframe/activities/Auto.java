@@ -1,12 +1,9 @@
 package frc.team449.scoutingappframe.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.CheckBox;
 
 import frc.team449.scoutingappframe.R;
-import frc.team449.scoutingappframe.activities.base_activites.BaseActivity;
 import frc.team449.scoutingappframe.activities.base_activites.InmatchBaseActivity;
 import frc.team449.scoutingappframe.model.Match;
 
@@ -34,6 +31,8 @@ public class Auto extends InmatchBaseActivity {
     protected void setupNavButtons(){
         prevButton.setText("Prematch");
         nextButton.setText("Teleop");
+        prevActivity = Prematch.class;
+        nextActivity = Teleop.class;
     }
 
     @Override
@@ -42,18 +41,5 @@ public class Auto extends InmatchBaseActivity {
         Match.getInstance().setMovedForward(movedForward.isChecked());
     }
 
-    @Override
-    public void toPrev(View v) {
-        super.toPrev(v);
-
-        startActivity(new Intent(this, Prematch.class));
-    }
-
-    @Override
-    public void toNext(View v) {
-        super.toNext(v);
-
-        startActivity(new Intent(this, Teleop.class));
-    }
 
 }
