@@ -1,4 +1,4 @@
-package frc.team449.scoutingappframe.activities;
+package frc.team449.scoutingappframe.activities.base_activites;
 
 import android.app.Activity;
 import android.support.design.widget.CoordinatorLayout;
@@ -12,41 +12,42 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 
 import frc.team449.scoutingappframe.R;
 import frc.team449.scoutingappframe.helpers.PopupHelper;
-import frc.team449.scoutingappframe.model.Match;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     public void setContentView(int layoutResID){
-        CoordinatorLayout coordinatorLayout = (CoordinatorLayout) getLayoutInflater().inflate(R.layout.base_activity, null);
-        FrameLayout activityContainer = coordinatorLayout.findViewById(R.id.layout_container);
+        CoordinatorLayout cl = setupLayout(layoutResID,R.layout.base_activity);
+        super.setContentView(cl);
+        setup(cl);
+    }
+
+    @Override
+    public void setContentView(View view) {
+        CoordinatorLayout cl = (CoordinatorLayout) getLayoutInflater().inflate(R.layout.base_activity, null);
+        super.setContentView(cl);
+        //LinearLayout ll = findViewById(R.id.base_linear);
+        FrameLayout activityContainer = cl.findViewById(R.id.layout_container);
+        activityContainer.addView(view);
+        setup(cl);
+    }
+
+    protected CoordinatorLayout setupLayout(int layoutResID, int baseLayout) {
+        CoordinatorLayout cl = (CoordinatorLayout) getLayoutInflater().inflate(baseLayout, null);
+        FrameLayout activityContainer = cl.findViewById(R.id.layout_container);
 
         getLayoutInflater().inflate(layoutResID, activityContainer, true);
 
-        super.setContentView(coordinatorLayout);
-
-        setupUI(coordinatorLayout);
-
-        setup();
+        return cl;
     }
 
-    private void setup(){
+    protected void setup(View view){
+        setupKeyboard(view);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-
-        TextView matchTitle = findViewById(R.id.matchTitle);
-        TextView teamTitle = findViewById(R.id.teamTitle);
-
-        if (Match.getInstance().getMatchNumber() != 0)
-            matchTitle.setText(String.format("Match %1$s", getResources().getStringArray(R.array.matches)[Match.getInstance().getMatchNumber()]));
-        if (Match.getInstance().getTeamNumber() != 0)
-            teamTitle.setText(String.format("Team %1$s", getResources().getStringArray(R.array.teams)[Match.getInstance().getTeamNumber()]));
-
-        matchTitle.setVisibility(View.VISIBLE);
-        teamTitle.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -76,7 +77,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
     }
 
-    private void setupUI(View view) {
+    private void setupKeyboard(View view) {
         // Set up touch listener for non-text box views to hide keyboard.
         if (!(view instanceof EditText)) {
             view.setOnTouchListener(new View.OnTouchListener() {
@@ -90,7 +91,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (view instanceof ViewGroup) {
             for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
                 View innerView = ((ViewGroup) view).getChildAt(i);
-                setupUI(innerView);
+                setupKeyboard(innerView);
             }
         }
     }

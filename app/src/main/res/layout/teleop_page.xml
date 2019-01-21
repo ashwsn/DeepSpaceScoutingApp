@@ -59,26 +59,4 @@
 
     </RadioGroup>
 
-    <!--Auto Button-->
-    <Button
-        style="@style/PageButton"
-        android:id="@+id/toAutoPage"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="100dp"
-        android:onClick="toAuto"
-        android:text="Auto"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!--Endgame Button-->
-    <Button
-        style="@style/PageButton"
-        android:id="@+id/toEndgamePage"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="100dp"
-        android:onClick="toEndgame"
-        android:text="Endgame"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
 </android.support.constraint.ConstraintLayout>

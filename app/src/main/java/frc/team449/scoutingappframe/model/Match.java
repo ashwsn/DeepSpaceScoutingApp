@@ -15,7 +15,7 @@ import frc.team449.scoutingappframe.R;
 
 public class Match {
 
-    private static Match match = new Match();
+    private static final Match match = new Match();
 
     // All data being collected
     private String scoutName;

@@ -96,10 +96,11 @@
     <!--Auto Button-->
     <Button
         style="@style/PageButton"
+        android:layout_width="match_parent"
         android:id="@+id/toAutoPage"
-        android:layout_marginBottom="8dp"
+        android:layout_margin="16dp"
         android:onClick="toAuto"
-        android:text="Auto"
+        android:text="Start Match"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />

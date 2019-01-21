@@ -6,9 +6,11 @@ import android.view.View;
 import android.widget.CheckBox;
 
 import frc.team449.scoutingappframe.R;
+import frc.team449.scoutingappframe.activities.base_activites.BaseActivity;
+import frc.team449.scoutingappframe.activities.base_activites.InmatchBaseActivity;
 import frc.team449.scoutingappframe.model.Match;
 
-public class Auto extends BaseActivity {
+public class Auto extends InmatchBaseActivity {
 
     // Text fields that display current value
     // Input fields
@@ -25,26 +27,33 @@ public class Auto extends BaseActivity {
         noAuto.setChecked(Match.getInstance().isNoAuto());
         movedForward = findViewById(R.id.movedForward);
         movedForward.setChecked(Match.getInstance().isMovedForward());
+
     }
 
+    @Override
+    protected void setupNavButtons(){
+        prevButton.setText("Prematch");
+        nextButton.setText("Teleop");
+    }
+
+    @Override
     public void saveData(){
         Match.getInstance().setNoAuto(noAuto.isChecked());
         Match.getInstance().setMovedForward(movedForward.isChecked());
     }
 
-    // Calls activity to go to teleop page
-    public void toTeleop(View v) {
-        saveData();
-        // Switch pages
-        Intent toTeleop = new Intent(this, Teleop.class);
-        startActivity(toTeleop);
+    @Override
+    public void toPrev(View v) {
+        super.toPrev(v);
+
+        startActivity(new Intent(this, Prematch.class));
     }
 
-    // Calls activity to go to prematch page
-    public void toPrematch(View v) {
-        saveData();
-        // Switches pages
-        Intent toPrematch = new Intent(this, Prematch.class);
-        startActivity(toPrematch);
+    @Override
+    public void toNext(View v) {
+        super.toNext(v);
+
+        startActivity(new Intent(this, Teleop.class));
     }
+
 }

@@ -40,27 +40,4 @@
         app:layout_constraintStart_toStartOf="@id/noAuto"
         app:layout_constraintTop_toTopOf="@id/movedForwardText" />
 
-    <!--Prematch Button-->
-    <Button
-        android:id="@+id/toPrematchPage"
-        style="@style/PageButton"
-        android:layout_marginEnd="200dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="toPrematch"
-        android:text="Prematch"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!--Teleop Button-->
-    <Button
-        android:id="@+id/toTeleopPage"
-        style="@style/PageButton"
-        android:layout_marginStart="50dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="toTeleop"
-        android:text="Teleop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/toPrematchPage" />
-
 </android.support.constraint.ConstraintLayout>

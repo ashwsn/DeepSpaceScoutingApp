@@ -7,9 +7,11 @@ import android.widget.CheckBox;
 import android.widget.RadioGroup;
 
 import frc.team449.scoutingappframe.R;
+import frc.team449.scoutingappframe.activities.base_activites.BaseActivity;
+import frc.team449.scoutingappframe.activities.base_activites.InmatchBaseActivity;
 import frc.team449.scoutingappframe.model.Match;
 
-public class Teleop extends BaseActivity {
+public class Teleop extends InmatchBaseActivity {
 
     // Input fields
     private CheckBox achievedNothing;
@@ -42,7 +44,14 @@ public class Teleop extends BaseActivity {
         }
     }
 
-    private void saveData(){
+    @Override
+    protected void setupNavButtons() {
+        prevButton.setText("Auto");
+        nextButton.setText("Endgame");
+    }
+
+    @Override
+    protected void saveData(){
         Match.getInstance().setAchievedNothing(achievedNothing.isChecked());
         switch (dead.getCheckedRadioButtonId()) {
             case R.id.deadNone:
@@ -60,19 +69,17 @@ public class Teleop extends BaseActivity {
         }
     }
 
-    // Calls activity to go to auto page
-    public void toAuto(View v) {
-        saveData();
-        // Switches pages
-        Intent toAuto = new Intent(this, Auto.class);
-        startActivity(toAuto);
+    @Override
+    protected void toPrev(View v) {
+        super.toPrev(v);
+
+        startActivity(new Intent(this, Auto.class));
     }
 
-    // Calls activity to go to endgame page
-    public void toEndgame(View v) {
-        saveData();
-        // Switches pages
-        Intent toEndgame = new Intent(this, Endgame.class);
-        startActivity(toEndgame);
+    @Override
+    protected void toNext(View v) {
+        super.toNext(v);
+
+        startActivity(new Intent(this, Endgame.class));
     }
 }

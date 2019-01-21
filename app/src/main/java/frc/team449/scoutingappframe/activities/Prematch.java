@@ -10,11 +10,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import frc.team449.scoutingappframe.R;
+import frc.team449.scoutingappframe.activities.base_activites.BaseActivity;
 import frc.team449.scoutingappframe.helpers.PopupHelper;
 import frc.team449.scoutingappframe.model.Match;
 
 
-public class Prematch extends BaseActivity implements AdapterView.OnItemSelectedListener {
+public class Prematch extends BaseActivity {
 
     private static boolean justLaunched = true;
 
@@ -31,6 +32,7 @@ public class Prematch extends BaseActivity implements AdapterView.OnItemSelected
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.prematch_page);
+
         // Creates and sets data trackers to Match values
         scoutNameText = findViewById(R.id.scoutName);
         scoutNameText.setText(Match.getInstance().getScoutName());
@@ -40,43 +42,18 @@ public class Prematch extends BaseActivity implements AdapterView.OnItemSelected
         teamAdapter = ArrayAdapter.createFromResource(this, R.array.teams, R.layout.dropdown);
         teamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         teamNumber.setAdapter(teamAdapter);
-        teamNumber.setOnItemSelectedListener(this);
+        teamNumber.setOnItemSelectedListener(onItemSelectedListener);
         teamNumber.setSelection(Match.getInstance().getTeamNumber());
         matchNumber = findViewById(R.id.matchNumber);
         matchAdapter = ArrayAdapter.createFromResource(this, R.array.matches, R.layout.dropdown);
         matchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         matchNumber.setAdapter(matchAdapter);
-        matchNumber.setOnItemSelectedListener(this);
+        matchNumber.setOnItemSelectedListener(onItemSelectedListener);
         matchNumber.setSelection(Match.getInstance().getMatchNumber());
-
-        findViewById(R.id.matchTitle).setVisibility(View.GONE);
-        findViewById(R.id.teamTitle).setVisibility(View.GONE);
 
         if (justLaunched) {
             justLaunched = false;
             PopupHelper.bluetoothPopup(this);
-        }
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        // Checks which dropdown was selected and changes the Match value accordingly
-        if (parent.getId() == R.id.matchNumber) {
-            Match.getInstance().setMatchNumber(pos);
-        }
-        else if (parent.getId() == R.id.teamNumber) {
-            Match.getInstance().setTeamNumber(pos);
-        }
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-        // Checks which dropdown was selected and changes the Match value accordingly
-        if (parent.getId() == R.id.matchNumber) {
-            Match.getInstance().setMatchNumber(0);
-        }
-        else if (parent.getId() == R.id.teamNumber) {
-            Match.getInstance().setTeamNumber(0);
         }
     }
 
@@ -89,4 +66,27 @@ public class Prematch extends BaseActivity implements AdapterView.OnItemSelected
         Intent toAuto = new Intent(this, Auto.class);
         startActivity(toAuto);
     }
+
+    private static final AdapterView.OnItemSelectedListener onItemSelectedListener = new AdapterView.OnItemSelectedListener(){
+
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            if (parent.getId() == R.id.matchNumber) {
+                Match.getInstance().setMatchNumber(position);
+            }
+            else if (parent.getId() == R.id.teamNumber) {
+                Match.getInstance().setTeamNumber(position);
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+            if (parent.getId() == R.id.matchNumber) {
+                Match.getInstance().setMatchNumber(0);
+            }
+            else if (parent.getId() == R.id.teamNumber) {
+                Match.getInstance().setTeamNumber(0);
+            }
+        }
+    };
 }

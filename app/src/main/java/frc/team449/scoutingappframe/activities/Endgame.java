@@ -6,10 +6,12 @@ import android.view.View;
 import android.widget.EditText;
 
 import frc.team449.scoutingappframe.R;
+import frc.team449.scoutingappframe.activities.base_activites.BaseActivity;
+import frc.team449.scoutingappframe.activities.base_activites.InmatchBaseActivity;
 import frc.team449.scoutingappframe.helpers.SubmitHelper;
 import frc.team449.scoutingappframe.model.Match;
 
-public class Endgame extends BaseActivity {
+public class Endgame extends InmatchBaseActivity {
 
     private EditText comments;
 
@@ -22,22 +24,26 @@ public class Endgame extends BaseActivity {
         comments.setText(Match.getInstance().getComments());
     }
 
-    private void saveData(){
-        // Save values to Database
+    @Override
+    protected void setupNavButtons() {
+        prevButton.setText("Teleop");
+        nextButton.setText("Submit");
+    }
+
+    protected void saveData(){
         Match.getInstance().setComments(comments.getText().toString());
     }
 
-    // Calls activity to go to auto page
-    public void toTeleop(View v) {
-        saveData();
-        // Switches pages
-        Intent toTeleop = new Intent(this, Teleop.class);
-        startActivity(toTeleop);
+    @Override
+    public void toPrev(View v) {
+        super.toPrev(v);
+
+        startActivity(new Intent(this, Teleop.class));
     }
 
-    // Calls activity to go to endgame page
-    public void submit(View v) {
-        saveData();
+    @Override
+    public void toNext(View v) {
+        super.toNext(v);
 
         // Submit
         SubmitHelper.submit(this);

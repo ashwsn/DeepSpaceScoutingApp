@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import frc.team449.scoutingappframe.R;
+import frc.team449.scoutingappframe.activities.base_activites.BaseActivity;
 
 public class Submitted extends BaseActivity {
 

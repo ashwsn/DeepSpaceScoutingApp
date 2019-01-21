@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <!--Match Title-->
+            <TextView
+                style="@style/TitleText"
+                android:id="@+id/matchTitle"
+                android:layout_marginStart="@dimen/startMargin"
+                android:text="Match " />
+
+            <!--This keeps team right aligned-->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <!--Team Title-->
+            <TextView
+                style="@style/TitleText"
+                android:id="@+id/teamTitle"
+                android:layout_marginEnd="@dimen/startMargin"
+                android:text="Team "/>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/layout_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <Button
+                android:id="@+id/toPrev"
+                style="@style/PageButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:onClick="toPrev"/>
+
+            <Button
+                android:id="@+id/toNext"
+                style="@style/PageButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:onClick="toNext"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
