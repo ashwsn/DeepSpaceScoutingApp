@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Scouting App Frame</string>
 
+    <string name="toolbar_title">449 Scouting App: Deep Space</string>
+
     <string name="title_activity_endgame">Endgame</string>
 
     <!--Popup strings-->

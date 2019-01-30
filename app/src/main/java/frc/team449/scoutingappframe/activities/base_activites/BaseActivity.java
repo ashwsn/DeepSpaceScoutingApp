@@ -46,6 +46,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void setup(View view){
         setupKeyboard(view);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     @Override
