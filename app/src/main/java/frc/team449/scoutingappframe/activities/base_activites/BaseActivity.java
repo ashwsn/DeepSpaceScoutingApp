@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 
 import frc.team449.scoutingappframe.R;
 import frc.team449.scoutingappframe.helpers.PopupHelper;
@@ -30,7 +29,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void setContentView(View view) {
         CoordinatorLayout cl = (CoordinatorLayout) getLayoutInflater().inflate(R.layout.base_activity, null);
         super.setContentView(cl);
-        //LinearLayout ll = findViewById(R.id.base_linear);
         FrameLayout activityContainer = cl.findViewById(R.id.layout_container);
         activityContainer.addView(view);
         setup(cl);
@@ -69,6 +67,21 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+    //onClick for help icons
+    public void help(View view) {
+        switch (view.getId()){
+            case R.id.noShowHelp:
+                helpPopup(R.string.help_noshow);
+                break;
+            default:
+                helpPopup(R.string.help_default);
+                break;
+        }
+    }
+
+    private void helpPopup(int textID){
+        PopupHelper.info(getString(R.string.help_title),getString(textID),this);
+    }
 
     //Hide keyboard when user clicks outside edit text
     //https://stackoverflow.com/questions/4165414/how-to-hide-soft-keyboard-on-android-after-clicking-outside-edittext

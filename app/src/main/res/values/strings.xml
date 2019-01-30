@@ -24,4 +24,11 @@
     <string name="bluetooth_popup_connect_button">Connect</string>
     <string name="bluetooth_warning_ignore_button">Submit anyway</string>
     <string name="popup_cancel_button">Cancel</string>
+
+
+    <!--Help Popups-->
+    <string name="help_title">Help</string>
+
+    <string name="help_noshow">If the team\'s robot is not on the field for this match, select the box.</string>
+    <string name="help_default">Please talk to a scouting leader for help.</string>
 </resources>
