@@ -33,34 +33,32 @@ public class Match {
     private int attemptLevel;
     private int attemptSuccess;
     private int levelReached;
-
     private String comments;
-    // the rest of the values for the game go here
 
     public static Match getInstance(){return match;}
 
     // Default entries
     private Match() {
+        reset();
         scoutName = "";
         matchNumber = 0;
-        teamNumber = 0;
-        noShow = false;
-        noAuto = false;
-        movedForward = false;
-        achievedNothing = false;
-        dead = 0;
-        comments = "";
-        // the rest of the values for the game go here
     }
 
     public void reset(){
         matchNumber++;
         teamNumber = 0;
         noShow = false;
+        startingLevel = 0;
+        preload = 0;
         noAuto = false;
         movedForward = false;
+        placedPiece = 0;
+        placedLocation = 0;
         achievedNothing = false;
         dead = 0;
+        attemptLevel = 0;
+        attemptSuccess = 0;
+        levelReached = 0;
         comments = "";
     }
 
@@ -68,8 +66,10 @@ public class Match {
         // each instance variable separated by a comma
         return scoutName+","+  ctxt.getResources().getStringArray(R.array.matches)[matchNumber]+","+
                 ctxt.getResources().getStringArray(R.array.teams)[teamNumber]+","+(noShow ? 1 : 0)
-                +","+(noAuto ? 1 : 0)+","+(movedForward ? 1 : 0)+","+(achievedNothing ? 1 : 0)+","+
-                dead+","+(comments==null ? "" : comments);
+                +","+startingLevel+","+preload+","+(noAuto ? 1 : 0)+","+(movedForward ? 1 : 0)+","
+                +placedPiece+","+ctxt.getResources().getStringArray(R.array.field_locations)[placedLocation]
+                +","+(achievedNothing ? 1 : 0)+","+dead+","+attemptLevel+","+attemptSuccess+","+
+                levelReached+","+(comments==null ? "" : comments);
     }
 
     public String checkData() {
@@ -90,6 +90,7 @@ public class Match {
         return errors.trim();
     }
 
+    // Getters and setters for all match data
     public String getScoutName() {
         return scoutName;
     }
@@ -110,9 +111,7 @@ public class Match {
         return teamNumber;
     }
 
-    public void setTeamNumber(int teamNumber) {
-        this.teamNumber = teamNumber;
-    }
+    public void setTeamNumber(int teamNumber) { this.teamNumber = teamNumber; }
 
     public boolean isNoShow() {
         return noShow;
@@ -144,9 +143,7 @@ public class Match {
         return movedForward;
     }
 
-    public void setMovedForward(boolean movedForward) {
-        this.movedForward = movedForward;
-    }
+    public void setMovedForward(boolean movedForward) { this.movedForward = movedForward; }
 
     public int getPlacedPiece() {
         return placedPiece;
@@ -168,9 +165,7 @@ public class Match {
         return achievedNothing;
     }
 
-    public void setAchievedNothing(boolean achievedNothing) {
-        this.achievedNothing = achievedNothing;
-    }
+    public void setAchievedNothing(boolean achievedNothing) { this.achievedNothing = achievedNothing; }
 
     public int getDead() {
         return dead;
@@ -180,29 +175,17 @@ public class Match {
         this.dead = dead;
     }
 
-    public int getAttemptLevel() {
-        return attemptLevel;
-    }
+    public int getAttemptLevel() { return attemptLevel; }
 
-    public void setAttemptLevel(int attemptLevel) {
-        this.attemptLevel = attemptLevel;
-    }
+    public void setAttemptLevel(int attemptLevel) { this.attemptLevel = attemptLevel; }
 
-    public int getAttemptSuccess() {
-        return attemptSuccess;
-    }
+    public int getAttemptSuccess() { return attemptSuccess; }
 
-    public void setAttemptSuccess(int attemptSuccess) {
-        this.attemptSuccess = attemptSuccess;
-    }
+    public void setAttemptSuccess(int attemptSuccess) { this.attemptSuccess = attemptSuccess; }
 
-    public int getLevelReached() {
-        return levelReached;
-    }
+    public int getLevelReached() { return levelReached; }
 
-    public void setLevelReached(int levelReached) {
-        this.levelReached = levelReached;
-    }
+    public void setLevelReached(int levelReached) { this.levelReached = levelReached; }
 
     public String getComments() {
         return comments;
