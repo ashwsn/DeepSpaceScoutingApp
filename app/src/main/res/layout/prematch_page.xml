@@ -41,7 +41,7 @@
         android:orientation="horizontal"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="@dimen/spaceBetweenFields"
-        app:layout_constraintTop_toBottomOf="@id/scoutName"
+        app:layout_constraintTop_toBottomOf="@id/matchNumber"
         app:layout_constraintStart_toStartOf="parent"
         android:gravity="center_vertical">
         <ImageButton
@@ -73,7 +73,7 @@
         android:text="Team #"
         android:layout_marginTop="@dimen/spaceBetweenFields"
         android:layout_marginStart="@dimen/startMargin"
-        app:layout_constraintTop_toBottomOf="@id/noShow"
+        app:layout_constraintTop_toBottomOf="@id/scoutName"
         app:layout_constraintStart_toStartOf="parent" />
 
     <!--Team Number Dropdown-->
@@ -103,6 +103,87 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/matchNumberText"
         app:layout_constraintStart_toStartOf="@id/noShow" />
+
+    <!--Starting Level Text-->
+    <TextView
+        style="@style/Text"
+        android:id="@+id/startingLevelText"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        android:layout_marginStart="@dimen/startMargin"
+        android:text="Starting Level"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/noShowContainer" />
+
+    <!--Starting Level Radio Group-->
+    <RadioGroup
+        style="@style/Wrap"
+        android:id="@+id/startingLevel"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        android:layout_marginStart="@dimen/startMargin"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/startingLevelText">
+
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/startingLevelOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="One" />
+
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/startingLevelTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Two" />
+
+    </RadioGroup>
+
+    <!--Preloaded Piece Text-->
+    <TextView
+        style="@style/Text"
+        android:id="@+id/preloadText"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        android:layout_marginStart="@dimen/startMargin"
+        android:text="Preloaded Piece"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/startingLevel" />
+
+    <!--Preloaded Piece Radio Group-->
+    <RadioGroup
+        style="@style/Wrap"
+        android:id="@+id/preload"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        android:layout_marginStart="@dimen/startMargin"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/preloadText">
+
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/preloadNone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="None" />
+
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/preloadCargo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cargo" />
+
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/preloadHatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hatch" />
+
+    </RadioGroup>
 
     <!--Auto Button-->
     <Button

@@ -44,11 +44,11 @@ public abstract class InmatchBaseActivity extends BaseActivity {
 
     protected abstract void saveData();
 
-    protected void toPrev(View v){
+    public void toPrev(View v){
         gotoPage(prevActivity);
     }
 
-    protected void toNext(View v) {
+    public void toNext(View v) {
         gotoPage(nextActivity);
     }
 
@@ -56,4 +56,5 @@ public abstract class InmatchBaseActivity extends BaseActivity {
         saveData();
         startActivity(new Intent(this, activityToGoto));
     }
+
 }

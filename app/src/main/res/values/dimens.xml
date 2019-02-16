@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="startMargin">15dp</dimen>
-    <dimen name="spaceBetweenFields">35dp</dimen>
+    <dimen name="spaceBetweenFields">30dp</dimen>
     <dimen name="checkboxCenter">10dp</dimen>
     <dimen name="buttonSpacing">100dp</dimen>
     <dimen name="fab_margin">16dp</dimen>

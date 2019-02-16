@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout style="@style/Background"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--No Auto Text-->
+    <TextView
+        android:id="@+id/noAutoText"
+        style="@style/Text"
+        android:layout_marginStart="@dimen/startMargin"
+        android:layout_marginTop="15dp"
+        android:text="No Sandstorm?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--No Auto Checkbox-->
+    <CheckBox
+        android:id="@+id/noAuto"
+        style="@style/Checkbox"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="@dimen/checkboxCenter"
+        app:layout_constraintStart_toEndOf="@id/noAutoText"
+        app:layout_constraintTop_toTopOf="@id/noAutoText" />
+
+    <!--Moved Forward Text-->
+    <TextView
+        android:id="@+id/movedForwardText"
+        style="@style/Text"
+        android:layout_marginStart="@dimen/startMargin"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        android:text="Crossed Line?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/noAutoText" />
+
+    <!--Moved Forward Checkbox-->
+    <CheckBox
+        android:id="@+id/movedForward"
+        style="@style/Checkbox"
+        android:layout_marginTop="@dimen/checkboxCenter"
+        app:layout_constraintStart_toStartOf="@id/noAuto"
+        app:layout_constraintTop_toTopOf="@id/movedForwardText" />
+
+    <!--Placed Text-->
+    <TextView
+        android:id="@+id/placedText"
+        style="@style/Text"
+        android:layout_marginStart="@dimen/startMargin"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        android:text="Placed Piece?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/movedForwardText" />
+
+    <!--Placed Radio Group-->
+    <RadioGroup
+        style="@style/Wrap"
+        android:id="@+id/placed"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        android:layout_marginStart="@dimen/startMargin"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/placedText">
+
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/placedNone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="None" />
+
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/placedCargo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cargo" />
+
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/placedHatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hatch" />
+
+    </RadioGroup>
+
+    <!--Location Text-->
+    <TextView
+        android:id="@+id/locationText"
+        style="@style/Text"
+        android:layout_marginStart="@dimen/startMargin"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        android:text="Location of Piece"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/placed" />
+
+    <!--Location Dropdown-->
+    <Spinner
+        style="@style/Dropdown"
+        android:id="@+id/placedLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        app:layout_constraintStart_toStartOf="@id/noAuto"
+        app:layout_constraintTop_toBottomOf="@id/placed" />
+
+    <!--Field Drawing-->
+    <ImageView
+        android:layout_height="300dp"
+        android:layout_width="wrap_content"
+        android:id="@+id/fieldDrawing"
+        android:src="@drawable/field_drawing"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        android:layout_marginBottom="@dimen/spaceBetweenFields"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/placedLocation"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

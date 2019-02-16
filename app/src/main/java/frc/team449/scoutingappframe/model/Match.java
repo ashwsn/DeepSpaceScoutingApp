@@ -21,9 +21,13 @@ public class Match {
     private String scoutName;
     private int matchNumber;
     private int teamNumber;
+    private int startingLevel;
+    private int preload;
     private boolean noShow;
     private boolean noAuto;
     private boolean movedForward;
+    private int placedPiece;
+    private int placedLocation;
     private boolean achievedNothing;
     private int dead;
     private String comments;
@@ -114,9 +118,19 @@ public class Match {
         this.noShow = noShow;
     }
 
-    public boolean isNoAuto() {
-        return noAuto;
+    public int getPreload() { return preload; }
+
+    public void setPreload(int preload) { this.preload = preload; }
+
+    public int getStartingLevel() {
+        return startingLevel;
     }
+
+    public void setStartingLevel(int startingLevel) {
+        this.startingLevel = startingLevel;
+    }
+
+    public boolean isNoAuto() { return noAuto; }
 
     public void setNoAuto(boolean noAuto) {
         this.noAuto = noAuto;
@@ -128,6 +142,22 @@ public class Match {
 
     public void setMovedForward(boolean movedForward) {
         this.movedForward = movedForward;
+    }
+
+    public int getPlacedPiece() {
+        return placedPiece;
+    }
+
+    public void setPlacedPiece(int placedPiece) {
+        this.placedPiece = placedPiece;
+    }
+
+    public int getPlacedLocation() {
+        return placedLocation;
+    }
+
+    public void setPlacedLocation(int placedLocation) {
+        this.placedLocation = placedLocation;
     }
 
     public boolean isAchievedNothing() {

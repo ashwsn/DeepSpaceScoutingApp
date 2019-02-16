@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="field_locations">
+        <item>N/A</item>
+        <item>L11</item>
+        <item>L12</item>
+        <item>L13</item>
+        <item>L21</item>
+        <item>L22</item>
+        <item>L23</item>
+        <item>C11</item>
+        <item>C12</item>
+        <item>C13</item>
+        <item>C21</item>
+        <item>C22</item>
+        <item>C23</item>
+        <item>R11</item>
+        <item>R12</item>
+        <item>R13</item>
+        <item>R21</item>
+        <item>R22</item>
+        <item>R23</item>
+    </string-array>
+</resources>
