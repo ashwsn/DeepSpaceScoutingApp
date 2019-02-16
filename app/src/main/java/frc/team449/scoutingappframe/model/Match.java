@@ -30,6 +30,10 @@ public class Match {
     private int placedLocation;
     private boolean achievedNothing;
     private int dead;
+    private int attemptLevel;
+    private int attemptSuccess;
+    private int levelReached;
+
     private String comments;
     // the rest of the values for the game go here
 
@@ -174,6 +178,30 @@ public class Match {
 
     public void setDead(int dead) {
         this.dead = dead;
+    }
+
+    public int getAttemptLevel() {
+        return attemptLevel;
+    }
+
+    public void setAttemptLevel(int attemptLevel) {
+        this.attemptLevel = attemptLevel;
+    }
+
+    public int getAttemptSuccess() {
+        return attemptSuccess;
+    }
+
+    public void setAttemptSuccess(int attemptSuccess) {
+        this.attemptSuccess = attemptSuccess;
+    }
+
+    public int getLevelReached() {
+        return levelReached;
+    }
+
+    public void setLevelReached(int levelReached) {
+        this.levelReached = levelReached;
     }
 
     public String getComments() {

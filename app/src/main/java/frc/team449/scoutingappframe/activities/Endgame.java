@@ -1,18 +1,20 @@
 package frc.team449.scoutingappframe.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 
 import frc.team449.scoutingappframe.R;
-import frc.team449.scoutingappframe.activities.base_activites.BaseActivity;
 import frc.team449.scoutingappframe.activities.base_activites.InmatchBaseActivity;
 import frc.team449.scoutingappframe.helpers.SubmitHelper;
 import frc.team449.scoutingappframe.model.Match;
 
 public class Endgame extends InmatchBaseActivity {
 
+    private RadioGroup attemptLevel;
+    private RadioGroup attemptSuccess;
+    private RadioGroup levelReached;
     private EditText comments;
 
     @Override
@@ -20,6 +22,57 @@ public class Endgame extends InmatchBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.endgame_page);
 
+        attemptLevel = findViewById(R.id.attemptLevel);
+        switch (Match.getInstance().getAttemptLevel()) {
+            case 4:
+                attemptLevel.check(R.id.attemptLevelNone);
+                break;
+            case 1:
+                attemptLevel.check(R.id.attemptLevelOne);
+                break;
+            case 2:
+                attemptLevel.check(R.id.attemptLevelTwo);
+                break;
+            case 3:
+                attemptLevel.check(R.id.attemptLevelThree);
+                break;
+            case 0:
+                attemptLevel.clearCheck();
+                break;
+        }
+        attemptSuccess = findViewById(R.id.attemptSuccess);
+        switch (Match.getInstance().getAttemptSuccess()) {
+            case 0:
+                attemptSuccess.clearCheck();
+                break;
+            case 1:
+                attemptSuccess.check(R.id.attemptSuccessNA);
+                break;
+            case 2:
+                attemptSuccess.check(R.id.attemptSuccessFail);
+                break;
+            case 3:
+                attemptSuccess.check(R.id.attemptSuccessSuccess);
+                break;
+        }
+        levelReached = findViewById(R.id.levelReached);
+        switch (Match.getInstance().getLevelReached()) {
+            case 4:
+                levelReached.check(R.id.levelReachedNone);
+                break;
+            case 1:
+                levelReached.check(R.id.levelReachedOne);
+                break;
+            case 2:
+                levelReached.check(R.id.levelReachedTwo);
+                break;
+            case 3:
+                levelReached.check(R.id.levelReachedThree);
+                break;
+            case 0:
+                levelReached.clearCheck();
+                break;
+        }
         comments = findViewById(R.id.comments);
         comments.setText(Match.getInstance().getComments());
     }
@@ -33,6 +86,54 @@ public class Endgame extends InmatchBaseActivity {
 
     @Override
     protected void saveData(){
+        switch (attemptLevel.getCheckedRadioButtonId()) {
+            case R.id.attemptLevelNone:
+                Match.getInstance().setAttemptLevel(4);
+                break;
+            case R.id.attemptLevelOne:
+                Match.getInstance().setAttemptLevel(1);
+                break;
+            case R.id.attemptLevelTwo:
+                Match.getInstance().setAttemptLevel(2);
+                break;
+            case R.id.attemptLevelThree:
+                Match.getInstance().setAttemptLevel(3);
+                break;
+            default:
+                Match.getInstance().setAttemptLevel(0);
+                break;
+        }
+        switch (attemptSuccess.getCheckedRadioButtonId()) {
+            case R.id.attemptSuccessNA:
+                Match.getInstance().setAttemptSuccess(1);
+                break;
+            case R.id.attemptSuccessFail:
+                Match.getInstance().setAttemptSuccess(2);
+                break;
+            case R.id.attemptSuccessSuccess:
+                Match.getInstance().setAttemptSuccess(3);
+                break;
+            default:
+                Match.getInstance().setAttemptSuccess(0);
+                break;
+        }
+        switch (levelReached.getCheckedRadioButtonId()) {
+            case R.id.levelReachedNone:
+                Match.getInstance().setLevelReached(4);
+                break;
+            case R.id.levelReachedOne:
+                Match.getInstance().setLevelReached(1);
+                break;
+            case R.id.levelReachedTwo:
+                Match.getInstance().setLevelReached(2);
+                break;
+            case R.id.levelReachedThree:
+                Match.getInstance().setLevelReached(3);
+                break;
+            default:
+                Match.getInstance().setLevelReached(0);
+                break;
+        }
         Match.getInstance().setComments(comments.getText().toString());
     }
 

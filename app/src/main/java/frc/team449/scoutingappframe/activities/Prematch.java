@@ -18,7 +18,6 @@ import frc.team449.scoutingappframe.activities.base_activites.BaseActivity;
 import frc.team449.scoutingappframe.helpers.PopupHelper;
 import frc.team449.scoutingappframe.model.Match;
 
-
 public class Prematch extends BaseActivity {
 
     private static boolean justLaunched = true;
