@@ -22,11 +22,21 @@ public class Teleop extends InmatchBaseActivity {
     private Drawable cargo;
     private Drawable hatch;
     private HashMap<ImageButton, Integer> locations = new HashMap<>();
+
+    // all ids are based on field_drawing.png
+    private int[] buttonIds = {R.id.l11, R.id.l12, R.id.l13, R.id.l21, R.id.l22, R.id.l23, R.id.c11,
+                               R.id.c12, R.id.c13, R.id.c14, R.id.c21, R.id.c22, R.id.c23, R.id.c24,
+                               R.id.r11, R.id.r12, R.id.r13, R.id.r21, R.id.r22, R.id.r23};
+    private int[] highRocketIds = {R.id.l13, R.id.l23, R.id.r13, R.id.r23};
+    private int[] midRocketIds = {R.id.l12, R.id.l22, R.id.r12, R.id.r22};
+    private int[] lowRocketIds = {R.id.l11, R.id.l21, R.id.r11, R.id.r21};
+    private int[] cargoShipIds = {R.id.c11, R.id.c12, R.id.c13, R.id.c14, R.id.c21, R.id.c22, R.id.c23, R.id.c24};
     private ArrayList<ImageButton> buttons = new ArrayList<>();
     private ArrayList<ImageButton> highRockets = new ArrayList<>();
     private ArrayList<ImageButton> midRockets = new ArrayList<>();
     private ArrayList<ImageButton> lowRockets = new ArrayList<>();
     private ArrayList<ImageButton> cargoShips = new ArrayList<>();
+
     // [l11, l12, l13, l21, l22, l23, c11, c12, c13, c14, c21, c22, c23, c24, r11, r12, r13, r21, r22, r23]
     private int[] piecePositions = new int[20];
 
@@ -41,51 +51,13 @@ public class Teleop extends InmatchBaseActivity {
         achievedNothing.setChecked(Match.getInstance().isAchievedNothing());
         dead = findViewById(R.id.dead);
 
-        // all ids are based on field_drawing.png
-        buttons.add((ImageButton) findViewById(R.id.l11));
-        buttons.add((ImageButton) findViewById(R.id.l12));
-        buttons.add((ImageButton) findViewById(R.id.l13));
-        buttons.add((ImageButton) findViewById(R.id.l21));
-        buttons.add((ImageButton) findViewById(R.id.l22));
-        buttons.add((ImageButton) findViewById(R.id.l23));
-        buttons.add((ImageButton) findViewById(R.id.c11));
-        buttons.add((ImageButton) findViewById(R.id.c12));
-        buttons.add((ImageButton) findViewById(R.id.c13));
-        buttons.add((ImageButton) findViewById(R.id.c14));
-        buttons.add((ImageButton) findViewById(R.id.c21));
-        buttons.add((ImageButton) findViewById(R.id.c22));
-        buttons.add((ImageButton) findViewById(R.id.c23));
-        buttons.add((ImageButton) findViewById(R.id.c24));
-        buttons.add((ImageButton) findViewById(R.id.r11));
-        buttons.add((ImageButton) findViewById(R.id.r12));
-        buttons.add((ImageButton) findViewById(R.id.r13));
-        buttons.add((ImageButton) findViewById(R.id.r21));
-        buttons.add((ImageButton) findViewById(R.id.r22));
-        buttons.add((ImageButton) findViewById(R.id.r23));
-
-        highRockets.add((ImageButton) findViewById(R.id.l13));
-        highRockets.add((ImageButton) findViewById(R.id.l23));
-        highRockets.add((ImageButton) findViewById(R.id.r13));
-        highRockets.add((ImageButton) findViewById(R.id.r23));
-
-        midRockets.add((ImageButton) findViewById(R.id.l12));
-        midRockets.add((ImageButton) findViewById(R.id.l22));
-        midRockets.add((ImageButton) findViewById(R.id.r12));
-        midRockets.add((ImageButton) findViewById(R.id.r12));
-
-        lowRockets.add((ImageButton) findViewById(R.id.l11));
-        lowRockets.add((ImageButton) findViewById(R.id.l21));
-        lowRockets.add((ImageButton) findViewById(R.id.r11));
-        lowRockets.add((ImageButton) findViewById(R.id.r21));
-
-        cargoShips.add((ImageButton) findViewById(R.id.c11));
-        cargoShips.add((ImageButton) findViewById(R.id.c12));
-        cargoShips.add((ImageButton) findViewById(R.id.c13));
-        cargoShips.add((ImageButton) findViewById(R.id.c14));
-        cargoShips.add((ImageButton) findViewById(R.id.c21));
-        cargoShips.add((ImageButton) findViewById(R.id.c22));
-        cargoShips.add((ImageButton) findViewById(R.id.c23));
-        cargoShips.add((ImageButton) findViewById(R.id.c24));
+        for (int id : buttonIds) {
+            buttons.add((ImageButton) findViewById(id));
+        }
+        populateList(highRockets, highRocketIds);
+        populateList(midRockets, midRocketIds);
+        populateList(lowRockets, lowRocketIds);
+        populateList(cargoShips, cargoShipIds);
 
         switch (Match.getInstance().getDead()) {
             case 0:
@@ -110,6 +82,12 @@ public class Teleop extends InmatchBaseActivity {
                 locations.put(i, 0);
             }
             setImage(i, locations.get(i));
+        }
+    }
+
+    private void populateList(ArrayList<ImageButton> list, int[] ids) {
+        for (int id : ids) {
+            list.add((ImageButton) findViewById(id));
         }
     }
 
