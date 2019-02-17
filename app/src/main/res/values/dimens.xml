@@ -6,4 +6,5 @@
     <dimen name="buttonSpacing">100dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="field_location_size">70dp</dimen>
+    <dimen name="grid_spacing">8dp</dimen>
 </resources>

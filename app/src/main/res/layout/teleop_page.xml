@@ -71,7 +71,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="@dimen/spaceBetweenFields"
+        android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
         app:layout_constraintTop_toBottomOf="@id/gamePieceText"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,16 +86,39 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:gravity="center_horizontal">
 
-            <ImageButton
-                android:layout_width="@dimen/field_location_size"
-                android:layout_height="@dimen/field_location_size"
-                android:onClick="changeState"
-                android:id="@+id/c11"/>
-            <ImageButton
-                android:layout_width="@dimen/field_location_size"
-                android:layout_height="@dimen/field_location_size"
-                android:onClick="changeState"
-                android:id="@+id/c21"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+                <TextView
+                    style="@style/Text"
+                    android:text="C11"
+                    android:textSize="20sp"
+                    />
+                <ImageButton
+                    android:layout_width="@dimen/field_location_size"
+                    android:layout_height="@dimen/field_location_size"
+                    android:onClick="changeState"
+                    android:id="@+id/c11" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+                <TextView
+                    style="@style/Text"
+                    android:text="C21"
+                    android:textSize="20sp"
+                    />
+                <ImageButton
+                    android:layout_width="@dimen/field_location_size"
+                    android:layout_height="@dimen/field_location_size"
+                    android:onClick="changeState"
+                    android:id="@+id/c21"
+                    />
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -103,7 +126,7 @@
             android:id="@+id/topRocket"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spaceBetweenFields"
+            android:layout_marginTop="@dimen/grid_spacing"
             android:orientation="horizontal"
             android:gravity="center_horizontal"
             app:layout_constraintTop_toBottomOf="@id/topCargoBay"
@@ -115,21 +138,54 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
 
-                <ImageButton
-                    android:layout_width="@dimen/field_location_size"
-                    android:layout_height="@dimen/field_location_size"
-                    android:onClick="changeState"
-                    android:id="@+id/l11"/>
-                <ImageButton
-                    android:layout_width="@dimen/field_location_size"
-                    android:layout_height="@dimen/field_location_size"
-                    android:onClick="changeState"
-                    android:id="@+id/l12"/>
-                <ImageButton
-                    android:layout_width="@dimen/field_location_size"
-                    android:layout_height="@dimen/field_location_size"
-                    android:onClick="changeState"
-                    android:id="@+id/l13"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+                    <TextView
+                        style="@style/Text"
+                        android:text="L11"
+                        android:textSize="20sp"/>
+                    <ImageButton
+                        android:layout_width="@dimen/field_location_size"
+                        android:layout_height="@dimen/field_location_size"
+                        android:onClick="changeState"
+                        android:id="@+id/l11"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+                    <TextView
+                        style="@style/Text"
+                        android:text="L12"
+                        android:textSize="20sp"/>
+                    <ImageButton
+                        android:layout_width="@dimen/field_location_size"
+                        android:layout_height="@dimen/field_location_size"
+                        android:onClick="changeState"
+                        android:id="@+id/l12"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+                    <TextView
+                        style="@style/Text"
+                        android:text="L13"
+                        android:textSize="20sp"/>
+                    <ImageButton
+                        android:layout_width="@dimen/field_location_size"
+                        android:layout_height="@dimen/field_location_size"
+                        android:onClick="changeState"
+                        android:id="@+id/l13"
+                        />
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -141,16 +197,38 @@
                 android:layout_marginStart="20dp"
                 android:gravity="center_horizontal">
 
-                <ImageButton
-                    android:layout_width="@dimen/field_location_size"
-                    android:layout_height="@dimen/field_location_size"
-                    android:onClick="changeState"
-                    android:id="@+id/c12"/>
-                <ImageButton
-                    android:layout_width="@dimen/field_location_size"
-                    android:layout_height="@dimen/field_location_size"
-                    android:onClick="changeState"
-                    android:id="@+id/c22"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+                    <TextView
+                        style="@style/Text"
+                        android:text="C12"
+                        android:textSize="20sp"/>
+                    <ImageButton
+                        android:layout_width="@dimen/field_location_size"
+                        android:layout_height="@dimen/field_location_size"
+                        android:onClick="changeState"
+                        android:id="@+id/c12"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+                    <TextView
+                        style="@style/Text"
+                        android:text="C22"
+                        android:textSize="20sp"/>
+                    <ImageButton
+                        android:layout_width="@dimen/field_location_size"
+                        android:layout_height="@dimen/field_location_size"
+                        android:onClick="changeState"
+                        android:id="@+id/c22"
+                        />
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -159,21 +237,54 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
 
-                <ImageButton
-                    android:layout_width="@dimen/field_location_size"
-                    android:layout_height="@dimen/field_location_size"
-                    android:onClick="changeState"
-                    android:id="@+id/r11"/>
-                <ImageButton
-                    android:layout_width="@dimen/field_location_size"
-                    android:layout_height="@dimen/field_location_size"
-                    android:onClick="changeState"
-                    android:id="@+id/r12"/>
-                <ImageButton
-                    android:layout_width="@dimen/field_location_size"
-                    android:layout_height="@dimen/field_location_size"
-                    android:onClick="changeState"
-                    android:id="@+id/r13"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+                    <TextView
+                        style="@style/Text"
+                        android:text="R11"
+                        android:textSize="20sp"/>
+                    <ImageButton
+                        android:layout_width="@dimen/field_location_size"
+                        android:layout_height="@dimen/field_location_size"
+                        android:onClick="changeState"
+                        android:id="@+id/r11"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+                    <TextView
+                        style="@style/Text"
+                        android:text="R12"
+                        android:textSize="20sp"/>
+                    <ImageButton
+                        android:layout_width="@dimen/field_location_size"
+                        android:layout_height="@dimen/field_location_size"
+                        android:onClick="changeState"
+                        android:id="@+id/r12"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+                    <TextView
+                        style="@style/Text"
+                        android:text="R13"
+                        android:textSize="20sp"/>
+                    <ImageButton
+                        android:layout_width="@dimen/field_location_size"
+                        android:layout_height="@dimen/field_location_size"
+                        android:onClick="changeState"
+                        android:id="@+id/r13"
+                        />
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -183,7 +294,7 @@
             android:id="@+id/bottomRocket"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spaceBetweenFields"
+            android:layout_marginTop="@dimen/grid_spacing"
             android:orientation="horizontal"
             android:gravity="center_horizontal"
             app:layout_constraintTop_toBottomOf="@id/topCargoBay"
@@ -195,21 +306,54 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
 
-                <ImageButton
-                    android:layout_width="@dimen/field_location_size"
-                    android:layout_height="@dimen/field_location_size"
-                    android:onClick="changeState"
-                    android:id="@+id/l21"/>
-                <ImageButton
-                    android:layout_width="@dimen/field_location_size"
-                    android:layout_height="@dimen/field_location_size"
-                    android:onClick="changeState"
-                    android:id="@+id/l22"/>
-                <ImageButton
-                    android:layout_width="@dimen/field_location_size"
-                    android:layout_height="@dimen/field_location_size"
-                    android:onClick="changeState"
-                    android:id="@+id/l23"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+                    <TextView
+                        style="@style/Text"
+                        android:text="L21"
+                        android:textSize="20sp"/>
+                    <ImageButton
+                        android:layout_width="@dimen/field_location_size"
+                        android:layout_height="@dimen/field_location_size"
+                        android:onClick="changeState"
+                        android:id="@+id/l21"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+                    <TextView
+                        style="@style/Text"
+                        android:text="L22"
+                        android:textSize="20sp"/>
+                    <ImageButton
+                        android:layout_width="@dimen/field_location_size"
+                        android:layout_height="@dimen/field_location_size"
+                        android:onClick="changeState"
+                        android:id="@+id/l22"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+                    <TextView
+                        style="@style/Text"
+                        android:text="L23"
+                        android:textSize="20sp"/>
+                    <ImageButton
+                        android:layout_width="@dimen/field_location_size"
+                        android:layout_height="@dimen/field_location_size"
+                        android:onClick="changeState"
+                        android:id="@+id/l23"
+                        />
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -221,16 +365,38 @@
                 android:layout_marginStart="20dp"
                 android:gravity="center_horizontal">
 
-                <ImageButton
-                    android:layout_width="@dimen/field_location_size"
-                    android:layout_height="@dimen/field_location_size"
-                    android:onClick="changeState"
-                    android:id="@+id/c13"/>
-                <ImageButton
-                    android:layout_width="@dimen/field_location_size"
-                    android:layout_height="@dimen/field_location_size"
-                    android:onClick="changeState"
-                    android:id="@+id/c23"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+                    <TextView
+                        style="@style/Text"
+                        android:text="C13"
+                        android:textSize="20sp"/>
+                    <ImageButton
+                        android:layout_width="@dimen/field_location_size"
+                        android:layout_height="@dimen/field_location_size"
+                        android:onClick="changeState"
+                        android:id="@+id/c13"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+                    <TextView
+                        style="@style/Text"
+                        android:text="C23"
+                        android:textSize="20sp"/>
+                    <ImageButton
+                        android:layout_width="@dimen/field_location_size"
+                        android:layout_height="@dimen/field_location_size"
+                        android:onClick="changeState"
+                        android:id="@+id/c23"
+                        />
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -239,21 +405,54 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
 
-                <ImageButton
-                    android:layout_width="@dimen/field_location_size"
-                    android:layout_height="@dimen/field_location_size"
-                    android:onClick="changeState"
-                    android:id="@+id/r21"/>
-                <ImageButton
-                    android:layout_width="@dimen/field_location_size"
-                    android:layout_height="@dimen/field_location_size"
-                    android:onClick="changeState"
-                    android:id="@+id/r22"/>
-                <ImageButton
-                    android:layout_width="@dimen/field_location_size"
-                    android:layout_height="@dimen/field_location_size"
-                    android:onClick="changeState"
-                    android:id="@+id/r23"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+                    <TextView
+                        style="@style/Text"
+                        android:text="R21"
+                        android:textSize="20sp"/>
+                    <ImageButton
+                        android:layout_width="@dimen/field_location_size"
+                        android:layout_height="@dimen/field_location_size"
+                        android:onClick="changeState"
+                        android:id="@+id/r21"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+                    <TextView
+                        style="@style/Text"
+                        android:text="R22"
+                        android:textSize="20sp"/>
+                    <ImageButton
+                        android:layout_width="@dimen/field_location_size"
+                        android:layout_height="@dimen/field_location_size"
+                        android:onClick="changeState"
+                        android:id="@+id/r22"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+                    <TextView
+                        style="@style/Text"
+                        android:text="R23"
+                        android:textSize="20sp"/>
+                    <ImageButton
+                        android:layout_width="@dimen/field_location_size"
+                        android:layout_height="@dimen/field_location_size"
+                        android:onClick="changeState"
+                        android:id="@+id/r23"
+                        />
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -263,22 +462,44 @@
             android:id="@+id/frontCargoBay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spaceBetweenFields"
+            android:layout_marginTop="@dimen/grid_spacing"
             app:layout_constraintTop_toBottomOf="@id/bottomRocket"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:gravity="center_horizontal">
 
-            <ImageButton
-                android:layout_width="@dimen/field_location_size"
-                android:layout_height="@dimen/field_location_size"
-                android:onClick="changeState"
-                android:id="@+id/c14"/>
-            <ImageButton
-                android:layout_width="@dimen/field_location_size"
-                android:layout_height="@dimen/field_location_size"
-                android:onClick="changeState"
-                android:id="@+id/c24"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+                <TextView
+                    style="@style/Text"
+                    android:text="C14"
+                    android:textSize="20sp"/>
+                <ImageButton
+                    android:layout_width="@dimen/field_location_size"
+                    android:layout_height="@dimen/field_location_size"
+                    android:onClick="changeState"
+                    android:id="@+id/c14"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+                <TextView
+                    style="@style/Text"
+                    android:text="C24"
+                    android:textSize="20sp"/>
+                <ImageButton
+                    android:layout_width="@dimen/field_location_size"
+                    android:layout_height="@dimen/field_location_size"
+                    android:onClick="changeState"
+                    android:id="@+id/c24"
+                    />
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>
