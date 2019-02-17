@@ -51,9 +51,7 @@ public class Teleop extends InmatchBaseActivity {
         achievedNothing.setChecked(Match.getInstance().isAchievedNothing());
         dead = findViewById(R.id.dead);
 
-        for (int id : buttonIds) {
-            buttons.add((ImageButton) findViewById(id));
-        }
+        populateList(buttons, buttonIds);
         populateList(highRockets, highRocketIds);
         populateList(midRockets, midRocketIds);
         populateList(lowRockets, lowRocketIds);
@@ -100,7 +98,7 @@ public class Teleop extends InmatchBaseActivity {
     }
 
     @Override
-    protected void saveData(){
+    protected void saveData() {
         Match.getInstance().setAchievedNothing(achievedNothing.isChecked());
         switch (dead.getCheckedRadioButtonId()) {
             case R.id.deadNone:

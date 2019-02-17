@@ -8,7 +8,6 @@ package frc.team449.scoutingappframe.model;
  * Created by Nate on 10/10/2017.
  */
 
-
 import android.content.Context;
 
 import frc.team449.scoutingappframe.R;
@@ -30,7 +29,7 @@ public class Match {
     private int placedLocation;
     private boolean achievedNothing;
     private int dead;
-    private int[] teleopPiecePositions;
+    private int[] teleopPiecePositions; // not transfered to computer
     private int numCargoL1;
     private int numCargoL2;
     private int numCargoL3;
@@ -65,6 +64,15 @@ public class Match {
         placedLocation = 0;
         achievedNothing = false;
         dead = 0;
+        teleopPiecePositions = new int[20];
+        numCargoL1 = 0;
+        numCargoL2 = 0;
+        numCargoL3 = 0;
+        numCargoShip = 0;
+        numHatchL1 = 0;
+        numHatchL2 = 0;
+        numHatchL3 = 0;
+        numHatchShip = 0;
         attemptLevel = 0;
         attemptSuccess = 0;
         levelReached = 0;
@@ -73,13 +81,30 @@ public class Match {
 
     public String toString(Context ctxt) {
         // each instance variable separated by a comma
-
-        return scoutName+","+  ctxt.getResources().getStringArray(R.array.matches)[matchNumber]+","+
-                ctxt.getResources().getStringArray(R.array.teams)[teamNumber]+","+(noShow ? 1 : 0)
-                +","+startingLevel+","+preload+","+(noAuto ? 1 : 0)+","+(movedForward ? 1 : 0)+","
-                +placedPiece+","+ctxt.getResources().getStringArray(R.array.field_locations)[placedLocation]
-                +","+(achievedNothing ? 1 : 0)+","+dead+","+attemptLevel+","+attemptSuccess+","+
-                levelReached+","+(comments==null ? "" : comments);
+        return  scoutName+","+ // scout name
+                ctxt.getResources().getStringArray(R.array.matches)[matchNumber]+","+ // match #
+                ctxt.getResources().getStringArray(R.array.teams)[teamNumber]+","+ // team #
+                (noShow ? 1 : 0)+","+ // no show
+                startingLevel+","+ // starting level
+                preload+","+ // preload
+                (noAuto ? 1 : 0)+","+ // no auto
+                (movedForward ? 1 : 0)+","+ // moved forward
+                placedPiece+","+ // placed piece in auto
+                ctxt.getResources().getStringArray(R.array.field_locations)[placedLocation]+","+ // placed location in auto
+                (achievedNothing ? 1 : 0)+","+ // achieved nothing
+                dead+","+ // dead
+                numCargoL1+","+ // level 1 rocket cargo
+                numCargoL2+","+ // level 2 rocket cargo
+                numCargoL3+","+ // level 3 rocket cargo
+                numCargoShip+","+ // number of cargo ship cargo
+                numHatchL1+","+ // level 1 rocket hatches
+                numHatchL2+","+ // level 2 rocket hatches
+                numHatchL3+","+ // level 3 rocket hatches
+                numHatchShip+","+ // number of cargo ship hatches
+                attemptLevel+","+ // habitat attempt level
+                attemptSuccess+","+ // habitat success
+                levelReached+","+ // habitat level reached
+                (comments==null ? "" : comments); // comments
     }
 
     public String checkData() {
@@ -185,13 +210,9 @@ public class Match {
         this.dead = dead;
     }
 
-    public int[] getTeleopPiecePositions() {
-        return teleopPiecePositions;
-    }
+    public int[] getTeleopPiecePositions() { return teleopPiecePositions; }
 
-    public void setTeleopPiecePositions(int[] teleopPiecePositions) {
-        this.teleopPiecePositions = teleopPiecePositions;
-    }
+    public void setTeleopPiecePositions(int[] teleopPiecePositions) { this.teleopPiecePositions = teleopPiecePositions; }
 
     public int getNumCargoL1() {
         return numCargoL1;

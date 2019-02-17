@@ -137,8 +137,8 @@
                 android:id="@+id/midCargoBay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/spaceBetweenFields"
-                android:layout_marginStart="@dimen/spaceBetweenFields"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
                 android:gravity="center_horizontal">
 
                 <ImageButton
@@ -217,8 +217,8 @@
                 android:id="@+id/bottomCargoBay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/spaceBetweenFields"
-                android:layout_marginStart="@dimen/spaceBetweenFields"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
                 android:gravity="center_horizontal">
 
                 <ImageButton
