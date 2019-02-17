@@ -21,6 +21,7 @@ public class Teleop extends InmatchBaseActivity {
     private RadioGroup dead;
     private Drawable cargo;
     private Drawable hatch;
+    private Drawable hatchCargo;
     private HashMap<ImageButton, Integer> locations = new HashMap<>();
 
     // all ids are based on field_drawing.png
@@ -73,6 +74,7 @@ public class Teleop extends InmatchBaseActivity {
         }
         cargo = getResources().getDrawable(R.drawable.cargo);
         hatch = getResources().getDrawable(R.drawable.hatch_panel);
+        hatchCargo = getResources().getDrawable(R.drawable.hatch_and_cargo);
         for (ImageButton i : buttons) {
             if (Match.getInstance().getTeleopPiecePositions() != null) {
                 locations.put(i, Match.getInstance().getTeleopPiecePositions()[buttons.indexOf(i)]);
@@ -153,7 +155,7 @@ public class Teleop extends InmatchBaseActivity {
     }
 
     private void setImage(ImageButton i, int state) {
-        switch (state % 3) {
+        switch (state % 4) {
             case 0:
                 i.setImageDrawable(null);
                 break;
@@ -162,6 +164,9 @@ public class Teleop extends InmatchBaseActivity {
                 break;
             case 2:
                 i.setImageDrawable(cargo);
+                break;
+            case 3:
+                i.setImageDrawable(hatchCargo);
                 break;
         }
     }
