@@ -5,4 +5,5 @@
     <dimen name="checkboxCenter">10dp</dimen>
     <dimen name="buttonSpacing">100dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="field_location_size">70dp</dimen>
 </resources>

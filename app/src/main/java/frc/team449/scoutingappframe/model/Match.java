@@ -30,6 +30,15 @@ public class Match {
     private int placedLocation;
     private boolean achievedNothing;
     private int dead;
+    private int[] teleopPiecePositions;
+    private int numCargoL1;
+    private int numCargoL2;
+    private int numCargoL3;
+    private int numHatchL1;
+    private int numHatchL2;
+    private int numHatchL3;
+    private int numCargoShip;
+    private int numHatchShip;
     private int attemptLevel;
     private int attemptSuccess;
     private int levelReached;
@@ -44,7 +53,7 @@ public class Match {
         matchNumber = 0;
     }
 
-    public void reset(){
+    public void reset() {
         matchNumber++;
         teamNumber = 0;
         noShow = false;
@@ -64,6 +73,7 @@ public class Match {
 
     public String toString(Context ctxt) {
         // each instance variable separated by a comma
+
         return scoutName+","+  ctxt.getResources().getStringArray(R.array.matches)[matchNumber]+","+
                 ctxt.getResources().getStringArray(R.array.teams)[teamNumber]+","+(noShow ? 1 : 0)
                 +","+startingLevel+","+preload+","+(noAuto ? 1 : 0)+","+(movedForward ? 1 : 0)+","
@@ -173,6 +183,78 @@ public class Match {
 
     public void setDead(int dead) {
         this.dead = dead;
+    }
+
+    public int[] getTeleopPiecePositions() {
+        return teleopPiecePositions;
+    }
+
+    public void setTeleopPiecePositions(int[] teleopPiecePositions) {
+        this.teleopPiecePositions = teleopPiecePositions;
+    }
+
+    public int getNumCargoL1() {
+        return numCargoL1;
+    }
+
+    public void setNumCargoL1(int numCargoL1) {
+        this.numCargoL1 = numCargoL1;
+    }
+
+    public int getNumCargoL2() {
+        return numCargoL2;
+    }
+
+    public void setNumCargoL2(int numCargoL2) {
+        this.numCargoL2 = numCargoL2;
+    }
+
+    public int getNumCargoL3() {
+        return numCargoL3;
+    }
+
+    public void setNumCargoL3(int numCargoL3) {
+        this.numCargoL3 = numCargoL3;
+    }
+
+    public int getNumHatchL1() {
+        return numHatchL1;
+    }
+
+    public void setNumHatchL1(int numHatchL1) {
+        this.numHatchL1 = numHatchL1;
+    }
+
+    public int getNumHatchL2() {
+        return numHatchL2;
+    }
+
+    public void setNumHatchL2(int numHatchL2) {
+        this.numHatchL2 = numHatchL2;
+    }
+
+    public int getNumHatchL3() {
+        return numHatchL3;
+    }
+
+    public void setNumHatchL3(int numHatchL3) {
+        this.numHatchL3 = numHatchL3;
+    }
+
+    public int getNumCargoShip() {
+        return numCargoShip;
+    }
+
+    public void setNumCargoShip(int numCargoShip) {
+        this.numCargoShip = numCargoShip;
+    }
+
+    public int getNumHatchShip() {
+        return numHatchShip;
+    }
+
+    public void setNumHatchShip(int numHatchShip) {
+        this.numHatchShip = numHatchShip;
     }
 
     public int getAttemptLevel() { return attemptLevel; }
