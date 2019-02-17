@@ -104,7 +104,12 @@ public class Teleop extends InmatchBaseActivity {
         cargo = getResources().getDrawable(R.drawable.cargo);
         hatch = getResources().getDrawable(R.drawable.hatch_panel);
         for (ImageButton i : buttons) {
-            locations.put(i, 0);
+            if (Match.getInstance().getTeleopPiecePositions() != null) {
+                locations.put(i, Match.getInstance().getTeleopPiecePositions()[buttons.indexOf(i)]);
+            } else {
+                locations.put(i, 0);
+            }
+            setImage(i, locations.get(i));
         }
     }
 
@@ -142,6 +147,7 @@ public class Teleop extends InmatchBaseActivity {
         Match.getInstance().setNumCargoL3(0);
         Match.getInstance().setNumCargoShip(0);
         for (ImageButton i : locations.keySet()) {
+            piecePositions[buttons.indexOf(i)] = locations.get(i);
             switch (locations.get(i)) {
                 case 1:
                     if (highRockets.contains(i)) {
@@ -167,9 +173,10 @@ public class Teleop extends InmatchBaseActivity {
                     break;
             }
         }
+        Match.getInstance().setTeleopPiecePositions(piecePositions);
     }
 
-    private void changeImage(ImageButton i, int state) {
+    private void setImage(ImageButton i, int state) {
         switch (state % 3) {
             case 0:
                 i.setImageDrawable(null);
@@ -187,7 +194,7 @@ public class Teleop extends InmatchBaseActivity {
         for (ImageButton i : locations.keySet()) {
             if (i.equals(v)) {
                 locations.put(i, locations.get(i)+1);
-                changeImage(i, locations.get(i));
+                setImage(i, locations.get(i));
             }
         }
     }
