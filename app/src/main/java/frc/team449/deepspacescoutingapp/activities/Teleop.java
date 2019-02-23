@@ -101,30 +101,41 @@ public class Teleop extends InmatchBaseActivity {
             piecePositions[buttons.indexOf(i)] = locations.get(i);
             switch (locations.get(i)) {
                 case 1:
-                    if (highRockets.contains(i)) {
-                        Match.getInstance().setNumHatchL3(Match.getInstance().getNumHatchL3()+1);
-                    } else if (midRockets.contains(i)) {
-                        Match.getInstance().setNumHatchL2(Match.getInstance().getNumHatchL2()+1);
-                    } else if (lowRockets.contains(i)) {
-                        Match.getInstance().setNumHatchL1(Match.getInstance().getNumHatchL1()+1);
-                    } else if (cargoShips.contains(i)) {
-                        Match.getInstance().setNumHatchShip(Match.getInstance().getNumHatchShip()+1);
-                    }
+                    incrementHatch(i);
                     break;
                 case 2:
-                    if (highRockets.contains(i)) {
-                        Match.getInstance().setNumCargoL3(Match.getInstance().getNumCargoL3()+1);
-                    } else if (midRockets.contains(i)) {
-                        Match.getInstance().setNumCargoL2(Match.getInstance().getNumCargoL2()+1);
-                    } else if (lowRockets.contains(i)) {
-                        Match.getInstance().setNumCargoL1(Match.getInstance().getNumCargoL1()+1);
-                    } else if (cargoShips.contains(i)) {
-                        Match.getInstance().setNumCargoShip(Match.getInstance().getNumCargoShip()+1);
-                    }
+                    incrementCargo(i);
                     break;
+                case 3:
+                    incrementHatch(i);
+                    incrementCargo(i);
             }
         }
         Match.getInstance().setTeleopPiecePositions(piecePositions);
+    }
+
+    private void incrementHatch(ImageButton i){
+        if (highRockets.contains(i)) {
+            Match.getInstance().setNumHatchL3(Match.getInstance().getNumHatchL3()+1);
+        } else if (midRockets.contains(i)) {
+            Match.getInstance().setNumHatchL2(Match.getInstance().getNumHatchL2()+1);
+        } else if (lowRockets.contains(i)) {
+            Match.getInstance().setNumHatchL1(Match.getInstance().getNumHatchL1()+1);
+        } else if (cargoShips.contains(i)) {
+            Match.getInstance().setNumHatchShip(Match.getInstance().getNumHatchShip()+1);
+        }
+    }
+
+    private void incrementCargo(ImageButton i){
+        if (highRockets.contains(i)) {
+            Match.getInstance().setNumCargoL3(Match.getInstance().getNumCargoL3()+1);
+        } else if (midRockets.contains(i)) {
+            Match.getInstance().setNumCargoL2(Match.getInstance().getNumCargoL2()+1);
+        } else if (lowRockets.contains(i)) {
+            Match.getInstance().setNumCargoL1(Match.getInstance().getNumCargoL1()+1);
+        } else if (cargoShips.contains(i)) {
+            Match.getInstance().setNumCargoShip(Match.getInstance().getNumCargoShip()+1);
+        }
     }
 
     private void setImage(ImageButton i, int state) {

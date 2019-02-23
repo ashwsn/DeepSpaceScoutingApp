@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import frc.team449.deepspacescoutingapp.R;
 import frc.team449.deepspacescoutingapp.activities.base_activites.InmatchBaseActivity;
@@ -16,7 +15,7 @@ public class General extends InmatchBaseActivity {
 
     private CheckBox achievedNothing;
     private RadioGroup dead;
-    private CheckBox defence;
+    private CheckBox defense;
     private EditText comments;
 
     @Override
@@ -27,7 +26,7 @@ public class General extends InmatchBaseActivity {
         achievedNothing = findViewById(R.id.achievedNothing);
         achievedNothing.setChecked(Match.getInstance().isAchievedNothing());
         dead = findViewById(R.id.dead);
-        defence = findViewById(R.id.defence);
+        defense = findViewById(R.id.defense);
 
         switch (Match.getInstance().getDead()) {
             case 0:
@@ -58,7 +57,7 @@ public class General extends InmatchBaseActivity {
     @Override
     protected void saveData(){
         Match.getInstance().setAchievedNothing(achievedNothing.isChecked());
-        Match.getInstance().setDefence(defence.isChecked());
+        Match.getInstance().setDefense(defense.isChecked());
         switch (dead.getCheckedRadioButtonId()) {
             case R.id.deadNone:
                 Match.getInstance().setDead(1);

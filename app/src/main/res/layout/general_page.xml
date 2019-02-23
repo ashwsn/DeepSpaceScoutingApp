@@ -62,19 +62,19 @@
 
     <TextView
         style="@style/Text"
-        android:id="@+id/defenceText"
+        android:id="@+id/defenseText"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="15dp"
-        android:text="Defence Attempted?"
+        android:text="defense Attempted?"
         app:layout_constraintTop_toBottomOf="@id/dead"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <CheckBox
         style="@style/Checkbox"
-        android:id="@+id/defence"
+        android:id="@+id/defense"
         android:layout_marginTop="@dimen/checkboxCenter"
         android:text=""
-        app:layout_constraintTop_toTopOf="@id/defenceText"
+        app:layout_constraintTop_toTopOf="@id/defenseText"
         app:layout_constraintStart_toStartOf="@id/achievedNothing"/>
 
     <!--Comments Text-->
@@ -84,7 +84,7 @@
         android:id="@+id/commentsText"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="@dimen/spaceBetweenFields"
-        app:layout_constraintTop_toBottomOf="@id/defence"
+        app:layout_constraintTop_toBottomOf="@id/defense"
         app:layout_constraintStart_toStartOf="parent" />
 
     <!--Comments-->

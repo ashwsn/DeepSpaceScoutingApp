@@ -45,7 +45,7 @@ public class Match {
     private int attemptSuccess;
     private int levelReached;
     private int climbTime;
-    private boolean defence;
+    private boolean defense;
     private String comments;
 
     public static Match getInstance(){return match;}
@@ -85,7 +85,7 @@ public class Match {
         attemptSuccess = 0;
         levelReached = 0;
         climbTime = 0;
-        defence = false;
+        defense = false;
         comments = "";
     }
 
@@ -118,7 +118,7 @@ public class Match {
                 climbTime+","+ // climb time
                 (achievedNothing ? 1 : 0)+","+ // achieved nothing
                 dead+","+ // dead
-                (defence ? 1: 0) + "," + // defence
+                (defense ? 1: 0) + "," + // defense
                 (comments==null ? "" : comments); // comments
     }
 
@@ -321,12 +321,12 @@ public class Match {
         this.allianceColor = allianceColor;
     }
 
-    public boolean getDefence() {
-        return defence;
+    public boolean getDefense() {
+        return defense;
     }
 
-    public void setDefence(boolean defence) {
-        this.defence = defence;
+    public void setDefense(boolean defense) {
+        this.defense = defense;
     }
 
     public int getDroppedHatch() {
