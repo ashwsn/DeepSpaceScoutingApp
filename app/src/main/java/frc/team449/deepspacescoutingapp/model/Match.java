@@ -30,7 +30,7 @@ public class Match {
     private int placedLocation;
     private boolean achievedNothing;
     private int dead;
-    private int[] teleopPiecePositions; // not transfered to computer
+    private int[] teleopPiecePositions; // not transferred to computer
     private int numCargoL1;
     private int numCargoL2;
     private int numCargoL3;
@@ -125,17 +125,32 @@ public class Match {
     public String checkData() {
         String errors = "";
         // check for errors
-        if (scoutName.equals("")) {
+        if (scoutName.equals(""))
             errors += "Scout name cannot be empty\n";
-        }
-        if (matchNumber == 0) {
+        if (matchNumber == 0)
             errors += "Please select a match number\n";
-        }
-        if (teamNumber == 0) {
+        if (teamNumber == 0)
             errors += "Please select a team number\n";
+        if (dead == 0)
+            dead = 1;
+        if (startingLevel == 0)
+            errors += "Please select a starting level\n";
+        if (preload == 0)
+            errors += "Please select a preloaded piece\n";
+        if (attemptLevel == 4)
+            errors += "Please select a HAB level attempt\n";
+        if (attemptSuccess == 0) {
+            if (attemptLevel != 0)
+                errors += "Was the climb successful\n";
+            else attemptSuccess = 1;
         }
-        if (dead == 0) {
-            errors += "Please select an option for deadness\n";
+        if (levelReached == 4) {
+            if (attemptLevel != 0)
+                errors += "What HAB level was reached?";
+            else levelReached = 0;
+        }
+        if (climbTime == 0 && (levelReached == 3 || levelReached == 3)) {
+            errors += "How long did it take to climb";
         }
         return errors.trim();
     }
