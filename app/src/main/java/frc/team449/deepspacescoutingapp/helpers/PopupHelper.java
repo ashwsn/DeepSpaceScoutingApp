@@ -1,12 +1,12 @@
-package frc.team449.scoutingappframe.helpers;
+package frc.team449.deepspacescoutingapp.helpers;
 
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
-import frc.team449.scoutingappframe.R;
-import frc.team449.scoutingappframe.fragments.BluetoothSetupFragment;
-import frc.team449.scoutingappframe.fragments.PopupFragment;
+import frc.team449.deepspacescoutingapp.R;
+import frc.team449.deepspacescoutingapp.fragments.BluetoothSetupFragment;
+import frc.team449.deepspacescoutingapp.fragments.PopupFragment;
 
 public class PopupHelper {
 

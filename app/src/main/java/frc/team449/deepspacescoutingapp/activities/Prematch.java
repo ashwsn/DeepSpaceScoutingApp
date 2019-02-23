@@ -1,4 +1,4 @@
-package frc.team449.scoutingappframe.activities;
+package frc.team449.deepspacescoutingapp.activities;
 
 import android.content.Intent;
 import android.graphics.ColorMatrixColorFilter;
@@ -13,10 +13,10 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
-import frc.team449.scoutingappframe.R;
-import frc.team449.scoutingappframe.activities.base_activites.BaseActivity;
-import frc.team449.scoutingappframe.helpers.PopupHelper;
-import frc.team449.scoutingappframe.model.Match;
+import frc.team449.deepspacescoutingapp.R;
+import frc.team449.deepspacescoutingapp.activities.base_activites.BaseActivity;
+import frc.team449.deepspacescoutingapp.helpers.PopupHelper;
+import frc.team449.deepspacescoutingapp.model.Match;
 
 public class Prematch extends BaseActivity {
 

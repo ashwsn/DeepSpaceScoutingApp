@@ -1,4 +1,4 @@
-package frc.team449.scoutingappframe.model;
+package frc.team449.deepspacescoutingapp.model;
 
 /*
  * Database is a class that stores all data being collected.
@@ -10,7 +10,7 @@ package frc.team449.scoutingappframe.model;
 
 import android.content.Context;
 
-import frc.team449.scoutingappframe.R;
+import frc.team449.deepspacescoutingapp.R;
 
 public class Match {
 

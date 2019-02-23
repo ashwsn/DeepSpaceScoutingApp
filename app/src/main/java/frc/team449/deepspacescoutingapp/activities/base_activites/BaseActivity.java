@@ -1,4 +1,4 @@
-package frc.team449.scoutingappframe.activities.base_activites;
+package frc.team449.deepspacescoutingapp.activities.base_activites;
 
 import android.app.Activity;
 import android.support.design.widget.CoordinatorLayout;
@@ -13,8 +13,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 
-import frc.team449.scoutingappframe.R;
-import frc.team449.scoutingappframe.helpers.PopupHelper;
+import frc.team449.deepspacescoutingapp.R;
+import frc.team449.deepspacescoutingapp.helpers.PopupHelper;
 
 public abstract class BaseActivity extends AppCompatActivity {
 

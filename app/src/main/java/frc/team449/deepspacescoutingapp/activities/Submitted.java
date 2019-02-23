@@ -1,11 +1,11 @@
-package frc.team449.scoutingappframe.activities;
+package frc.team449.deepspacescoutingapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import frc.team449.scoutingappframe.R;
-import frc.team449.scoutingappframe.activities.base_activites.BaseActivity;
+import frc.team449.deepspacescoutingapp.R;
+import frc.team449.deepspacescoutingapp.activities.base_activites.BaseActivity;
 
 public class Submitted extends BaseActivity {
 

@@ -1,4 +1,4 @@
-package frc.team449.scoutingappframe.activities;
+package frc.team449.deepspacescoutingapp.activities;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -10,9 +10,9 @@ import android.widget.RadioGroup;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import frc.team449.scoutingappframe.R;
-import frc.team449.scoutingappframe.activities.base_activites.InmatchBaseActivity;
-import frc.team449.scoutingappframe.model.Match;
+import frc.team449.deepspacescoutingapp.R;
+import frc.team449.deepspacescoutingapp.activities.base_activites.InmatchBaseActivity;
+import frc.team449.deepspacescoutingapp.model.Match;
 
 public class Teleop extends InmatchBaseActivity {
 

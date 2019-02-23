@@ -1,4 +1,4 @@
-package frc.team449.scoutingappframe.helpers;
+package frc.team449.deepspacescoutingapp.helpers;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,9 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import java.io.IOException;
 
-import frc.team449.scoutingappframe.R;
-import frc.team449.scoutingappframe.activities.Submitted;
-import frc.team449.scoutingappframe.model.Match;
+import frc.team449.deepspacescoutingapp.R;
+import frc.team449.deepspacescoutingapp.activities.Submitted;
+import frc.team449.deepspacescoutingapp.model.Match;
 
 public class SubmitHelper {
     public static void submit(final Context ctxt){

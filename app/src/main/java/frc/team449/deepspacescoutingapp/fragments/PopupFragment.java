@@ -1,4 +1,4 @@
-package frc.team449.scoutingappframe.fragments;
+package frc.team449.deepspacescoutingapp.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import frc.team449.scoutingappframe.R;
+import frc.team449.deepspacescoutingapp.R;
 
 public class PopupFragment  extends DialogFragment {
 

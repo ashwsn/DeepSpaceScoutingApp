@@ -1,4 +1,4 @@
-package frc.team449.scoutingappframe.fragments;
+package frc.team449.deepspacescoutingapp.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -15,9 +15,9 @@ import android.widget.Spinner;
 import java.io.IOException;
 import java.util.List;
 
-import frc.team449.scoutingappframe.R;
-import frc.team449.scoutingappframe.helpers.BluetoothHelper;
-import frc.team449.scoutingappframe.helpers.PopupHelper;
+import frc.team449.deepspacescoutingapp.R;
+import frc.team449.deepspacescoutingapp.helpers.BluetoothHelper;
+import frc.team449.deepspacescoutingapp.helpers.PopupHelper;
 
 public class BluetoothSetupFragment extends DialogFragment {
 

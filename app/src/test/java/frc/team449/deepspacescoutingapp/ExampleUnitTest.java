@@ -1,4 +1,4 @@
-package frc.team449.scoutingappframe;
+package frc.team449.deepspacescoutingapp;
 
 import org.junit.Test;
 

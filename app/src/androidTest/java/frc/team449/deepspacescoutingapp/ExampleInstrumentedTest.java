@@ -1,4 +1,4 @@
-package frc.team449.scoutingappframe;
+package frc.team449.deepspacescoutingapp;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

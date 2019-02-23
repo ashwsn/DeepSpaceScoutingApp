@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="frc.team449.scoutingappframe.activities.Submitted"
+    tools:context="frc.team449.deepspacescoutingapp.activities.Submitted"
     style="@style/Background">
 
     <!--Next Match Button-->

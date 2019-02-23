@@ -1,4 +1,4 @@
-package frc.team449.scoutingappframe.activities;
+package frc.team449.deepspacescoutingapp.activities;
 
 import android.os.Bundle;
 import android.view.View;
@@ -8,9 +8,9 @@ import android.widget.CheckBox;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
-import frc.team449.scoutingappframe.R;
-import frc.team449.scoutingappframe.activities.base_activites.InmatchBaseActivity;
-import frc.team449.scoutingappframe.model.Match;
+import frc.team449.deepspacescoutingapp.R;
+import frc.team449.deepspacescoutingapp.activities.base_activites.InmatchBaseActivity;
+import frc.team449.deepspacescoutingapp.model.Match;
 
 public class Auto extends InmatchBaseActivity {
 
