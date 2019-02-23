@@ -29,6 +29,7 @@ public class Prematch extends BaseActivity {
     private ArrayAdapter<CharSequence> teamAdapter;
     private Spinner matchNumber;
     private ArrayAdapter<CharSequence> matchAdapter;
+    private RadioGroup allianceColor;
     private RadioGroup startingLevel;
     private RadioGroup preload;
     private Drawable fieldDrawable;
@@ -63,6 +64,18 @@ public class Prematch extends BaseActivity {
         matchNumber.setAdapter(matchAdapter);
         matchNumber.setOnItemSelectedListener(onItemSelectedListener);
         matchNumber.setSelection(Match.getInstance().getMatchNumber());
+        allianceColor = findViewById(R.id.allianceColor);
+        switch (Match.getInstance().getAllianceColor()) {
+            case 0:
+                allianceColor.clearCheck();
+                break;
+            case 1:
+                allianceColor.check(R.id.redAlliance);
+                break;
+            case 2:
+                allianceColor.check(R.id.blueAlliance);
+                break;
+        }
         startingLevel = findViewById(R.id.startingLevel);
         switch (Match.getInstance().getStartingLevel()) {
             case 0:
@@ -103,6 +116,17 @@ public class Prematch extends BaseActivity {
     }
 
     private void saveData() {
+        switch (allianceColor.getCheckedRadioButtonId()) {
+            case R.id.redAlliance:
+                Match.getInstance().setAllianceColor(1);
+                break;
+            case R.id.blueAlliance:
+                Match.getInstance().setAllianceColor(2);
+                break;
+            default:
+                Match.getInstance().setAllianceColor(0);
+                break;
+        }
         switch (startingLevel.getCheckedRadioButtonId()) {
             case R.id.startingLevelOne:
                 Match.getInstance().setStartingLevel(1);
@@ -132,9 +156,9 @@ public class Prematch extends BaseActivity {
         Match.getInstance().setNoShow(noShowBox.isChecked());
     }
 
-    public void toAuto(View v) {
+    public void toSandstorm(View v) {
         saveData();
-        startActivity(new Intent(this, Auto.class));
+        startActivity(new Intent(this, Sandstorm.class));
     }
 
     private static final AdapterView.OnItemSelectedListener onItemSelectedListener = new AdapterView.OnItemSelectedListener(){

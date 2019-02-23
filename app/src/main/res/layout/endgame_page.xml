@@ -147,24 +147,22 @@
 
     </RadioGroup>
 
-    <!--Comments Text-->
     <TextView
         style="@style/Text"
-        android:text="Additional Comments"
-        android:id="@+id/commentsText"
+        android:text="Approximate Time Taken (seconds)"
+        android:id="@+id/timeText"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="@dimen/spaceBetweenFields"
         app:layout_constraintTop_toBottomOf="@id/levelReached"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!--Comments-->
-    <EditText
-        style="@style/TextBox"
-        android:id="@+id/comments"
-        android:layout_marginStart="@dimen/startMargin"
-        android:layout_marginTop="@dimen/spaceBetweenFields"
-        android:hint="Comments"
+    <NumberPicker
+        android:id="@+id/timeTaken"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.Picker"
+        app:layout_constraintTop_toBottomOf="@id/timeText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/commentsText"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

@@ -20,6 +20,7 @@ public class Match {
     private String scoutName;
     private int matchNumber;
     private int teamNumber;
+    private int allianceColor;
     private int startingLevel;
     private int preload;
     private boolean noShow;
@@ -38,9 +39,13 @@ public class Match {
     private int numHatchL3;
     private int numCargoShip;
     private int numHatchShip;
+    private int droppedHatch;
+    private int droppedCargo;
     private int attemptLevel;
     private int attemptSuccess;
     private int levelReached;
+    private int climbTime;
+    private boolean defence;
     private String comments;
 
     public static Match getInstance(){return match;}
@@ -50,6 +55,7 @@ public class Match {
         reset();
         scoutName = "";
         matchNumber = 0;
+        allianceColor = 0;
     }
 
     public void reset() {
@@ -73,37 +79,46 @@ public class Match {
         numHatchL2 = 0;
         numHatchL3 = 0;
         numHatchShip = 0;
+        droppedCargo = 0;
+        droppedHatch = 0;
         attemptLevel = 0;
         attemptSuccess = 0;
         levelReached = 0;
+        climbTime = 0;
+        defence = false;
         comments = "";
     }
 
     public String toString(Context ctxt) {
         // each instance variable separated by a comma
         return  scoutName+","+ // scout name
-                ctxt.getResources().getStringArray(R.array.matches)[matchNumber]+","+ // match #
                 ctxt.getResources().getStringArray(R.array.teams)[teamNumber]+","+ // team #
-                (noShow ? 1 : 0)+","+ // no show
+                ctxt.getResources().getStringArray(R.array.matches)[matchNumber]+","+ // match #
+                allianceColor + "," + //alliance color
                 startingLevel+","+ // starting level
                 preload+","+ // preload
-                (noAuto ? 1 : 0)+","+ // no auto
+                (noShow ? 1 : 0)+","+ // no show
+                //(noAuto ? 1 : 0)+","+ // no auto
                 (movedForward ? 1 : 0)+","+ // moved forward
                 placedPiece+","+ // placed piece in auto
                 ctxt.getResources().getStringArray(R.array.field_locations)[placedLocation]+","+ // placed location in auto
-                (achievedNothing ? 1 : 0)+","+ // achieved nothing
-                dead+","+ // dead
-                numCargoL1+","+ // level 1 rocket cargo
-                numCargoL2+","+ // level 2 rocket cargo
-                numCargoL3+","+ // level 3 rocket cargo
-                numCargoShip+","+ // number of cargo ship cargo
-                numHatchL1+","+ // level 1 rocket hatches
-                numHatchL2+","+ // level 2 rocket hatches
-                numHatchL3+","+ // level 3 rocket hatches
-                numHatchShip+","+ // number of cargo ship hatches
+                numCargoShip+","+ // ship cargo
+                numCargoL1+","+ // level 1 cargo
+                numCargoL2+","+ // level 2 cargo
+                numCargoL3+","+ // level 3 cargo
+                numHatchShip+","+ // ship hatches
+                numHatchL1+","+ // level 1 hatches
+                numHatchL2+","+ // level 2 hatches
+                numHatchL3+","+ // level 3 hatches
+                droppedHatch+","+ // hatches dropped
+                droppedCargo+","+ // cargo dropped
                 attemptLevel+","+ // habitat attempt level
                 attemptSuccess+","+ // habitat success
                 levelReached+","+ // habitat level reached
+                climbTime+","+ // climb time
+                (achievedNothing ? 1 : 0)+","+ // achieved nothing
+                dead+","+ // dead
+                (defence ? 1: 0) + "," + // defence
                 (comments==null ? "" : comments); // comments
     }
 
@@ -296,5 +311,55 @@ public class Match {
 
     public void setComments(String comments) {
         this.comments = comments;
+    }
+
+    public int getAllianceColor() {
+        return allianceColor;
+    }
+
+    public void setAllianceColor(int allianceColor) {
+        this.allianceColor = allianceColor;
+    }
+
+    public boolean getDefence() {
+        return defence;
+    }
+
+    public void setDefence(boolean defence) {
+        this.defence = defence;
+    }
+
+    public int getDroppedHatch() {
+        return droppedHatch;
+    }
+
+    public void setDroppedHatch(int droppedHatch) {
+        this.droppedHatch = droppedHatch;
+    }
+
+    public int getDroppedCargo() {
+        return droppedCargo;
+    }
+
+    public void setDroppedCargo(int droppedCargo) {
+        this.droppedCargo = droppedCargo;
+    }
+
+    public void incrementDroppedHatch(int change){
+        this.droppedHatch += change;
+        if (this.droppedHatch < 0) this.droppedHatch = 0;
+    }
+
+    public void incrementDroppedCargo(int change){
+        this.droppedCargo += change;
+        if (this.droppedCargo < 0) this.droppedCargo = 0;
+    }
+
+    public int getClimbTime() {
+        return climbTime;
+    }
+
+    public void setClimbTime(int climbTime) {
+        this.climbTime = climbTime;
     }
 }

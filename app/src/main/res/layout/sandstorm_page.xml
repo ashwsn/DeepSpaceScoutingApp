@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--No Auto Text-->
+    <!--No Sandstorm Text-->
     <TextView
         android:id="@+id/noAutoText"
         style="@style/Text"
@@ -13,7 +13,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--No Auto Checkbox-->
+    <!--No Sandstorm Checkbox-->
     <CheckBox
         android:id="@+id/noAuto"
         style="@style/Checkbox"

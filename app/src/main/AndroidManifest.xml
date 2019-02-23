@@ -14,17 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="frc.team449.frc.team449.deepspacescoutingapp.activities.Prematch">
+        <activity android:name="frc.team449.deepspacescoutingapp.activities.Prematch">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="frc.team449.frc.team449.deepspacescoutingapp.activities.Auto" />
-        <activity android:name="frc.team449.frc.team449.deepspacescoutingapp.activities.Teleop" />
-        <activity android:name="frc.team449.frc.team449.deepspacescoutingapp.activities.Submitted" />
-        <activity android:name="frc.team449.frc.team449.deepspacescoutingapp.activities.Endgame" />
+        <activity android:name="frc.team449.deepspacescoutingapp.activities.Sandstorm" />
+        <activity android:name="frc.team449.deepspacescoutingapp.activities.Teleop" />
+        <activity android:name="frc.team449.deepspacescoutingapp.activities.Submitted" />
+        <activity android:name="frc.team449.deepspacescoutingapp.activities.Endgame" />
+        <activity android:name="frc.team449.deepspacescoutingapp.activities.General" />
     </application>
 
 </manifest>

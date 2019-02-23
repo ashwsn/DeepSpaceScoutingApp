@@ -62,6 +62,10 @@
         <item name="android:textSize">36sp</item>
     </style>
 
+    <style name="SumButton" parent="Wrap">
+        <item name="android:textSize">40sp</item>
+    </style>
+
     <style name="TextBox" parent="Text">
         <item name="android:layout_width">500dp</item>
         <item name="android:layout_height">100dp</item>
@@ -76,6 +80,10 @@
         <item name="android:onClick">help</item>
         <item name="android:tint">#EEE</item>
         <item name="android:background">#00000000</item>
+    </style>
+
+    <style name="AppTheme.Picker" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="android:textColorPrimary">@android:color/white</item>
     </style>
 
 </resources>

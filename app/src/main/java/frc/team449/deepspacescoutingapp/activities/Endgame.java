@@ -1,13 +1,11 @@
 package frc.team449.deepspacescoutingapp.activities;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.RadioGroup;
 
 import frc.team449.deepspacescoutingapp.R;
 import frc.team449.deepspacescoutingapp.activities.base_activites.InmatchBaseActivity;
-import frc.team449.deepspacescoutingapp.helpers.SubmitHelper;
 import frc.team449.deepspacescoutingapp.model.Match;
 
 public class Endgame extends InmatchBaseActivity {
@@ -15,7 +13,7 @@ public class Endgame extends InmatchBaseActivity {
     private RadioGroup attemptLevel;
     private RadioGroup attemptSuccess;
     private RadioGroup levelReached;
-    private EditText comments;
+    private NumberPicker climbTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,15 +71,19 @@ public class Endgame extends InmatchBaseActivity {
                 levelReached.clearCheck();
                 break;
         }
-        comments = findViewById(R.id.comments);
-        comments.setText(Match.getInstance().getComments());
+
+        climbTime = findViewById(R.id.timeTaken);
+        climbTime.setMinValue(0);
+        climbTime.setMaxValue(99);
+        climbTime.setValue(Match.getInstance().getClimbTime());
     }
 
     @Override
     protected void setupNavButtons() {
         prevButton.setText("Teleop");
-        nextButton.setText("Submit");
+        nextButton.setText("General");
         prevActivity = Teleop.class;
+        nextActivity = General.class;
     }
 
     @Override
@@ -134,15 +136,7 @@ public class Endgame extends InmatchBaseActivity {
                 Match.getInstance().setLevelReached(0);
                 break;
         }
-        Match.getInstance().setComments(comments.getText().toString());
-    }
-
-    @Override
-    public void toNext(View v) {
-        saveData();
-
-        // Submit
-        SubmitHelper.submit(this);
+        Match.getInstance().setClimbTime(climbTime.getValue());
     }
 
 }

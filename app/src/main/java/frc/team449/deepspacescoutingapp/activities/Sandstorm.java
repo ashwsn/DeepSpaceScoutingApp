@@ -12,7 +12,7 @@ import frc.team449.deepspacescoutingapp.R;
 import frc.team449.deepspacescoutingapp.activities.base_activites.InmatchBaseActivity;
 import frc.team449.deepspacescoutingapp.model.Match;
 
-public class Auto extends InmatchBaseActivity {
+public class Sandstorm extends InmatchBaseActivity {
 
     // Input fields
     private CheckBox noAuto;

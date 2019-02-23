@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="frc.team449.deepspacescoutingapp.activities.General"
+    style="@style/Background">
+
+    <!--Achieved Nothing Text-->
+    <TextView
+        style="@style/Text"
+        android:id="@+id/achievedNothingText"
+        android:layout_marginStart="@dimen/startMargin"
+        android:layout_marginTop="15dp"
+        android:text="Achieved Nothing?"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <CheckBox
+        style="@style/Checkbox"
+        android:id="@+id/achievedNothing"
+        android:layout_marginTop="@dimen/checkboxCenter"
+        android:layout_marginStart="95dp"
+        android:text=""
+        app:layout_constraintTop_toTopOf="@id/achievedNothingText"
+        app:layout_constraintStart_toEndOf="@id/achievedNothingText"/>
+
+    <!--Dead Text-->
+    <TextView
+        style="@style/Text"
+        android:id="@+id/deadText"
+        android:text="Dead?"
+        android:layout_marginStart="@dimen/startMargin"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/achievedNothingText" />
+
+    <!--Dead Radio Buttons-->
+    <RadioGroup
+        style="@style/Wrap"
+        android:id="@+id/dead"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/deadText"
+        app:layout_constraintEnd_toEndOf="parent" >
+
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/deadNone"
+            android:text="None" />
+
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/deadPart"
+            android:text="Part" />
+
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/deadAll"
+            android:text="All" />
+
+    </RadioGroup>
+
+    <TextView
+        style="@style/Text"
+        android:id="@+id/defenceText"
+        android:layout_marginStart="@dimen/startMargin"
+        android:layout_marginTop="15dp"
+        android:text="Defence Attempted?"
+        app:layout_constraintTop_toBottomOf="@id/dead"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <CheckBox
+        style="@style/Checkbox"
+        android:id="@+id/defence"
+        android:layout_marginTop="@dimen/checkboxCenter"
+        android:text=""
+        app:layout_constraintTop_toTopOf="@id/defenceText"
+        app:layout_constraintStart_toStartOf="@id/achievedNothing"/>
+
+    <!--Comments Text-->
+    <TextView
+        style="@style/Text"
+        android:text="Additional Comments"
+        android:id="@+id/commentsText"
+        android:layout_marginStart="@dimen/startMargin"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        app:layout_constraintTop_toBottomOf="@id/defence"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--Comments-->
+    <EditText
+        style="@style/TextBox"
+        android:id="@+id/comments"
+        android:layout_marginStart="@dimen/startMargin"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        android:hint="Comments"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/commentsText"/>
+
+</android.support.constraint.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,12 +18,12 @@ import frc.team449.deepspacescoutingapp.model.Match;
 public class Teleop extends InmatchBaseActivity {
 
     // Input fields
-    private CheckBox achievedNothing;
-    private RadioGroup dead;
     private Drawable cargo;
     private Drawable hatch;
     private Drawable hatchCargo;
     private HashMap<ImageButton, Integer> locations = new HashMap<>();
+    private TextView droppedHatch;
+    private TextView droppedCargo;
 
     // all ids are based on field_drawing.png
     private int[] buttonIds = {R.id.l11, R.id.l12, R.id.l13, R.id.l21, R.id.l22, R.id.l23, R.id.c11,
@@ -47,31 +48,18 @@ public class Teleop extends InmatchBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.teleop_page);
 
-        // Create and set data trackers to their Database values
-        achievedNothing = findViewById(R.id.achievedNothing);
-        achievedNothing.setChecked(Match.getInstance().isAchievedNothing());
-        dead = findViewById(R.id.dead);
-
         populateList(buttons, buttonIds);
         populateList(highRockets, highRocketIds);
         populateList(midRockets, midRocketIds);
         populateList(lowRockets, lowRocketIds);
         populateList(cargoShips, cargoShipIds);
 
-        switch (Match.getInstance().getDead()) {
-            case 0:
-                dead.clearCheck();
-                break;
-            case 1:
-                dead.check(R.id.deadNone);
-                break;
-            case 2:
-                dead.check(R.id.deadPart);
-                break;
-            case 3:
-                dead.check(R.id.deadAll);
-                break;
-        }
+        droppedHatch = findViewById(R.id.hatchDroppedCount);
+        droppedCargo = findViewById(R.id.cargoDroppedCount);
+
+        droppedHatch.setText(String.valueOf(Match.getInstance().getDroppedHatch()));
+        droppedCargo.setText(String.valueOf(Match.getInstance().getDroppedCargo()));
+
         cargo = getResources().getDrawable(R.drawable.cargo);
         hatch = getResources().getDrawable(R.drawable.hatch_panel);
         hatchCargo = getResources().getDrawable(R.drawable.hatch_and_cargo);
@@ -95,27 +83,12 @@ public class Teleop extends InmatchBaseActivity {
     protected void setupNavButtons() {
         prevButton.setText("Sandstorm");
         nextButton.setText("Endgame");
-        prevActivity = Auto.class;
+        prevActivity = Sandstorm.class;
         nextActivity = Endgame.class;
     }
 
     @Override
     protected void saveData() {
-        Match.getInstance().setAchievedNothing(achievedNothing.isChecked());
-        switch (dead.getCheckedRadioButtonId()) {
-            case R.id.deadNone:
-                Match.getInstance().setDead(1);
-                break;
-            case R.id.deadPart:
-                Match.getInstance().setDead(2);
-                break;
-            case R.id.deadAll:
-                Match.getInstance().setDead(3);
-                break;
-            default:
-                Match.getInstance().setDead(0);
-                break;
-        }
         Match.getInstance().setNumHatchL3(0);
         Match.getInstance().setNumHatchL2(0);
         Match.getInstance().setNumHatchL1(0);
@@ -178,6 +151,27 @@ public class Teleop extends InmatchBaseActivity {
                 setImage(i, locations.get(i));
             }
         }
+    }
+
+
+    public void plusHDrop(View v) {
+        Match.getInstance().incrementDroppedHatch(1);
+        droppedHatch.setText(Integer.toString(Match.getInstance().getDroppedHatch()));
+    }
+
+    public void plusCDrop(View v) {
+        Match.getInstance().incrementDroppedCargo(1);
+        droppedCargo.setText(Integer.toString(Match.getInstance().getDroppedCargo()));
+    }
+
+    public void minusHDrop(View v) {
+        Match.getInstance().incrementDroppedHatch(-1);
+        droppedHatch.setText(Integer.toString(Match.getInstance().getDroppedHatch()));
+    }
+
+    public void minusCDrop(View v) {
+        Match.getInstance().incrementDroppedCargo(-1);
+        droppedCargo.setText(Integer.toString(Match.getInstance().getDroppedCargo()));
     }
 
 }
