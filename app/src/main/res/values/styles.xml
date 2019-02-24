@@ -11,7 +11,6 @@
     <style name="Wrap">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-
     </style>
 
     <style name="Background" parent="Base.Theme.AppCompat.Light.DarkActionBar">
@@ -34,9 +33,11 @@
     </style>
 
     <style name="Dropdown" parent="Wrap">
+        <item name="android:layout_width">match_parent</item>
         <item name="android:textColor">@color/primaryText</item>
         <item name="android:textSize">36sp</item>
-        <!--<item name="android:background">@color/popupBg</item>-->
+        <item name="android:popupBackground">@color/dropdownBg</item>
+        <item name="android:backgroundTint">@color/spinnerArrow</item>
     </style>
 
 
@@ -49,10 +50,8 @@
         <item name="android:layout_marginStart">25dp</item>
     </style>
 
-    <style name="EditText" parent="Wrap">
+    <style name="EditText" parent="Text">
         <item name="android:textColorHint">@color/hintText</item>
-        <item name="android:textColor">@color/primaryText</item>
-        <item name="android:textSize">36sp</item>
         <item name="android:backgroundTint">@color/primaryText</item>
     </style>
 
@@ -70,9 +69,10 @@
         <item name="android:textSize">40sp</item>
     </style>
 
-    <style name="TextBox" parent="Text">
-        <item name="android:layout_width">500dp</item>
-        <item name="android:layout_height">100dp</item>
+    <style name="TextBox" parent="EditText">
+        <item name="android:layout_width">540dp</item>
+        <item name="android:inputType">textMultiLine</item>
+        <item name="android:maxLines">6</item>
     </style>
 
     <style name="Help">

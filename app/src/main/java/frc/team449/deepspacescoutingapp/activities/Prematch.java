@@ -54,13 +54,13 @@ public class Prematch extends BaseActivity {
         noShowBox.setChecked(Match.getInstance().isNoShow());
         teamNumber = findViewById(R.id.teamNumber);
         teamAdapter = ArrayAdapter.createFromResource(this, R.array.teams, R.layout.dropdown);
-        teamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        teamAdapter.setDropDownViewResource(R.layout.dropdown);;
         teamNumber.setAdapter(teamAdapter);
         teamNumber.setOnItemSelectedListener(onItemSelectedListener);
         teamNumber.setSelection(Match.getInstance().getTeamNumber());
         matchNumber = findViewById(R.id.matchNumber);
         matchAdapter = ArrayAdapter.createFromResource(this, R.array.matches, R.layout.dropdown);
-        matchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        matchAdapter.setDropDownViewResource(R.layout.dropdown);
         matchNumber.setAdapter(matchAdapter);
         matchNumber.setOnItemSelectedListener(onItemSelectedListener);
         matchNumber.setSelection(Match.getInstance().getMatchNumber());

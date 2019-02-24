@@ -6,11 +6,13 @@
 
     <color name="background">#000000</color>
     <color name="popupBg">#222222</color>
+    <color name="dropdownBg">#333333</color>
     <color name="teamColor">#A7000A</color>
     <color name="titleColor">#e01020</color>
     <color name="primaryText">#FFFFFF</color>
     <color name="fieldDefault">#FFFFFF</color>
-    <color name="hintText">#46FFFFFF</color>
+    <color name="hintText">#77FFFFFF</color>
+    <color name="spinnerArrow">#CCCCCC</color>
 
     <color name="red">#a7000a</color>
     <color name="blue">#0a00a7</color>

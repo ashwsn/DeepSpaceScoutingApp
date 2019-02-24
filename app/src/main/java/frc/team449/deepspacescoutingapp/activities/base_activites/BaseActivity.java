@@ -61,7 +61,8 @@ public abstract class BaseActivity extends AppCompatActivity {
             case R.id.bluetooth_icon:
                 PopupHelper.bluetoothPopup(this);
                 return true;
-
+            case R.id.help_icon:
+                helpPopup(R.string.help_appwide);
             default:
                 return super.onOptionsItemSelected(item);
 
@@ -73,6 +74,42 @@ public abstract class BaseActivity extends AppCompatActivity {
         switch (view.getId()){
             case R.id.noShowHelp:
                 helpPopup(R.string.help_noshow);
+                break;
+            case R.id.startingLevelHelp:
+                helpPopup(R.string.help_startingLevel);
+                break;
+            case R.id.movedForwardHelp:
+                helpPopup(R.string.help_crossedLine);
+                break;
+            case R.id.placedHelp:
+                helpPopup(R.string.help_placedPreloaded);
+                break;
+            case R.id.placed2Help:
+                helpPopup(R.string.help_doubleAuto);
+                break;
+            case R.id.gamePiecePlacementHelp:
+                helpPopup(R.string.help_placement);
+                break;
+            case R.id.dropHelp:
+                helpPopup(R.string.help_drop);
+                break;
+            case R.id.attemptLevelHelp:
+                helpPopup(R.string.help_levelAttempted);
+                break;
+            case R.id.attemptSuccessHelp:
+                helpPopup(R.string.help_climbSuccess);
+                break;
+            case R.id.levelReachedHelp:
+                helpPopup(R.string.help_levelReached);
+                break;
+            case R.id.timeHelp:
+                helpPopup(R.string.help_climbTime);
+                break;
+            case R.id.deadHelp:
+                helpPopup(R.string.help_dead);
+                break;
+            case R.id.defenseHelp:
+                helpPopup(R.string.help_defense);
                 break;
             default:
                 helpPopup(R.string.help_default);

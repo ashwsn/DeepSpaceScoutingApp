@@ -31,6 +31,21 @@
     <!--Help Popups-->
     <string name="help_title">Help</string>
 
-    <string name="help_noshow">If the team\'s robot is not on the field for this match, select the box.</string>
+    <string name="help_appwide">HELP!!!</string>
+
     <string name="help_default">Please talk to a scouting leader for help.</string>
+    <string name="help_noshow">If the team\'s robot is not on the field for this match, select the box.</string>
+    <string name="help_placement">Each time the robot you are watching places a game piece, record it here. Click a square once to place a hatch, twice for a cargo, and three times if they place both. A fourth click will clear it.\nThe top of the grid represents the alliance station wall, with the top two boxes being the two cargo bays the point toward the drivers. The center group (2x4) is the cargo ship in the center of the field. The side groups (3x2) are the rockets, with the top of the rocket on the edge of the screen, and the bottom close to the center.\nFeel free to rotate the screen so it lines up with the field.\nPlease only record pieces placed by YOUR robot, and INCLUDE those placed in the Sandstorm period</string>
+    <string name="help_drop">Each time your robot drops a game piece, for any reason (including if they are trying to place it and miss), please record it here by clicking the + button.</string>
+    <string name="help_startingLevel">What HAB level did the robot start on?\nThe low base with a small ramp is level 1, the two short platforms about 6 inches above that is level 2.</string>
+    <string name="help_crossedLine">If the robot moved and made it off of the HAB platform onto the carpet DURING SANDSTORM, check this box.\n(You may be familiar with "Moved Forward" or "Crossed Line" from past games - this is the same idea)</string>
+    <string name="help_placedPreloaded">If the robot successfully placed their preloaded game piece DURING SANDSTORM check this box.</string>
+    <string name="help_doubleAuto">If the robot picked up and placed another game piece DURING SANDSTORM select the game piece that they placed. Otherwise, select "No" (or leave the item blank).</string>
+    <string name="help_levelAttempted">What HAB level (1 is the bottom platform, 2 is either of the two middle platforms, 3 is the highest platform) did they attempt to climb to?\n</string>
+    <string name="help_climbSuccess">Did the robot climb successfully? A successful climb has the robot reach and stay at the level they attempted. If no climb was attempted, simply put N/A (or leave it blank). A level 1 climb (the base platform) does count as a climb.</string>
+    <string name="help_levelReached">At the end of the match, what level was the robot at? (1 is the bottom platform, 2 is either of the two middle platforms, 3 is the highest platform)\nTo be a legal climb, the robot must be fully supported only by things at or above the level they have climbed to, and their bumpers must be above the level.\nIf, for example, a robot tries a level 3 climb, but they are supported by the side of the platform, above the height of level 2, this would count as a level 2 climb.</string>
+    <string name="help_climbTime">If the robot completed a level 2 or 3 climb, approximately how long did they spend, from the time they drove onto level 1 to the time they were stable and supported only by the level they are climbing to, with bumpers above that level.</string>
+    <string name="help_dead">Was the robot dead during the match?\nA dead robot is a robot that is just sitting on the field, unable to move.\nHalf dead is being dead for part (>~50%) of the match. Broken is ther\'re still moving, but something is clearly wrong. Dead means they were dead for all or almost all of the match.</string>
+    <string name="help_defense">If the robot attempted defense, select this box.\nThis is not a judgement of the quality of their defense, if they ever crossed the middle of the field with the intent to get in the way of the opposing alliance, that counts as an attempt at defense even if it was useless.</string>
+
 </resources>

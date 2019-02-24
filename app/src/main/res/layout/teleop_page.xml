@@ -11,10 +11,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/gamePiecePlacementHelp"
+        style="@style/Help"
+        app:layout_constraintStart_toEndOf="@id/gamePieceText"
+        app:layout_constraintTop_toTopOf="@id/gamePieceText"
+        app:layout_constraintBottom_toBottomOf="@+id/gamePieceText"/>
+
     <TextView
         android:id="@+id/infoText1"
         style="@style/Text"
-        android:textSize="24dp"
+        android:textSize="22dp"
         android:text="Click the boxes to place hatches, cargo or both"
         android:layout_marginStart="@dimen/startMargin"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,11 +30,20 @@
     <TextView
         android:id="@+id/infoText2"
         style="@style/Text"
+        android:textSize="22dp"
+        android:text="INCLUDE pieces placed during SANDSTORM"
+        android:layout_marginStart="@dimen/startMargin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/infoText1"/>
+
+    <TextView
+        android:id="@+id/infoText3"
+        style="@style/Text"
         android:textSize="20dp"
         android:text="(Only those placed by YOUR robot, not the alliance)"
         android:layout_marginStart="@dimen/startMargin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/infoText1"/>
+        app:layout_constraintTop_toBottomOf="@id/infoText2"/>
 
     <LinearLayout
         android:id="@+id/fieldMap"
@@ -36,7 +52,7 @@
         android:orientation="vertical"
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
-        app:layout_constraintTop_toBottomOf="@id/infoText2"
+        app:layout_constraintTop_toBottomOf="@id/infoText3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -54,11 +70,11 @@
             style="@style/Text"
             android:textSize="24dp"
             android:text="Cargo Ship"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="6dp"/>
 
         <LinearLayout
             android:id="@+id/topCargoBay"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal">
 
@@ -75,7 +91,7 @@
                 android:layout_width="0dp"
                 android:layout_marginTop="35dp"
                 android:layout_weight="1"
-                android:text="Rocket"/>
+                android:text="  Rocket"/>
 
             <TextView
                 style="@style/Text"
@@ -131,7 +147,7 @@
                 android:layout_width="0dp"
                 android:layout_marginTop="35dp"
                 android:layout_weight="1"
-                android:text="Rocket"/>
+                android:text="  Rocket"/>
 
             <TextView
                 style="@style/Text"
@@ -506,7 +522,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/cargoDropped"
         app:layout_constraintTop_toBottomOf="@id/fieldMap"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:gravity="center">
 
         <TextView
@@ -544,6 +560,15 @@
 
     </LinearLayout>
 
+    <ImageButton
+        android:id="@+id/dropHelp"
+        style="@style/Help"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toEndOf="@id/hatchesDropped"
+        app:layout_constraintEnd_toStartOf="@id/cargoDropped"
+        app:layout_constraintTop_toTopOf="@id/hatchesDropped"
+        app:layout_constraintBottom_toBottomOf="@+id/hatchesDropped"/>
+
     <LinearLayout
         android:id="@+id/cargoDropped"
         android:layout_width="0dp"
@@ -552,7 +577,7 @@
         app:layout_constraintStart_toEndOf="@id/hatchesDropped"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fieldMap"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:gravity="center">
 
         <TextView

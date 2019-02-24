@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="teams">
-        <item>"Team Number"</item>
+        <item>"Team #"</item>
         <item>339</item>
         <item>346</item>
         <item>384</item>

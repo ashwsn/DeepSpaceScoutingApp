@@ -14,6 +14,13 @@
         app:layout_constraintTop_toBottomOf="@id/matchTitle"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageButton
+        android:id="@+id/attemptLevelHelp"
+        style="@style/Help"
+        app:layout_constraintStart_toEndOf="@id/attemptLevelText"
+        app:layout_constraintTop_toTopOf="@id/attemptLevelText"
+        app:layout_constraintBottom_toBottomOf="@+id/attemptLevelText"/>
+
     <!--Habitat Attempt Level Radio Group-->
     <RadioGroup
         style="@style/Wrap"
@@ -64,6 +71,13 @@
         app:layout_constraintTop_toBottomOf="@id/attemptLevel"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageButton
+        android:id="@+id/attemptSuccessHelp"
+        style="@style/Help"
+        app:layout_constraintStart_toEndOf="@id/attemptSuccessText"
+        app:layout_constraintTop_toTopOf="@id/attemptSuccessText"
+        app:layout_constraintBottom_toBottomOf="@+id/attemptSuccessText"/>
+
     <!--Attempt Success-->
     <RadioGroup
         style="@style/Wrap"
@@ -107,6 +121,13 @@
         app:layout_constraintTop_toBottomOf="@id/attemptSuccess"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageButton
+        android:id="@+id/levelReachedHelp"
+        style="@style/Help"
+        app:layout_constraintStart_toEndOf="@id/levelReachedText"
+        app:layout_constraintTop_toTopOf="@id/levelReachedText"
+        app:layout_constraintBottom_toBottomOf="@+id/levelReachedText"/>
+
     <!--Habitat Level Reached Radio Group-->
     <RadioGroup
         style="@style/Wrap"
@@ -149,12 +170,19 @@
 
     <TextView
         style="@style/Text"
-        android:text="Approximate Time Taken (seconds)"
+        android:text="Approximate Time Taken (s)"
         android:id="@+id/timeText"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="@dimen/spaceBetweenFields"
         app:layout_constraintTop_toBottomOf="@id/levelReached"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/timeHelp"
+        style="@style/Help"
+        app:layout_constraintStart_toEndOf="@id/timeText"
+        app:layout_constraintTop_toTopOf="@id/timeText"
+        app:layout_constraintBottom_toBottomOf="@+id/timeText"/>
 
     <NumberPicker
         android:id="@+id/timeTaken"

@@ -32,6 +32,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <ImageButton
+        android:id="@+id/movedForwardHelp"
+        style="@style/Help"
+        app:layout_constraintStart_toEndOf="@id/movedForwardText"
+        app:layout_constraintTop_toTopOf="@id/movedForwardText"
+        app:layout_constraintBottom_toBottomOf="@+id/movedForwardText"/>
+
     <!--Moved Forward Checkbox-->
     <CheckBox
         android:id="@+id/movedForward"
@@ -46,9 +54,16 @@
         style="@style/Text"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="@dimen/spaceBetweenFields"
-        android:text="Placed  Preloaded Piece?"
+        android:text="Placed Preloaded Piece?"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/movedForwardText" />
+
+    <ImageButton
+        android:id="@+id/placedHelp"
+        style="@style/Help"
+        app:layout_constraintStart_toEndOf="@id/placedText"
+        app:layout_constraintTop_toTopOf="@id/placedText"
+        app:layout_constraintBottom_toBottomOf="@+id/placedText"/>
 
     <!--Placed Checkbox-->
     <CheckBox
@@ -63,10 +78,16 @@
         style="@style/Text"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="@dimen/spaceBetweenFields"
-        android:text="Placed Second Piece (in auto)?"
+        android:text="Placed 2nd Piece (sandstorm)?"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/placedText" />
 
+    <ImageButton
+        android:id="@+id/placed2Help"
+        style="@style/Help"
+        app:layout_constraintStart_toEndOf="@id/placed2Text"
+        app:layout_constraintTop_toTopOf="@id/placed2Text"
+        app:layout_constraintBottom_toBottomOf="@+id/placed2Text"/>
 
     <!--Placed Radio Group-->
     <RadioGroup

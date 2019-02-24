@@ -62,7 +62,7 @@
     <CheckBox
         style="@style/Checkbox"
         android:id="@+id/noShow"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="110dp"
         app:layout_constraintStart_toEndOf="@id/noShowText"
         app:layout_constraintTop_toTopOf="@id/noShowText"/>
 
@@ -70,7 +70,7 @@
     <TextView
         style="@style/Text"
         android:id="@+id/teamNumberText"
-        android:text="Team #"
+        android:text="Team Number"
         android:layout_marginTop="@dimen/spaceBetweenFields"
         android:layout_marginStart="@dimen/startMargin"
         app:layout_constraintTop_toBottomOf="@id/scoutName"
@@ -80,7 +80,7 @@
     <Spinner
         style="@style/Dropdown"
         android:id="@+id/teamNumber"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/noShow"
         app:layout_constraintTop_toTopOf="@id/teamNumberText"/>
@@ -91,7 +91,7 @@
         android:id="@+id/matchNumberText"
         android:layout_marginTop="@dimen/spaceBetweenFields"
         android:layout_marginStart="@dimen/startMargin"
-        android:text="Match #"
+        android:text="Match Number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/teamNumber" />
 
@@ -99,7 +99,7 @@
     <Spinner
         style="@style/Dropdown"
         android:id="@+id/matchNumber"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/matchNumberText"
         app:layout_constraintStart_toStartOf="@id/noShow" />
@@ -150,6 +150,13 @@
         android:text="Starting Level"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/noShowText" />
+
+    <ImageButton
+        android:id="@+id/startingLevelHelp"
+        style="@style/Help"
+        app:layout_constraintStart_toEndOf="@id/startingLevelText"
+        app:layout_constraintTop_toTopOf="@id/startingLevelText"
+        app:layout_constraintBottom_toBottomOf="@+id/startingLevelText"/>
 
     <!--Starting Level Radio Group-->
     <RadioGroup

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="matches">
-        <item>"Match Number"</item>
+        <item>"Match #"</item>
         <item>"Elims"</item>
         <item>1</item>
         <item>2</item>
