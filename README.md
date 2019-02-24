@@ -1,5 +1,5 @@
-# Scouting App Template
-Bare-bones scouting app for FIRST Robotics Competition games with no game-specific fields.
+# Deep Space Scouting App
+Scouting app for FIRST Robotics Competition 2019 game Deep Space.
 
 Developed by FRC Team 449: The Blair Robot Project.
 
