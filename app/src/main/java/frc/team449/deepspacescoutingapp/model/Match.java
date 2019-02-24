@@ -24,11 +24,12 @@ public class Match {
     private int startingLevel;
     private int preload;
     private boolean noShow;
-    private boolean noAuto;
+//    private boolean noAuto;
     private boolean movedForward;
-    private int placedPiece;
-    private int placedLocation;
-    private boolean achievedNothing;
+    private boolean placedPiece;
+    private int doubleAuto;
+//    private int placedLocation;
+//    private boolean achievedNothing;
     private int dead;
     private int[] teleopPiecePositions; // not transferred to computer
     private int numCargoL1;
@@ -55,21 +56,22 @@ public class Match {
         reset();
         scoutName = "";
         matchNumber = 0;
-        allianceColor = 0;
+        allianceColor = -1;
     }
 
     public void reset() {
         matchNumber++;
         teamNumber = 0;
         noShow = false;
-        startingLevel = 0;
-        preload = 0;
-        noAuto = false;
+        startingLevel = -1;
+        preload = -1;
+//        noAuto = false;
         movedForward = false;
-        placedPiece = 0;
-        placedLocation = 0;
-        achievedNothing = false;
-        dead = 0;
+        placedPiece = false;
+        doubleAuto = -1;
+//        placedLocation = 0;
+//        achievedNothing = false;
+        dead = -1;
         teleopPiecePositions = new int[20];
         numCargoL1 = 0;
         numCargoL2 = 0;
@@ -81,9 +83,9 @@ public class Match {
         numHatchShip = 0;
         droppedCargo = 0;
         droppedHatch = 0;
-        attemptLevel = 0;
-        attemptSuccess = 0;
-        levelReached = 0;
+        attemptLevel = -1;
+        attemptSuccess = -1;
+        levelReached = -1;
         climbTime = 0;
         defense = false;
         comments = "";
@@ -98,10 +100,9 @@ public class Match {
                 startingLevel+","+ // starting level
                 preload+","+ // preload
                 (noShow ? 1 : 0)+","+ // no show
-                //(noAuto ? 1 : 0)+","+ // no auto
                 (movedForward ? 1 : 0)+","+ // moved forward
-                placedPiece+","+ // placed piece in auto
-                ctxt.getResources().getStringArray(R.array.field_locations)[placedLocation]+","+ // placed location in auto
+                (placedPiece ? 1 : 0)+","+ // auto placed piece
+                doubleAuto+","+ // double auto
                 numCargoShip+","+ // ship cargo
                 numCargoL1+","+ // level 1 cargo
                 numCargoL2+","+ // level 2 cargo
@@ -112,11 +113,10 @@ public class Match {
                 numHatchL3+","+ // level 3 hatches
                 droppedHatch+","+ // hatches dropped
                 droppedCargo+","+ // cargo dropped
-                attemptLevel+","+ // habitat attempt level
-                attemptSuccess+","+ // habitat success
-                levelReached+","+ // habitat level reached
+                attemptLevel+","+ // hab attempt level
+                attemptSuccess+","+ // hab success
+                levelReached+","+ // hab level reached
                 climbTime+","+ // climb time
-                (achievedNothing ? 1 : 0)+","+ // achieved nothing
                 dead+","+ // dead
                 (defense ? 1: 0) + "," + // defense
                 (comments==null ? "" : comments); // comments
@@ -149,7 +149,7 @@ public class Match {
                 errors += "What HAB level was reached?";
             else levelReached = 0;
         }
-        if (climbTime == 0 && (levelReached == 3 || levelReached == 3)) {
+        if (climbTime == 0 && (levelReached == 2 || levelReached == 3)) {
             errors += "How long did it take to climb";
         }
         return errors.trim();
@@ -198,11 +198,11 @@ public class Match {
         this.startingLevel = startingLevel;
     }
 
-    public boolean isNoAuto() { return noAuto; }
+//    public boolean isNoAuto() { return noAuto; }
 
-    public void setNoAuto(boolean noAuto) {
-        this.noAuto = noAuto;
-    }
+//    public void setNoAuto(boolean noAuto) {
+//        this.noAuto = noAuto;
+//    }
 
     public boolean isMovedForward() {
         return movedForward;
@@ -210,27 +210,27 @@ public class Match {
 
     public void setMovedForward(boolean movedForward) { this.movedForward = movedForward; }
 
-    public int getPlacedPiece() {
+    public boolean isPlacedPiece() {
         return placedPiece;
     }
 
-    public void setPlacedPiece(int placedPiece) {
+    public void setPlacedPiece(boolean placedPiece) {
         this.placedPiece = placedPiece;
     }
 
-    public int getPlacedLocation() {
-        return placedLocation;
-    }
+//    public int getPlacedLocation() {
+//        return placedLocation;
+//    }
 
-    public void setPlacedLocation(int placedLocation) {
-        this.placedLocation = placedLocation;
-    }
+//    public void setPlacedLocation(int placedLocation) {
+//        this.placedLocation = placedLocation;
+//    }
 
-    public boolean isAchievedNothing() {
-        return achievedNothing;
-    }
+//    public boolean isAchievedNothing() {
+//        return achievedNothing;
+//    }
 
-    public void setAchievedNothing(boolean achievedNothing) { this.achievedNothing = achievedNothing; }
+//    public void setAchievedNothing(boolean achievedNothing) { this.achievedNothing = achievedNothing; }
 
     public int getDead() {
         return dead;
@@ -376,5 +376,13 @@ public class Match {
 
     public void setClimbTime(int climbTime) {
         this.climbTime = climbTime;
+    }
+
+    public int getDoubleAuto() {
+        return doubleAuto;
+    }
+
+    public void setDoubleAuto(int doubleAuto) {
+        this.doubleAuto = doubleAuto;
     }
 }

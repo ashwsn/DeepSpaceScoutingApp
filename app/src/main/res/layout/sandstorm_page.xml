@@ -3,24 +3,24 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--No Sandstorm Text-->
-    <TextView
-        android:id="@+id/noAutoText"
-        style="@style/Text"
-        android:layout_marginStart="@dimen/startMargin"
-        android:layout_marginTop="15dp"
-        android:text="No Sandstorm?"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--&lt;!&ndash;No Sandstorm Text&ndash;&gt;-->
+    <!--<TextView-->
+        <!--android:id="@+id/noAutoText"-->
+        <!--style="@style/Text"-->
+        <!--android:layout_marginStart="@dimen/startMargin"-->
+        <!--android:layout_marginTop="15dp"-->
+        <!--android:text="No Sandstorm?"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
 
-    <!--No Sandstorm Checkbox-->
-    <CheckBox
-        android:id="@+id/noAuto"
-        style="@style/Checkbox"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="@dimen/checkboxCenter"
-        app:layout_constraintStart_toEndOf="@id/noAutoText"
-        app:layout_constraintTop_toTopOf="@id/noAutoText" />
+    <!--&lt;!&ndash;No Sandstorm Checkbox&ndash;&gt;-->
+    <!--<CheckBox-->
+        <!--android:id="@+id/noAuto"-->
+        <!--style="@style/Checkbox"-->
+        <!--android:layout_marginStart="150dp"-->
+        <!--android:layout_marginTop="@dimen/checkboxCenter"-->
+        <!--app:layout_constraintStart_toEndOf="@id/noAutoText"-->
+        <!--app:layout_constraintTop_toTopOf="@id/noAutoText" />-->
 
     <!--Moved Forward Text-->
     <TextView
@@ -28,16 +28,16 @@
         style="@style/Text"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="@dimen/spaceBetweenFields"
-        android:text="Crossed Line?"
+        android:text="Made it our of the HAB?"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/noAutoText" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!--Moved Forward Checkbox-->
     <CheckBox
         android:id="@+id/movedForward"
         style="@style/Checkbox"
-        android:layout_marginTop="@dimen/checkboxCenter"
-        app:layout_constraintStart_toStartOf="@id/noAuto"
+        android:layout_marginStart="70dp"
+        app:layout_constraintStart_toEndOf="@id/movedForwardText"
         app:layout_constraintTop_toTopOf="@id/movedForwardText" />
 
     <!--Placed Text-->
@@ -46,34 +46,45 @@
         style="@style/Text"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="@dimen/spaceBetweenFields"
-        android:text="Placed Piece?"
+        android:text="Placed  Preloaded Piece?"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/movedForwardText" />
+
+    <!--Placed Checkbox-->
+    <CheckBox
+        android:id="@+id/placed"
+        style="@style/Checkbox"
+        app:layout_constraintStart_toStartOf="@id/movedForward"
+        app:layout_constraintTop_toTopOf="@id/placedText" />
+
+    <!--Placed2 Text-->
+    <TextView
+        android:id="@+id/placed2Text"
+        style="@style/Text"
+        android:layout_marginStart="@dimen/startMargin"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        android:text="Placed Second Piece (in auto)?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/placedText" />
+
 
     <!--Placed Radio Group-->
     <RadioGroup
         style="@style/Wrap"
-        android:id="@+id/placed"
+        android:id="@+id/placed2"
         android:layout_marginTop="@dimen/spaceBetweenFields"
         android:layout_marginStart="@dimen/startMargin"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/placedText">
+        app:layout_constraintTop_toBottomOf="@id/placed2Text">
 
         <RadioButton
             style="@style/RadioButton"
             android:id="@+id/placedNone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="None" />
-
-        <RadioButton
-            style="@style/RadioButton"
-            android:id="@+id/placedCargo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cargo" />
+            android:text="No" />
 
         <RadioButton
             style="@style/RadioButton"
@@ -82,39 +93,46 @@
             android:layout_height="wrap_content"
             android:text="Hatch" />
 
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/placedCargo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cargo" />
+
     </RadioGroup>
 
-    <!--Location Text-->
-    <TextView
-        android:id="@+id/locationText"
-        style="@style/Text"
-        android:layout_marginStart="@dimen/startMargin"
-        android:layout_marginTop="@dimen/spaceBetweenFields"
-        android:text="Location of Piece"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/placed" />
+    <!--&lt;!&ndash;Location Text&ndash;&gt;-->
+    <!--<TextView-->
+        <!--android:id="@+id/locationText"-->
+        <!--style="@style/Text"-->
+        <!--android:layout_marginStart="@dimen/startMargin"-->
+        <!--android:layout_marginTop="@dimen/spaceBetweenFields"-->
+        <!--android:text="Location of Piece"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@id/placed" />-->
 
-    <!--Location Dropdown-->
-    <Spinner
-        style="@style/Dropdown"
-        android:id="@+id/placedLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spaceBetweenFields"
-        app:layout_constraintStart_toStartOf="@id/noAuto"
-        app:layout_constraintTop_toBottomOf="@id/placed" />
+    <!--&lt;!&ndash;Location Dropdown&ndash;&gt;-->
+    <!--<Spinner-->
+        <!--style="@style/Dropdown"-->
+        <!--android:id="@+id/placedLocation"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="@dimen/spaceBetweenFields"-->
+        <!--app:layout_constraintStart_toStartOf="@id/noAuto"-->
+        <!--app:layout_constraintTop_toBottomOf="@id/placed" />-->
 
-    <!--Field Drawing-->
-    <ImageView
-        android:layout_height="300dp"
-        android:layout_width="wrap_content"
-        android:id="@+id/fieldDrawing"
-        android:src="@drawable/field_drawing"
-        android:layout_marginTop="@dimen/spaceBetweenFields"
-        android:layout_marginBottom="@dimen/spaceBetweenFields"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/placedLocation"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+    <!--&lt;!&ndash;Field Drawing&ndash;&gt;-->
+    <!--<ImageView-->
+        <!--android:layout_height="300dp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:id="@+id/fieldDrawing"-->
+        <!--android:src="@drawable/field_drawing"-->
+        <!--android:layout_marginTop="@dimen/spaceBetweenFields"-->
+        <!--android:layout_marginBottom="@dimen/spaceBetweenFields"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@id/placedLocation"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"/>-->
 
 </android.support.constraint.ConstraintLayout>

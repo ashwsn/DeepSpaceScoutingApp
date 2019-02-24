@@ -27,6 +27,10 @@
 
     <style name="Checkbox" parent="Wrap">
         <item name="android:buttonTint">@color/fieldDefault</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:text">----------------------------------------</item>
+        <item name="android:textColor">@color/background</item>
+        <!--<item name="android:layout_marginTop">@dimen/checkboxCenter</item>-->
     </style>
 
     <style name="Dropdown" parent="Wrap">
@@ -53,7 +57,7 @@
     </style>
 
     <style name="TitleText" parent="Wrap">
-        <item name="android:textColor">@color/teamColor</item>
+        <item name="android:textColor">@color/titleColor</item>
         <item name="android:textSize">40sp</item>
         <item name="android:fontFamily">serif-monospace</item>
     </style>
@@ -74,7 +78,7 @@
     <style name="Help">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:padding">5dp</item>
+        <item name="android:padding">13dp</item>
         <item name="android:src">@drawable/ic_help</item>
         <item name="android:contentDescription">\?</item>
         <item name="android:onClick">help</item>

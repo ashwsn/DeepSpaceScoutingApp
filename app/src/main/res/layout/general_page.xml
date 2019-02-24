@@ -5,24 +5,24 @@
     tools:context="frc.team449.deepspacescoutingapp.activities.General"
     style="@style/Background">
 
-    <!--Achieved Nothing Text-->
-    <TextView
-        style="@style/Text"
-        android:id="@+id/achievedNothingText"
-        android:layout_marginStart="@dimen/startMargin"
-        android:layout_marginTop="15dp"
-        android:text="Achieved Nothing?"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+    <!--&lt;!&ndash;Achieved Nothing Text&ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/Text"-->
+        <!--android:id="@+id/achievedNothingText"-->
+        <!--android:layout_marginStart="@dimen/startMargin"-->
+        <!--android:layout_marginTop="15dp"-->
+        <!--android:text="Achieved Nothing?"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"/>-->
 
-    <CheckBox
-        style="@style/Checkbox"
-        android:id="@+id/achievedNothing"
-        android:layout_marginTop="@dimen/checkboxCenter"
-        android:layout_marginStart="95dp"
-        android:text=""
-        app:layout_constraintTop_toTopOf="@id/achievedNothingText"
-        app:layout_constraintStart_toEndOf="@id/achievedNothingText"/>
+    <!--<CheckBox-->
+        <!--style="@style/Checkbox"-->
+        <!--android:id="@+id/achievedNothing"-->
+        <!--android:layout_marginTop="@dimen/checkboxCenter"-->
+        <!--android:layout_marginStart="95dp"-->
+        <!--android:text=""-->
+        <!--app:layout_constraintTop_toTopOf="@id/achievedNothingText"-->
+        <!--app:layout_constraintStart_toEndOf="@id/achievedNothingText"/>-->
 
     <!--Dead Text-->
     <TextView
@@ -32,31 +32,41 @@
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="@dimen/spaceBetweenFields"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/achievedNothingText" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!--Dead Radio Buttons-->
     <RadioGroup
         style="@style/Wrap"
         android:id="@+id/dead"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/deadText"
-        app:layout_constraintEnd_toEndOf="parent" >
+        app:layout_constraintTop_toBottomOf="@id/deadText">
 
-        <RadioButton
-            style="@style/RadioButton"
-            android:id="@+id/deadNone"
-            android:text="None" />
+        <LinearLayout
+            style="@style/Wrap">
+            <RadioButton
+                style="@style/RadioButton"
+                android:id="@+id/alive"
+                android:text="Alive" />
 
-        <RadioButton
-            style="@style/RadioButton"
-            android:id="@+id/deadPart"
-            android:text="Part" />
+            <RadioButton
+                style="@style/RadioButton"
+                android:id="@+id/broken"
+                android:text="Broken" />
+        </LinearLayout>
 
-        <RadioButton
-            style="@style/RadioButton"
-            android:id="@+id/deadAll"
-            android:text="All" />
+        <LinearLayout
+            style="@style/Wrap">
+            <RadioButton
+                style="@style/RadioButton"
+                android:id="@+id/halfDead"
+                android:text="Half Dead" />
+
+            <RadioButton
+                style="@style/RadioButton"
+                android:id="@+id/deadAll"
+                android:text="All" />
+        </LinearLayout>
 
     </RadioGroup>
 
@@ -65,17 +75,16 @@
         android:id="@+id/defenseText"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="15dp"
-        android:text="defense Attempted?"
+        android:text="Defense Attempted?"
         app:layout_constraintTop_toBottomOf="@id/dead"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <CheckBox
         style="@style/Checkbox"
         android:id="@+id/defense"
-        android:layout_marginTop="@dimen/checkboxCenter"
-        android:text=""
+        android:layout_marginStart="40dp"
         app:layout_constraintTop_toTopOf="@id/defenseText"
-        app:layout_constraintStart_toStartOf="@id/achievedNothing"/>
+        app:layout_constraintStart_toEndOf="@id/defenseText"/>
 
     <!--Comments Text-->
     <TextView

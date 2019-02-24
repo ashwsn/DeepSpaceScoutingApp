@@ -15,11 +15,12 @@ import frc.team449.deepspacescoutingapp.model.Match;
 public class Sandstorm extends InmatchBaseActivity {
 
     // Input fields
-    private CheckBox noAuto;
+//    private CheckBox noAuto;
     private CheckBox movedForward;
-    private RadioGroup placedPiece;
-    private Spinner placedLocation;
-    private ArrayAdapter<CharSequence> locAdapter;
+    private CheckBox placedPiece;
+    private RadioGroup doubleAuto;
+//    private Spinner placedLocation;
+//    private ArrayAdapter<CharSequence> locAdapter;
 
     // Displays auto page on activity call
     @Override
@@ -27,31 +28,33 @@ public class Sandstorm extends InmatchBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sandstorm_page);
 
-        noAuto = findViewById(R.id.noAuto);
-        noAuto.setChecked(Match.getInstance().isNoAuto());
+//        noAuto = findViewById(R.id.noAuto);
+//        noAuto.setChecked(Match.getInstance().isNoAuto());
         movedForward = findViewById(R.id.movedForward);
         movedForward.setChecked(Match.getInstance().isMovedForward());
         placedPiece = findViewById(R.id.placed);
-        switch (Match.getInstance().getPlacedPiece()) {
+        placedPiece.setChecked(Match.getInstance().isPlacedPiece());
+        doubleAuto = findViewById(R.id.placed2);
+        switch (Match.getInstance().getDoubleAuto()) {
+            case -1:
+                doubleAuto.clearCheck();
+                break;
             case 0:
-                placedPiece.clearCheck();
+                doubleAuto.check(R.id.placedNone);
                 break;
             case 1:
-                placedPiece.check(R.id.placedNone);
+                doubleAuto.check(R.id.placedHatch);
                 break;
             case 2:
-                placedPiece.check(R.id.placedCargo);
-                break;
-            case 3:
-                placedPiece.check(R.id.placedHatch);
+                doubleAuto.check(R.id.placedCargo);
                 break;
         }
-        placedLocation = findViewById(R.id.placedLocation);
-        locAdapter = ArrayAdapter.createFromResource(this, R.array.field_locations, R.layout.dropdown);
-        locAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        placedLocation.setAdapter(locAdapter);
-        placedLocation.setOnItemSelectedListener(onItemSelectedListener);
-        placedLocation.setSelection(Match.getInstance().getPlacedLocation());
+//        placedLocation = findViewById(R.id.placedLocation);
+//        locAdapter = ArrayAdapter.createFromResource(this, R.array.field_locations, R.layout.dropdown);
+//        locAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        placedLocation.setAdapter(locAdapter);
+//        placedLocation.setOnItemSelectedListener(onItemSelectedListener);
+//        placedLocation.setSelection(Match.getInstance().getPlacedLocation());
     }
 
     @Override
@@ -64,35 +67,35 @@ public class Sandstorm extends InmatchBaseActivity {
 
     @Override
     public void saveData(){
-        switch (placedPiece.getCheckedRadioButtonId()) {
+        Match.getInstance().setMovedForward(movedForward.isChecked());
+        Match.getInstance().setPlacedPiece(placedPiece.isChecked());
+        switch (doubleAuto.getCheckedRadioButtonId()) {
             case R.id.placedNone:
-                Match.getInstance().setPlacedPiece(1);
-                break;
-            case R.id.placedCargo:
-                Match.getInstance().setPlacedPiece(2);
+                Match.getInstance().setDoubleAuto(0);
                 break;
             case R.id.placedHatch:
-                Match.getInstance().setPlacedPiece(3);
+                Match.getInstance().setDoubleAuto(1);
+                break;
+            case R.id.placedCargo:
+                Match.getInstance().setDoubleAuto(2);
                 break;
             default:
-                Match.getInstance().setPlacedPiece(0);
+                Match.getInstance().setDoubleAuto(-1);
                 break;
         }
-        Match.getInstance().setNoAuto(noAuto.isChecked());
-        Match.getInstance().setMovedForward(movedForward.isChecked());
     }
 
-    private static final AdapterView.OnItemSelectedListener onItemSelectedListener = new AdapterView.OnItemSelectedListener(){
-
-        @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            Match.getInstance().setPlacedLocation(position);
-        }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
-            Match.getInstance().setPlacedLocation(0);
-        }
-    };
+//    private static final AdapterView.OnItemSelectedListener onItemSelectedListener = new AdapterView.OnItemSelectedListener(){
+//
+//        @Override
+//        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//            Match.getInstance().setPlacedLocation(position);
+//        }
+//
+//        @Override
+//        public void onNothingSelected(AdapterView<?> parent) {
+//            Match.getInstance().setPlacedLocation(0);
+//        }
+//    };
 
 }

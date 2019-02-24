@@ -15,7 +15,7 @@
         android:id="@+id/infoText1"
         style="@style/Text"
         android:textSize="24dp"
-        android:text="Click the boxes to place cargo and hatches"
+        android:text="Click the boxes to place hatches, cargo or both"
         android:layout_marginStart="@dimen/startMargin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/gamePieceText"/>

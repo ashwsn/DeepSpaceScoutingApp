@@ -32,14 +32,14 @@ public class Prematch extends BaseActivity {
     private RadioGroup allianceColor;
     private RadioGroup startingLevel;
     private RadioGroup preload;
-    private Drawable fieldDrawable;
-    private ImageView fieldImage;
-    private static final float[] NEGATIVE = {
-            -1.0f,     0,     0,    0, 255, // red
-            0, -1.0f,     0,    0, 255, // green
-            0,     0, -1.0f,    0, 255, // blue
-            0,     0,     0, 1.0f,   0  // alpha
-    };
+//    private Drawable fieldDrawable;
+//    private ImageView fieldImage;
+//    private static final float[] NEGATIVE = {
+//            -1.0f,     0,     0,    0, 255, // red
+//            0, -1.0f,     0,    0, 255, // green
+//            0,     0, -1.0f,    0, 255, // blue
+//            0,     0,     0, 1.0f,   0  // alpha
+//    };
 
     // Displays prematch page on activity call
     @Override
@@ -66,19 +66,19 @@ public class Prematch extends BaseActivity {
         matchNumber.setSelection(Match.getInstance().getMatchNumber());
         allianceColor = findViewById(R.id.allianceColor);
         switch (Match.getInstance().getAllianceColor()) {
-            case 0:
+            case -1:
                 allianceColor.clearCheck();
                 break;
-            case 1:
+            case 0:
                 allianceColor.check(R.id.redAlliance);
                 break;
-            case 2:
+            case 1:
                 allianceColor.check(R.id.blueAlliance);
                 break;
         }
         startingLevel = findViewById(R.id.startingLevel);
         switch (Match.getInstance().getStartingLevel()) {
-            case 0:
+            case -1:
                 startingLevel.clearCheck();
                 break;
             case 1:
@@ -90,23 +90,23 @@ public class Prematch extends BaseActivity {
         }
         preload = findViewById(R.id.preload);
         switch (Match.getInstance().getPreload()) {
-            case 0:
+            case -1:
                 preload.clearCheck();
                 break;
-            case 1:
+            case 0:
                 preload.check(R.id.preloadNone);
                 break;
-            case 2:
+            case 1:
                 preload.check(R.id.preloadCargo);
                 break;
-            case 3:
+            case 2:
                 preload.check(R.id.preloadHatch);
                 break;
         }
 
-        fieldDrawable = getResources().getDrawable(R.drawable.field_drawing);
-        fieldDrawable.setColorFilter(new ColorMatrixColorFilter(NEGATIVE));
-        fieldImage = findViewById(R.id.fieldDrawing);
+//        fieldDrawable = getResources().getDrawable(R.drawable.field_drawing);
+//        fieldDrawable.setColorFilter(new ColorMatrixColorFilter(NEGATIVE));
+//        fieldImage = findViewById(R.id.fieldDrawing);
 //        fieldImage.setImageDrawable(fieldDrawable);
 
         if (justLaunched) {
@@ -118,13 +118,13 @@ public class Prematch extends BaseActivity {
     private void saveData() {
         switch (allianceColor.getCheckedRadioButtonId()) {
             case R.id.redAlliance:
-                Match.getInstance().setAllianceColor(1);
+                Match.getInstance().setAllianceColor(0);
                 break;
             case R.id.blueAlliance:
-                Match.getInstance().setAllianceColor(2);
+                Match.getInstance().setAllianceColor(1);
                 break;
             default:
-                Match.getInstance().setAllianceColor(0);
+                Match.getInstance().setAllianceColor(-1);
                 break;
         }
         switch (startingLevel.getCheckedRadioButtonId()) {
@@ -135,21 +135,21 @@ public class Prematch extends BaseActivity {
                 Match.getInstance().setStartingLevel(2);
                 break;
             default:
-                Match.getInstance().setStartingLevel(0);
+                Match.getInstance().setStartingLevel(-1);
                 break;
         }
         switch (preload.getCheckedRadioButtonId()) {
             case R.id.preloadNone:
-                Match.getInstance().setPreload(1);
+                Match.getInstance().setPreload(0);
                 break;
             case R.id.preloadCargo:
-                Match.getInstance().setPreload(2);
+                Match.getInstance().setPreload(1);
                 break;
             case R.id.preloadHatch:
-                Match.getInstance().setPreload(3);
+                Match.getInstance().setPreload(2);
                 break;
             default:
-                Match.getInstance().setPreload(0);
+                Match.getInstance().setPreload(-1);
                 break;
         }
         Match.getInstance().setScoutName(scoutNameText.getText().toString());

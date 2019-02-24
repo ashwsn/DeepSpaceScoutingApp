@@ -22,7 +22,7 @@ public class Endgame extends InmatchBaseActivity {
 
         attemptLevel = findViewById(R.id.attemptLevel);
         switch (Match.getInstance().getAttemptLevel()) {
-            case 4:
+            case 0:
                 attemptLevel.check(R.id.attemptLevelNone);
                 break;
             case 1:
@@ -34,28 +34,28 @@ public class Endgame extends InmatchBaseActivity {
             case 3:
                 attemptLevel.check(R.id.attemptLevelThree);
                 break;
-            case 0:
+            case -1:
                 attemptLevel.clearCheck();
                 break;
         }
         attemptSuccess = findViewById(R.id.attemptSuccess);
         switch (Match.getInstance().getAttemptSuccess()) {
-            case 0:
+            case -1:
                 attemptSuccess.clearCheck();
                 break;
-            case 1:
+            case 0:
                 attemptSuccess.check(R.id.attemptSuccessNA);
                 break;
-            case 2:
+            case 1:
                 attemptSuccess.check(R.id.attemptSuccessFail);
                 break;
-            case 3:
+            case 2:
                 attemptSuccess.check(R.id.attemptSuccessSuccess);
                 break;
         }
         levelReached = findViewById(R.id.levelReached);
         switch (Match.getInstance().getLevelReached()) {
-            case 4:
+            case 0:
                 levelReached.check(R.id.levelReachedNone);
                 break;
             case 1:
@@ -67,7 +67,7 @@ public class Endgame extends InmatchBaseActivity {
             case 3:
                 levelReached.check(R.id.levelReachedThree);
                 break;
-            case 0:
+            case -1:
                 levelReached.clearCheck();
                 break;
         }
@@ -90,7 +90,7 @@ public class Endgame extends InmatchBaseActivity {
     protected void saveData(){
         switch (attemptLevel.getCheckedRadioButtonId()) {
             case R.id.attemptLevelNone:
-                Match.getInstance().setAttemptLevel(4);
+                Match.getInstance().setAttemptLevel(0);
                 break;
             case R.id.attemptLevelOne:
                 Match.getInstance().setAttemptLevel(1);
@@ -102,26 +102,26 @@ public class Endgame extends InmatchBaseActivity {
                 Match.getInstance().setAttemptLevel(3);
                 break;
             default:
-                Match.getInstance().setAttemptLevel(0);
+                Match.getInstance().setAttemptLevel(-1);
                 break;
         }
         switch (attemptSuccess.getCheckedRadioButtonId()) {
             case R.id.attemptSuccessNA:
-                Match.getInstance().setAttemptSuccess(1);
+                Match.getInstance().setAttemptSuccess(0);
                 break;
             case R.id.attemptSuccessFail:
-                Match.getInstance().setAttemptSuccess(2);
+                Match.getInstance().setAttemptSuccess(1);
                 break;
             case R.id.attemptSuccessSuccess:
-                Match.getInstance().setAttemptSuccess(3);
+                Match.getInstance().setAttemptSuccess(2);
                 break;
             default:
-                Match.getInstance().setAttemptSuccess(0);
+                Match.getInstance().setAttemptSuccess(-1);
                 break;
         }
         switch (levelReached.getCheckedRadioButtonId()) {
             case R.id.levelReachedNone:
-                Match.getInstance().setLevelReached(4);
+                Match.getInstance().setLevelReached(0);
                 break;
             case R.id.levelReachedOne:
                 Match.getInstance().setLevelReached(1);
@@ -133,7 +133,7 @@ public class Endgame extends InmatchBaseActivity {
                 Match.getInstance().setLevelReached(3);
                 break;
             default:
-                Match.getInstance().setLevelReached(0);
+                Match.getInstance().setLevelReached(-4);
                 break;
         }
         Match.getInstance().setClimbTime(climbTime.getValue());

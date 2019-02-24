@@ -13,7 +13,7 @@ import frc.team449.deepspacescoutingapp.model.Match;
 
 public class General extends InmatchBaseActivity {
 
-    private CheckBox achievedNothing;
+//    private CheckBox achievedNothing;
     private RadioGroup dead;
     private CheckBox defense;
     private EditText comments;
@@ -23,20 +23,23 @@ public class General extends InmatchBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.general_page);
 
-        achievedNothing = findViewById(R.id.achievedNothing);
-        achievedNothing.setChecked(Match.getInstance().isAchievedNothing());
+//        achievedNothing = findViewById(R.id.achievedNothing);
+//        achievedNothing.setChecked(Match.getInstance().isAchievedNothing());
         dead = findViewById(R.id.dead);
         defense = findViewById(R.id.defense);
 
         switch (Match.getInstance().getDead()) {
-            case 0:
+            case -1:
                 dead.clearCheck();
                 break;
+            case 0:
+                dead.check(R.id.alive);
+                break;
             case 1:
-                dead.check(R.id.deadNone);
+                dead.check(R.id.broken);
                 break;
             case 2:
-                dead.check(R.id.deadPart);
+                dead.check(R.id.halfDead);
                 break;
             case 3:
                 dead.check(R.id.deadAll);
@@ -56,20 +59,22 @@ public class General extends InmatchBaseActivity {
 
     @Override
     protected void saveData(){
-        Match.getInstance().setAchievedNothing(achievedNothing.isChecked());
+//        Match.getInstance().setAchievedNothing(achievedNothing.isChecked());
         Match.getInstance().setDefense(defense.isChecked());
         switch (dead.getCheckedRadioButtonId()) {
-            case R.id.deadNone:
+            case R.id.alive:
+                Match.getInstance().setDead(0);
+                break;
+            case R.id.broken:
                 Match.getInstance().setDead(1);
                 break;
-            case R.id.deadPart:
+            case R.id.halfDead:
                 Match.getInstance().setDead(2);
                 break;
             case R.id.deadAll:
                 Match.getInstance().setDead(3);
-                break;
             default:
-                Match.getInstance().setDead(0);
+                Match.getInstance().setDead(4);
                 break;
         }
         Match.getInstance().setComments(comments.getText().toString());
