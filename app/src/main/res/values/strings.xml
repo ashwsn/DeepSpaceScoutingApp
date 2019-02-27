@@ -17,7 +17,7 @@
     <string name="bluetooth_connected_prompt">Bluetooth has successfully connected to %1$s</string>
 
     <string name="bluetooth_send_failed_title">Bluetooth submission failed.</string>
-    <string name="bluetooth_send_failed_prompt">Please talk to Telon, Carter, or other scouting leader</string>
+    <string name="bluetooth_send_failed_prompt">Please talk to Carter or another scouting leader</string>
 
     <string name="bluetooth_connect_error_title">Bluetooth Error</string>
     <string name="bluetooth_connect_error_prompt">An error occurred connecting to Bluetooth.\nPlease check that Bluetooth is enabled on this device, that the server is running on the scouting computer, and that you have selected that computer from the dropdown. Then try connecting again by clicking the Bluetooth icon in the top corner.\nIf errors persist, please get Carter for help.</string>

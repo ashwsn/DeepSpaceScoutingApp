@@ -20,7 +20,7 @@ public class BluetoothHelper {
         return bluetoothHelper;
     }
 
-    BluetoothAdapter blueAdapter = BluetoothAdapter.getDefaultAdapter();
+    private BluetoothAdapter blueAdapter = BluetoothAdapter.getDefaultAdapter();
     private BluetoothSocket socket;
     private OutputStream outputStream;
 
@@ -84,7 +84,7 @@ public class BluetoothHelper {
         } else Log.e("BluetoothHelper.initCon","blueAdapter is null");
     }
 
-    public boolean write(String s) throws IOException {
+    boolean write(String s) throws IOException {
         if (isConnected()) {
             try {
                 outputStream.write(s.getBytes());

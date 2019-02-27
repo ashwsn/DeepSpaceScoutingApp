@@ -24,10 +24,10 @@ public class PopupHelper {
     }
 
     public static void bluetoothPopup(AppCompatActivity ctxt) {
-        if (!BluetoothHelper.getInstance().isConnected()) {
-            FragmentManager fm = ctxt.getSupportFragmentManager();
-            DialogFragment fragment = new BluetoothSetupFragment();
-            fragment.show(fm, "dialog");
-        }
+//        if (!BluetoothHelper.getInstance().isConnected()) {
+        FragmentManager fm = ctxt.getSupportFragmentManager();
+        DialogFragment fragment = new BluetoothSetupFragment();
+        fragment.show(fm, "dialog");
+//        }
     }
 }

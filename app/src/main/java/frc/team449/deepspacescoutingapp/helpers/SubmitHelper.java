@@ -3,6 +3,7 @@ package frc.team449.deepspacescoutingapp.helpers;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import java.io.IOException;
 
@@ -47,7 +48,17 @@ public class SubmitHelper {
                     }, ctxt.getString(R.string.bluetooth_warning_ignore_button), new Runnable() {
                         @Override
                         public void run() {
-                            submitData(ctxt);
+                            PopupHelper.prompt("Bluetooth not connected", "Are you sure you want to sumbit data without a Bluetooth connection?\nThe data will not make it into the data file.", "Connect", new Runnable() {
+                                @Override
+                                public void run() {
+                                    PopupHelper.bluetoothPopup((AppCompatActivity) ctxt);
+                                }
+                            }, "Submit anyway", new Runnable() {
+                                @Override
+                                public void run() {
+                                    submitData(ctxt);
+                                }
+                            }, (AppCompatActivity) ctxt);
                         }
                     }, (AppCompatActivity) ctxt);
         }
@@ -58,20 +69,25 @@ public class SubmitHelper {
         //TODO: Store backup locally
 
         if (BluetoothHelper.getInstance().isConnected()) {
+            boolean written = false;
             try {
-                BluetoothHelper.getInstance().write(Match.getInstance().toString(ctxt));
+                written = BluetoothHelper.getInstance().write(Match.getInstance().toString(ctxt));
+                if (written) {
+                    // Reset the match data
+                    Match.getInstance().reset();
+
+                    // Go to confirmation page
+                    Intent toSubmitted = new Intent(ctxt, Submitted.class);
+                    ctxt.startActivity(toSubmitted);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
-                PopupHelper.info(ctxt.getString(R.string.bluetooth_setup_title),
-                        ctxt.getString(R.string.bluetooth_send_failed_prompt),(AppCompatActivity) ctxt);
+            }
+            if (!written) {
+                PopupHelper.bluetoothPopup((AppCompatActivity) ctxt);
+//                PopupHelper.info(ctxt.getString(R.string.bluetooth_send_failed_title),
+//                        ctxt.getString(R.string.bluetooth_send_failed_prompt), (AppCompatActivity) ctxt);
             }
         }
-
-        // Reset the match data
-        Match.getInstance().reset();
-
-        // Go to confirmation page
-        Intent toSubmitted = new Intent(ctxt, Submitted.class);
-        ctxt.startActivity(toSubmitted);
     }
 }
