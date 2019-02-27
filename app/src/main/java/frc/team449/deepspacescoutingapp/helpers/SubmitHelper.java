@@ -15,24 +15,41 @@ public class SubmitHelper {
         String errors = Match.getInstance().checkData();
         if (!errors.equals("")) {
             PopupHelper.info(ctxt.getString(R.string.data_errors_title),errors,(AppCompatActivity) ctxt);
-        }
-        else {
-            if (BluetoothHelper.getInstance().isConnected()) {
-                submitData(ctxt);
+        } else {
+            String softErrors = Match.getInstance().softCheck();
+            if (!softErrors.equals("")) {
+                PopupHelper.prompt("Is this data correct?", softErrors, "Fix It", new Runnable() {
+                    @Override
+                    public void run() {}
+                }, "Submit", new Runnable() {
+                    @Override
+                    public void run() {
+                        finalSubmit(ctxt);
+                    }
+                }, (AppCompatActivity) ctxt);
             } else {
-                PopupHelper.prompt(ctxt.getString(R.string.not_connected_title), ctxt.getString(R.string.not_connected_prompt),
-                        ctxt.getString(R.string.bluetooth_popup_connect_button), new Runnable() {
-                            @Override
-                            public void run() {
-                                PopupHelper.bluetoothPopup((AppCompatActivity) ctxt);
-                            }
-                        }, ctxt.getString(R.string.bluetooth_warning_ignore_button), new Runnable() {
-                            @Override
-                            public void run() {
-                                submitData(ctxt);
-                            }
-                        }, (AppCompatActivity) ctxt);
+                finalSubmit(ctxt);
             }
+
+        }
+    }
+
+    private static void finalSubmit(final Context ctxt){
+        if (BluetoothHelper.getInstance().isConnected()) {
+            submitData(ctxt);
+        } else {
+            PopupHelper.prompt(ctxt.getString(R.string.not_connected_title), ctxt.getString(R.string.not_connected_prompt),
+                    ctxt.getString(R.string.bluetooth_popup_connect_button), new Runnable() {
+                        @Override
+                        public void run() {
+                            PopupHelper.bluetoothPopup((AppCompatActivity) ctxt);
+                        }
+                    }, ctxt.getString(R.string.bluetooth_warning_ignore_button), new Runnable() {
+                        @Override
+                        public void run() {
+                            submitData(ctxt);
+                        }
+                    }, (AppCompatActivity) ctxt);
         }
     }
 

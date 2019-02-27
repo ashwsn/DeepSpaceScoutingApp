@@ -9,6 +9,7 @@ package frc.team449.deepspacescoutingapp.model;
  */
 
 import android.content.Context;
+import android.util.Log;
 
 import frc.team449.deepspacescoutingapp.R;
 
@@ -131,27 +132,49 @@ public class Match {
             errors += "Please select a match number\n";
         if (teamNumber == 0)
             errors += "Please select a team number\n";
-        if (dead == 0)
-            dead = 1;
-        if (startingLevel == 0)
+        if (allianceColor == -1)
+            errors += "Please select the alliance color\n";
+        if (dead == -1)
+            dead = 0;
+        if (startingLevel == -1)
             errors += "Please select a starting level\n";
-        if (preload == 0)
+        if (preload == -1)
             errors += "Please select a preloaded piece\n";
-        if (attemptLevel == 4)
+
+        Log.i("level attempted", String.valueOf(attemptLevel));
+        Log.i("attempt success", String.valueOf(attemptSuccess));
+        Log.i("level reached", String.valueOf(levelReached));
+        if (attemptLevel == -1)
             errors += "Please select a HAB level attempt\n";
-        if (attemptSuccess == 0) {
+        if (attemptSuccess == -1) {
             if (attemptLevel != 0)
-                errors += "Was the climb successful\n";
+                errors += "Was the climb successful?\n";
             else attemptSuccess = 1;
         }
-        if (levelReached == 4) {
+        if (levelReached == -1) {
+            Log.i("level reached if", "made it in");
             if (attemptLevel != 0)
-                errors += "What HAB level was reached?";
+                errors += "What HAB level was reached?\n";
             else levelReached = 0;
         }
         if (climbTime == 0 && (levelReached == 2 || levelReached == 3)) {
-            errors += "How long did it take to climb";
+            errors += "How long did it take to climb?\n";
         }
+        return errors.trim();
+    }
+
+    public String softCheck() {
+        String errors = "";
+        if (climbTime != 0 && (climbTime < 3 || levelReached == 2 && climbTime < 6))
+            errors += "Did they really climb in " + String.valueOf(climbTime) + " seconds?\n";
+        if (climbTime > 25)
+            errors += "Did it really take " + String.valueOf(climbTime) + " seconds to climb?\n";
+        int totalHatch = numHatchShip + numHatchL1 + numHatchL2 + numCargoL3;
+        if (totalHatch > 6)
+            errors += "Did one robot really place " + totalHatch + " hatches?\n";
+        int totalCargo = numCargoShip + numCargoL1 + numCargoL2 + numCargoL3;
+        if (totalCargo > 6)
+            errors += "Did one robot really place " + totalCargo + " argo?\n";
         return errors.trim();
     }
 

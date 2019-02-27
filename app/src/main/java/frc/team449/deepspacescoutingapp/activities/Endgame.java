@@ -133,7 +133,7 @@ public class Endgame extends InmatchBaseActivity {
                 Match.getInstance().setLevelReached(3);
                 break;
             default:
-                Match.getInstance().setLevelReached(-4);
+                Match.getInstance().setLevelReached(-1);
                 break;
         }
         Match.getInstance().setClimbTime(climbTime.getValue());
