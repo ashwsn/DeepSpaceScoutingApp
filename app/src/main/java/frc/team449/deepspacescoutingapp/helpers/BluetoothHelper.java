@@ -25,7 +25,7 @@ public class BluetoothHelper {
     private OutputStream outputStream;
 
     public boolean isConnected() {
-        return (socket != null && socket.isConnected());
+        return write("");
     }
 
     public List<String> getPairedDevices(){
@@ -38,10 +38,6 @@ public class BluetoothHelper {
                 }
             } else {
                 Log.e("BluetoothHelper.initCon", "Bluetooth is disabled.");
-                //TODO: provide feedback to user via popup
-                //Intent enableBluetooth = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                //startActivityForResult(enableBluetooth, 0);
-                //Log.i("BtH.getPairedDevices", "Bluetooth enabled.");
             }
         } else Log.e("BluetoothHelper.initCon","blueAdapter is null");
         return paired;
@@ -84,19 +80,21 @@ public class BluetoothHelper {
         } else Log.e("BluetoothHelper.initCon","blueAdapter is null");
     }
 
-    boolean write(String s) throws IOException {
-        if (isConnected()) {
+    boolean write(String s) {
+        if (socket != null && socket.isConnected()) {
             try {
                 outputStream.write(s.getBytes());
                 return true;
             } catch (NullPointerException e) {
                 e.printStackTrace();
-                Log.i("BluetoothHelper.write", "outputStream is null");
-                return false;
+                Log.e("BluetoothHelper.write", "outputStream is null");
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.e("BluetoothHelper.write", "IOExecption, socket is probably closed on the other end");
             }
         } else {
-            Log.i("BluetoothHelper.write","Not connected to a device.");
-            return false;
+            Log.e("BluetoothHelper.write","Not connected to a device.");
         }
+        return false;
     }
 }

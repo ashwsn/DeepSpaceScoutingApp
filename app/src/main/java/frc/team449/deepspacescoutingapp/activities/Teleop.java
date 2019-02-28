@@ -2,6 +2,7 @@ package frc.team449.deepspacescoutingapp.activities;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
@@ -139,7 +140,7 @@ public class Teleop extends InmatchBaseActivity {
     }
 
     private void setImage(ImageButton i, int state) {
-        switch (state % 4) {
+        switch (state) {
             case 0:
                 i.setImageDrawable(null);
                 break;
@@ -158,7 +159,7 @@ public class Teleop extends InmatchBaseActivity {
     public void changeState(View v) {
         for (ImageButton i : locations.keySet()) {
             if (i.equals(v)) {
-                locations.put(i, locations.get(i)+1);
+                locations.put(i, (locations.get(i)+1)%4);
                 setImage(i, locations.get(i));
             }
         }

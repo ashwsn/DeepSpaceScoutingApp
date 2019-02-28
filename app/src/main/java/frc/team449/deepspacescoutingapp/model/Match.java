@@ -140,10 +140,6 @@ public class Match {
             errors += "Please select a starting level\n";
         if (preload == -1)
             errors += "Please select a preloaded piece\n";
-
-        Log.i("level attempted", String.valueOf(attemptLevel));
-        Log.i("attempt success", String.valueOf(attemptSuccess));
-        Log.i("level reached", String.valueOf(levelReached));
         if (attemptLevel == -1)
             errors += "Please select a HAB level attempt\n";
         if (attemptSuccess == -1) {
@@ -169,12 +165,12 @@ public class Match {
             errors += "Did they really climb in " + String.valueOf(climbTime) + " seconds?\n";
         if (climbTime > 25)
             errors += "Did it really take " + String.valueOf(climbTime) + " seconds to climb?\n";
-        int totalHatch = numHatchShip + numHatchL1 + numHatchL2 + numCargoL3;
+        int totalHatch = numHatchShip + numHatchL1 + numHatchL2 + numHatchL3;
         if (totalHatch > 6)
             errors += "Did one robot really place " + totalHatch + " hatches?\n";
         int totalCargo = numCargoShip + numCargoL1 + numCargoL2 + numCargoL3;
         if (totalCargo > 6)
-            errors += "Did one robot really place " + totalCargo + " argo?\n";
+            errors += "Did one robot really place " + totalCargo + " cargo?\n";
         return errors.trim();
     }
 

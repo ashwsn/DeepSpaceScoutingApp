@@ -5,23 +5,29 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 import frc.team449.deepspacescoutingapp.R;
 import frc.team449.deepspacescoutingapp.activities.Submitted;
 import frc.team449.deepspacescoutingapp.model.Match;
 
 public class SubmitHelper {
-    public static void submit(final Context ctxt){
+    public static void submit(final Context ctxt) {
         String errors = Match.getInstance().checkData();
         if (!errors.equals("")) {
-            PopupHelper.info(ctxt.getString(R.string.data_errors_title),errors,(AppCompatActivity) ctxt);
+            PopupHelper.info(ctxt.getString(R.string.data_errors_title), errors, (AppCompatActivity) ctxt);
         } else {
             String softErrors = Match.getInstance().softCheck();
             if (!softErrors.equals("")) {
                 PopupHelper.prompt("Is this data correct?", softErrors, "Fix It", new Runnable() {
                     @Override
-                    public void run() {}
+                    public void run() {
+                    }
                 }, "Submit", new Runnable() {
                     @Override
                     public void run() {
@@ -35,7 +41,7 @@ public class SubmitHelper {
         }
     }
 
-    private static void finalSubmit(final Context ctxt){
+    private static void finalSubmit(final Context ctxt) {
         if (BluetoothHelper.getInstance().isConnected()) {
             submitData(ctxt);
         } else {
@@ -48,12 +54,12 @@ public class SubmitHelper {
                     }, ctxt.getString(R.string.bluetooth_warning_ignore_button), new Runnable() {
                         @Override
                         public void run() {
-                            PopupHelper.prompt("Bluetooth not connected", "Are you sure you want to sumbit data without a Bluetooth connection?\nThe data will not make it into the data file.", "Connect", new Runnable() {
+                            PopupHelper.prompt(ctxt.getString(R.string.not_connected_title), ctxt.getString(R.string.not_connected_prompt2), ctxt.getString(R.string.bluetooth_popup_connect_button), new Runnable() {
                                 @Override
                                 public void run() {
                                     PopupHelper.bluetoothPopup((AppCompatActivity) ctxt);
                                 }
-                            }, "Submit anyway", new Runnable() {
+                            }, ctxt.getString(R.string.bluetooth_warning_ignore_button), new Runnable() {
                                 @Override
                                 public void run() {
                                     submitData(ctxt);
@@ -64,30 +70,37 @@ public class SubmitHelper {
         }
     }
 
-    private static void submitData(final Context ctxt){
+    private static void submitData(final Context ctxt) {
 
-        //TODO: Store backup locally
+        String data = Match.getInstance().toString(ctxt);
 
-        if (BluetoothHelper.getInstance().isConnected()) {
-            boolean written = false;
+        // Submit over Bluetooth
+        boolean written = BluetoothHelper.getInstance().write(data);
+
+
+        // Make a local backup
+        try {
+            FileHelper.addToFile("alldata.csv",data,ctxt);
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("SubmitHelper.submitData", "IO Error while making local backup");
+        }
+        if (!written) {
             try {
-                written = BluetoothHelper.getInstance().write(Match.getInstance().toString(ctxt));
-                if (written) {
-                    // Reset the match data
-                    Match.getInstance().reset();
-
-                    // Go to confirmation page
-                    Intent toSubmitted = new Intent(ctxt, Submitted.class);
-                    ctxt.startActivity(toSubmitted);
-                }
+                FileHelper.addToFile("newdata.csv",data,ctxt);
             } catch (IOException e) {
                 e.printStackTrace();
-            }
-            if (!written) {
-                PopupHelper.bluetoothPopup((AppCompatActivity) ctxt);
-//                PopupHelper.info(ctxt.getString(R.string.bluetooth_send_failed_title),
-//                        ctxt.getString(R.string.bluetooth_send_failed_prompt), (AppCompatActivity) ctxt);
+                Log.e("SubmitHelper.submitData", "IO Error while making local backup");
             }
         }
+
+        // Reset the match data
+        Match.getInstance().reset();
+
+        // Go to confirmation page
+        Intent toSubmitted = new Intent(ctxt, Submitted.class);
+        ctxt.startActivity(toSubmitted);
+
     }
+
 }

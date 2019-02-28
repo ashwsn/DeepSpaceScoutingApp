@@ -11,7 +11,8 @@
     <string name="data_errors_title">Your data have errors.</string>
 
     <string name="not_connected_title">Bluetooth not connected.</string>
-    <string name="not_connected_prompt">This device is not connected to bluetooth. The data you submit will be stored locally, but not sent to the scouting laptop.\nWould you like to connect now?</string>
+    <string name="not_connected_prompt">This device is not connected to Bluetooth. The data you submit will be stored locally, but not sent to the scouting laptop.\nWould you like to connect now?</string>
+    <string name="not_connected_prompt2">Are you sure you want to submit without Bluetooth? This data will not be added to the data file. (While it won\'t be lost completely, it will become much more difficult to retrieve.)\nIf you aren\'t a scouting leader, you don\'t want to do this. Please just connect to the server. If you are having trouble connecting, get a scouting leader for help.</string>
 
     <string name="bluetooth_connected_title">Bluetooth Connected</string>
     <string name="bluetooth_connected_prompt">Bluetooth has successfully connected to %1$s</string>
