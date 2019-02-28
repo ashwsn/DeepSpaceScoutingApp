@@ -10,6 +10,9 @@ package frc.team449.deepspacescoutingapp.model;
 
 import android.content.Context;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import frc.team449.deepspacescoutingapp.R;
 
 public class Match {
@@ -92,6 +95,7 @@ public class Match {
     }
 
     public String toString(Context ctxt) {
+        SimpleDateFormat s = new SimpleDateFormat("dd.MM HH:mm:ss");
         // each instance variable separated by a comma
         return  ctxt.getResources().getStringArray(R.array.teams)[teamNumber]+","+ // team #
                 ctxt.getResources().getStringArray(R.array.matches)[matchNumber]+","+ // match #
@@ -120,7 +124,7 @@ public class Match {
                 (defense ? 1: 0) + "," + // defense
                 (comments==null ? "" : comments) + "," + // comments
                 scoutName + "," + // scout name
-                1;
+                s.format(new Date());
     }
 
     public String checkData() {
