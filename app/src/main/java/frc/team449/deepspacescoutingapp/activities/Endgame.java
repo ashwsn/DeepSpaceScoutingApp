@@ -1,6 +1,8 @@
 package frc.team449.deepspacescoutingapp.activities;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.RadioGroup;
 
@@ -14,6 +16,9 @@ public class Endgame extends InmatchBaseActivity {
 //    private RadioGroup attemptSuccess;
     private RadioGroup levelReached;
     private NumberPicker climbTime;
+    private Button toggleTimeButton;
+    private Thread timer;
+    private volatile boolean timerOn = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +81,44 @@ public class Endgame extends InmatchBaseActivity {
         climbTime.setMinValue(0);
         climbTime.setMaxValue(99);
         climbTime.setValue(Match.getInstance().getClimbTime());
+        timer = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(1000);
+                        if (timerOn) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    climbTime.setValue((climbTime.getValue() + 1) % 100);
+                                }
+                            });
+                        }
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        toggleTimeButton = findViewById(R.id.toggleTimer);
+        timer.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        timer.interrupt();
+        timerOn = false;
+    }
+
+    public void toggleTimer(View view) {
+        timerOn = !timerOn;
+        if (timerOn) {
+            toggleTimeButton.setText("Stop Timer");
+        } else {
+            toggleTimeButton.setText("Start Timer");
+        }
     }
 
     @Override

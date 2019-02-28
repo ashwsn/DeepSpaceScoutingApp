@@ -37,7 +37,6 @@ public class SubmitHelper {
             } else {
                 finalSubmit(ctxt);
             }
-
         }
     }
 
