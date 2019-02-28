@@ -25,7 +25,7 @@ public class BluetoothHelper {
     private OutputStream outputStream;
 
     public boolean isConnected() {
-        return write("CONNECTED?");
+        return write(" ");
     }
 
     public List<String> getPairedDevices(){
