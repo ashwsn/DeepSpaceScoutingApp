@@ -54,17 +54,7 @@ public class SubmitHelper {
                     }, ctxt.getString(R.string.bluetooth_warning_ignore_button), new Runnable() {
                         @Override
                         public void run() {
-                            PopupHelper.prompt(ctxt.getString(R.string.not_connected_title), ctxt.getString(R.string.not_connected_prompt2), ctxt.getString(R.string.bluetooth_popup_connect_button), new Runnable() {
-                                @Override
-                                public void run() {
-                                    PopupHelper.bluetoothPopup((AppCompatActivity) ctxt);
-                                }
-                            }, ctxt.getString(R.string.bluetooth_warning_ignore_button), new Runnable() {
-                                @Override
-                                public void run() {
-                                    submitData(ctxt);
-                                }
-                            }, (AppCompatActivity) ctxt);
+                            submitData(ctxt);
                         }
                     }, (AppCompatActivity) ctxt);
         }

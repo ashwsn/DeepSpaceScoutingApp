@@ -136,10 +136,16 @@ public class Match {
             errors += "Please select the alliance color\n";
         if (dead == -1)
             dead = 0;
-        if (startingLevel == -1)
-            errors += "Please select a starting level\n";
+        if (startingLevel == -1){
+            if (noShow)
+                startingLevel = 0;
+            else
+                errors += "Please select a starting level\n";
+        }
         if (preload == -1)
             errors += "Please select a preloaded piece\n";
+        if (doubleAuto == -1)
+            doubleAuto = 0;
         if (attemptLevel == -1)
             errors += "Please select a HAB level attempt\n";
         if (attemptSuccess == -1) {

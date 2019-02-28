@@ -62,8 +62,15 @@ public abstract class BaseActivity extends AppCompatActivity {
             case R.id.bluetooth_icon:
                 PopupHelper.bluetoothPopup(this);
                 return true;
+            case R.id.upload_icon:
+                PopupHelper.uploader(this);
+                return true;
+            case R.id.clear_icon:
+                PopupHelper.clearData(this);
+                return true;
             case R.id.help_icon:
                 helpPopup(R.string.help_appwide);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
 

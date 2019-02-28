@@ -9,14 +9,21 @@
         app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/upload_icon"
+        android:icon="@android:drawable/stat_sys_upload_done"
+        android:title="Upload Data"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/clear_icon"
+        android:icon="@drawable/ic_clear"
+        android:title="Clear Data"
+        app:showAsAction="ifRoom"/>
+
+    <item
         android:id="@+id/bluetooth_icon"
         android:icon="@android:drawable/stat_sys_data_bluetooth"
         android:title="Bluetooth"
         app:showAsAction="ifRoom"/>
-
-    <!--&lt;!&ndash; Settings, should always be in the overflow &ndash;&gt;-->
-    <!--<item android:id="@+id/action_settings"-->
-        <!--android:title="@string/action_settings"-->
-        <!--app:showAsAction="never"/>-->
 
 </menu>
