@@ -104,9 +104,9 @@ public abstract class BaseActivity extends AppCompatActivity {
             case R.id.attemptLevelHelp:
                 helpPopup(R.string.help_levelAttempted);
                 break;
-            case R.id.attemptSuccessHelp:
-                helpPopup(R.string.help_climbSuccess);
-                break;
+//            case R.id.attemptSuccessHelp:
+//                helpPopup(R.string.help_climbSuccess);
+//                break;
             case R.id.levelReachedHelp:
                 helpPopup(R.string.help_levelReached);
                 break;

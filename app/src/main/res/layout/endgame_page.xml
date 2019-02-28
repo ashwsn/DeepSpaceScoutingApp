@@ -62,54 +62,54 @@
     </RadioGroup>
 
     <!--Attempt Success Text-->
-    <TextView
-        style="@style/Text"
-        android:text="Attempt Success"
-        android:id="@+id/attemptSuccessText"
-        android:layout_marginStart="@dimen/startMargin"
-        android:layout_marginTop="@dimen/spaceBetweenFields"
-        app:layout_constraintTop_toBottomOf="@id/attemptLevel"
-        app:layout_constraintStart_toStartOf="parent" />
+    <!--<TextView-->
+        <!--style="@style/Text"-->
+        <!--android:text="Attempt Success"-->
+        <!--android:id="@+id/attemptSuccessText"-->
+        <!--android:layout_marginStart="@dimen/startMargin"-->
+        <!--android:layout_marginTop="@dimen/spaceBetweenFields"-->
+        <!--app:layout_constraintTop_toBottomOf="@id/attemptLevel"-->
+        <!--app:layout_constraintStart_toStartOf="parent" />-->
 
-    <ImageButton
-        android:id="@+id/attemptSuccessHelp"
-        style="@style/Help"
-        app:layout_constraintStart_toEndOf="@id/attemptSuccessText"
-        app:layout_constraintTop_toTopOf="@id/attemptSuccessText"
-        app:layout_constraintBottom_toBottomOf="@+id/attemptSuccessText"/>
+    <!--<ImageButton-->
+        <!--android:id="@+id/attemptSuccessHelp"-->
+        <!--style="@style/Help"-->
+        <!--app:layout_constraintStart_toEndOf="@id/attemptSuccessText"-->
+        <!--app:layout_constraintTop_toTopOf="@id/attemptSuccessText"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/attemptSuccessText"/>-->
 
-    <!--Attempt Success-->
-    <RadioGroup
-        style="@style/Wrap"
-        android:id="@+id/attemptSuccess"
-        android:layout_marginTop="@dimen/spaceBetweenFields"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/attemptSuccessText">
+    <!--&lt;!&ndash;Attempt Success&ndash;&gt;-->
+    <!--<RadioGroup-->
+        <!--style="@style/Wrap"-->
+        <!--android:id="@+id/attemptSuccess"-->
+        <!--android:layout_marginTop="@dimen/spaceBetweenFields"-->
+        <!--android:orientation="horizontal"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@id/attemptSuccessText">-->
 
-        <RadioButton
-            style="@style/RadioButton"
-            android:id="@+id/attemptSuccessNA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="N/A" />
+        <!--<RadioButton-->
+            <!--style="@style/RadioButton"-->
+            <!--android:id="@+id/attemptSuccessNA"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="N/A" />-->
 
-        <RadioButton
-            style="@style/RadioButton"
-            android:id="@+id/attemptSuccessFail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fail" />
+        <!--<RadioButton-->
+            <!--style="@style/RadioButton"-->
+            <!--android:id="@+id/attemptSuccessFail"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Fail" />-->
 
-        <RadioButton
-            style="@style/RadioButton"
-            android:id="@+id/attemptSuccessSuccess"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Success" />
+        <!--<RadioButton-->
+            <!--style="@style/RadioButton"-->
+            <!--android:id="@+id/attemptSuccessSuccess"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Success" />-->
 
-    </RadioGroup>
+    <!--</RadioGroup>-->
 
     <!--Habitat Level Reached Text-->
     <TextView
@@ -118,7 +118,7 @@
         android:id="@+id/levelReachedText"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="@dimen/spaceBetweenFields"
-        app:layout_constraintTop_toBottomOf="@id/attemptSuccess"
+        app:layout_constraintTop_toBottomOf="@id/attemptLevel"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton

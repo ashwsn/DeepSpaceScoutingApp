@@ -9,7 +9,6 @@ package frc.team449.deepspacescoutingapp.model;
  */
 
 import android.content.Context;
-import android.util.Log;
 
 import frc.team449.deepspacescoutingapp.R;
 
@@ -44,7 +43,7 @@ public class Match {
     private int droppedHatch;
     private int droppedCargo;
     private int attemptLevel;
-    private int attemptSuccess;
+//    private int attemptSuccess;
     private int levelReached;
     private int climbTime;
     private boolean defense;
@@ -85,7 +84,7 @@ public class Match {
         droppedCargo = 0;
         droppedHatch = 0;
         attemptLevel = -1;
-        attemptSuccess = -1;
+//        attemptSuccess = -1;
         levelReached = -1;
         climbTime = 0;
         defense = false;
@@ -94,8 +93,7 @@ public class Match {
 
     public String toString(Context ctxt) {
         // each instance variable separated by a comma
-        return  scoutName+","+ // scout name
-                ctxt.getResources().getStringArray(R.array.teams)[teamNumber]+","+ // team #
+        return  ctxt.getResources().getStringArray(R.array.teams)[teamNumber]+","+ // team #
                 ctxt.getResources().getStringArray(R.array.matches)[matchNumber]+","+ // match #
                 allianceColor + "," + //alliance color
                 startingLevel+","+ // starting level
@@ -115,12 +113,14 @@ public class Match {
                 droppedHatch+","+ // hatches dropped
                 droppedCargo+","+ // cargo dropped
                 attemptLevel+","+ // hab attempt level
-                attemptSuccess+","+ // hab success
+                (attemptLevel != 0 ? (attemptLevel == levelReached ? 2 : 1) : 0)+","+ // hab success
                 levelReached+","+ // hab level reached
                 climbTime+","+ // climb time
                 dead+","+ // dead
                 (defense ? 1: 0) + "," + // defense
-                (comments==null ? "" : comments); // comments
+                (comments==null ? "" : comments) + "," + // comments
+                scoutName + "," + // scout name
+                1;
     }
 
     public String checkData() {
@@ -143,40 +143,45 @@ public class Match {
                 errors += "Please select a starting level\n";
         }
         if (preload == -1)
-            errors += "Please select a preloaded piece\n";
+            if (noShow)
+                preload = 0;
+            else
+                errors += "Please select a preloaded piece\n";
         if (doubleAuto == -1)
             doubleAuto = 0;
-        if (attemptLevel == -1)
-            errors += "Please select a HAB level attempt\n";
-        if (attemptSuccess == -1) {
-            if (attemptLevel != 0)
-                errors += "Was the climb successful?\n";
-            else attemptSuccess = 1;
-        }
-        if (levelReached == -1) {
-            Log.i("level reached if", "made it in");
+//        if (attemptSuccess == -1) {
+//            if (attemptLevel != 0)
+//                errors += "Was the climb successful?\n";
+//            else attemptSuccess = 1;
+//        }
+        if (attemptLevel == -1) {
+            if (noShow)
+                attemptLevel = 0;
+            else
+                errors += "Please select a HAB level attempt\n";
+        } else if (levelReached == -1) {
             if (attemptLevel != 0)
                 errors += "What HAB level was reached?\n";
             else levelReached = 0;
         }
-        if (climbTime == 0 && (levelReached == 2 || levelReached == 3)) {
+        if (climbTime == 0 && (levelReached > 1))
             errors += "How long did it take to climb?\n";
-        }
+        if (levelReached < 2 && climbTime != 0)
+            climbTime = 0;
         return errors.trim();
     }
 
     public String softCheck() {
         String errors = "";
-        if (climbTime != 0 && (climbTime < 3 || levelReached == 2 && climbTime < 6))
-            errors += "Did they really climb in " + String.valueOf(climbTime) + " seconds?\n";
-        if (climbTime > 25)
-            errors += "Did it really take " + String.valueOf(climbTime) + " seconds to climb?\n";
+        if (climbTime != 0 && ((climbTime < 3 || levelReached == 2) && climbTime < 6))
+            errors += "Did they really climb in " + climbTime + " seconds?\n";
+        if (climbTime > 30)
+            errors += "Did it really take " + climbTime + " seconds to climb?\n";
         int totalHatch = numHatchShip + numHatchL1 + numHatchL2 + numHatchL3;
-        if (totalHatch > 6)
-            errors += "Did one robot really place " + totalHatch + " hatches?\n";
         int totalCargo = numCargoShip + numCargoL1 + numCargoL2 + numCargoL3;
-        if (totalCargo > 6)
-            errors += "Did one robot really place " + totalCargo + " cargo?\n";
+        if (totalHatch + totalCargo > 6)
+            errors += "Did one robot really place " + (totalHatch > 0 ? totalHatch + " hatches" : "") +
+                    (totalHatch > 0 && totalCargo > 0 ? " and " : "") + (totalCargo > 0 ? totalCargo + " cargo" : "") + "?\n";
         return errors.trim();
     }
 
@@ -337,9 +342,9 @@ public class Match {
 
     public void setAttemptLevel(int attemptLevel) { this.attemptLevel = attemptLevel; }
 
-    public int getAttemptSuccess() { return attemptSuccess; }
-
-    public void setAttemptSuccess(int attemptSuccess) { this.attemptSuccess = attemptSuccess; }
+//    public int getAttemptSuccess() { return attemptSuccess; }
+//
+//    public void setAttemptSuccess(int attemptSuccess) { this.attemptSuccess = attemptSuccess; }
 
     public int getLevelReached() { return levelReached; }
 

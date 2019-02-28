@@ -11,7 +11,7 @@ import frc.team449.deepspacescoutingapp.model.Match;
 public class Endgame extends InmatchBaseActivity {
 
     private RadioGroup attemptLevel;
-    private RadioGroup attemptSuccess;
+//    private RadioGroup attemptSuccess;
     private RadioGroup levelReached;
     private NumberPicker climbTime;
 
@@ -38,21 +38,21 @@ public class Endgame extends InmatchBaseActivity {
                 attemptLevel.clearCheck();
                 break;
         }
-        attemptSuccess = findViewById(R.id.attemptSuccess);
-        switch (Match.getInstance().getAttemptSuccess()) {
-            case -1:
-                attemptSuccess.clearCheck();
-                break;
-            case 0:
-                attemptSuccess.check(R.id.attemptSuccessNA);
-                break;
-            case 1:
-                attemptSuccess.check(R.id.attemptSuccessFail);
-                break;
-            case 2:
-                attemptSuccess.check(R.id.attemptSuccessSuccess);
-                break;
-        }
+//        attemptSuccess = findViewById(R.id.attemptSuccess);
+//        switch (Match.getInstance().getAttemptSuccess()) {
+//            case -1:
+//                attemptSuccess.clearCheck();
+//                break;
+//            case 0:
+//                attemptSuccess.check(R.id.attemptSuccessNA);
+//                break;
+//            case 1:
+//                attemptSuccess.check(R.id.attemptSuccessFail);
+//                break;
+//            case 2:
+//                attemptSuccess.check(R.id.attemptSuccessSuccess);
+//                break;
+//        }
         levelReached = findViewById(R.id.levelReached);
         switch (Match.getInstance().getLevelReached()) {
             case 0:
@@ -105,20 +105,20 @@ public class Endgame extends InmatchBaseActivity {
                 Match.getInstance().setAttemptLevel(-1);
                 break;
         }
-        switch (attemptSuccess.getCheckedRadioButtonId()) {
-            case R.id.attemptSuccessNA:
-                Match.getInstance().setAttemptSuccess(0);
-                break;
-            case R.id.attemptSuccessFail:
-                Match.getInstance().setAttemptSuccess(1);
-                break;
-            case R.id.attemptSuccessSuccess:
-                Match.getInstance().setAttemptSuccess(2);
-                break;
-            default:
-                Match.getInstance().setAttemptSuccess(-1);
-                break;
-        }
+//        switch (attemptSuccess.getCheckedRadioButtonId()) {
+//            case R.id.attemptSuccessNA:
+//                Match.getInstance().setAttemptSuccess(0);
+//                break;
+//            case R.id.attemptSuccessFail:
+//                Match.getInstance().setAttemptSuccess(1);
+//                break;
+//            case R.id.attemptSuccessSuccess:
+//                Match.getInstance().setAttemptSuccess(2);
+//                break;
+//            default:
+//                Match.getInstance().setAttemptSuccess(-1);
+//                break;
+//        }
         switch (levelReached.getCheckedRadioButtonId()) {
             case R.id.levelReachedNone:
                 Match.getInstance().setLevelReached(0);
