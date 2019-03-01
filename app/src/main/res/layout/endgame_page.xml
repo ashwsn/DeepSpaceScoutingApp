@@ -205,7 +205,7 @@
     <Button
         android:id="@+id/toggleTimer"
         android:textSize="36dp"
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:text="Start Timer"
         android:onClick="toggleTimer"

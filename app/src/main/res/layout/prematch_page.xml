@@ -80,7 +80,7 @@
     <Spinner
         style="@style/Dropdown"
         android:id="@+id/teamNumber"
-        android:layout_width="160dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/noShow"
         app:layout_constraintTop_toTopOf="@id/teamNumberText"/>
@@ -99,7 +99,7 @@
     <Spinner
         style="@style/Dropdown"
         android:id="@+id/matchNumber"
-        android:layout_width="160dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/matchNumberText"
         app:layout_constraintStart_toStartOf="@id/noShow" />

@@ -9,6 +9,8 @@ package frc.team449.deepspacescoutingapp.model;
  */
 
 import android.content.Context;
+import android.text.TextUtils;
+import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -63,7 +65,6 @@ public class Match {
     }
 
     public void reset() {
-        matchNumber++;
         teamNumber = 0;
         noShow = false;
         startingLevel = -1;
@@ -92,6 +93,13 @@ public class Match {
         climbTime = 0;
         defense = false;
         comments = "";
+    }
+
+    public void incMatch(Context ctxt) {
+        String[] matches = ctxt.getResources().getStringArray(R.array.matches);
+        if (matchNumber < matches.length - 1 && TextUtils.isDigitsOnly(matches[matchNumber])) {
+            matchNumber ++;
+        }
     }
 
     public String toString(Context ctxt) {

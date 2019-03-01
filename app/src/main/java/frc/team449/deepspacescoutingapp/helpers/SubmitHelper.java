@@ -85,6 +85,7 @@ public class SubmitHelper {
 
         // Reset the match data
         Match.getInstance().reset();
+        Match.getInstance().incMatch(ctxt);
 
         // Go to confirmation page
         Intent toSubmitted = new Intent(ctxt, Submitted.class);
