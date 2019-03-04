@@ -28,7 +28,7 @@
         style="@style/Text"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="@dimen/spaceBetweenFields"
-        android:text="Made it our of the HAB?"
+        android:text="Made it out of the HAB?"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
