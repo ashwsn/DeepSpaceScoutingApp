@@ -130,9 +130,9 @@ public class Match {
                 climbTime+","+ // climb time
                 dead+","+ // dead
                 (defense ? 1: 0) + "," + // defense
-                (comments==null ? "" : comments) + "," + // comments
-                scoutName + "," + // scout name
-                s.format(new Date());
+                (comments==null ? "" : comments.replace('\n','/').replace(',',';')) + "," + // comments
+                scoutName.replace('\n','/').replace(',',';') + "," + // scout name
+                s.format(new Date()) + "\n";
     }
 
     public String checkData() {
