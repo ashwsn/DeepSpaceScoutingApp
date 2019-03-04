@@ -179,7 +179,7 @@
 
     <TextView
         style="@style/Text"
-        android:text="(Only needed for level 2 or 3)"
+        android:text="(Only needed for successful level 2 or 3)"
         android:textSize="24dp"
         android:id="@+id/timeSubtext"
         android:layout_marginStart="@dimen/startMargin"
