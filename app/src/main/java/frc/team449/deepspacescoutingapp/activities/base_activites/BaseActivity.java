@@ -86,6 +86,9 @@ public abstract class BaseActivity extends AppCompatActivity {
             case R.id.startingLevelHelp:
                 helpPopup(R.string.help_startingLevel);
                 break;
+            case R.id.preloadHelp:
+                helpPopup(R.string.help_preload);
+                break;
             case R.id.movedForwardHelp:
                 helpPopup(R.string.help_crossedLine);
                 break;

@@ -193,6 +193,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/startingLevel" />
 
+    <ImageButton
+        android:id="@+id/preloadHelp"
+        style="@style/Help"
+        app:layout_constraintStart_toEndOf="@id/preloadText"
+        app:layout_constraintTop_toTopOf="@id/preloadText"
+        app:layout_constraintBottom_toBottomOf="@+id/preloadText"/>
+
     <!--Preloaded Piece Radio Group-->
     <RadioGroup
         style="@style/Wrap"
@@ -213,17 +220,17 @@
 
         <RadioButton
             style="@style/RadioButton"
-            android:id="@+id/preloadCargo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cargo" />
-
-        <RadioButton
-            style="@style/RadioButton"
             android:id="@+id/preloadHatch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hatch" />
+
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/preloadCargo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cargo" />
 
     </RadioGroup>
 

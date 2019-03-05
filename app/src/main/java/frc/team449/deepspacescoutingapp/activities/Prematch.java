@@ -97,10 +97,10 @@ public class Prematch extends BaseActivity {
                 preload.check(R.id.preloadNone);
                 break;
             case 1:
-                preload.check(R.id.preloadCargo);
+                preload.check(R.id.preloadHatch);
                 break;
             case 2:
-                preload.check(R.id.preloadHatch);
+                preload.check(R.id.preloadCargo);
                 break;
         }
 
@@ -142,10 +142,10 @@ public class Prematch extends BaseActivity {
             case R.id.preloadNone:
                 Match.getInstance().setPreload(0);
                 break;
-            case R.id.preloadCargo:
+            case R.id.preloadHatch:
                 Match.getInstance().setPreload(1);
                 break;
-            case R.id.preloadHatch:
+            case R.id.preloadCargo:
                 Match.getInstance().setPreload(2);
                 break;
             default:
