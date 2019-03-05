@@ -75,6 +75,12 @@
         <item name="android:maxLines">6</item>
     </style>
 
+    <style name="TelopButton">
+        <item name="android:layout_width">@dimen/field_location_size</item>
+        <item name="android:layout_height">@dimen/field_location_size</item>
+        <item name="android:onClick">changeState</item>
+    </style>
+
     <style name="Help">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
