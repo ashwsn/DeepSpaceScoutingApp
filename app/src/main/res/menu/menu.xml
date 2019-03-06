@@ -6,30 +6,30 @@
         android:id="@+id/help_icon"
         android:icon="@drawable/ic_help"
         android:title="Help"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/edit_icon"
         android:icon="@drawable/ic_edit"
         android:title="Edit Submitted Data"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
 
     <item
         android:id="@+id/upload_icon"
         android:icon="@android:drawable/stat_sys_upload_done"
         android:title="Upload Data"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
 
     <item
         android:id="@+id/clear_icon"
         android:icon="@drawable/ic_clear"
         android:title="Clear Data"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
 
     <item
         android:id="@+id/bluetooth_icon"
         android:icon="@android:drawable/stat_sys_data_bluetooth"
         android:title="Bluetooth"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
 
 </menu>

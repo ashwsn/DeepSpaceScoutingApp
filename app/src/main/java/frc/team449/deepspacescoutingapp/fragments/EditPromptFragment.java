@@ -42,7 +42,7 @@ public class EditPromptFragment extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.bluetooth_setup_fragment, container, false);
+        View v = inflater.inflate(R.layout.edit_prompt_fragment, container, false);
 
         Spinner matchSpinner = v.findViewById(R.id.match);
 
