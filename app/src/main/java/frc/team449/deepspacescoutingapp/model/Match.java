@@ -1,25 +1,19 @@
 package frc.team449.deepspacescoutingapp.model;
 
-/*
- * Database is a class that stores all data being collected.
- *
- * Used for preventing data loss between page flips and for submission.
- *
- * Created by Nate on 10/10/2017.
- */
-
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 import frc.team449.deepspacescoutingapp.R;
 
 public class Match {
 
-    private static final Match match = new Match();
+    private static Match match = new Match();
+    private static Match otherMatch;
+    private static String oldMatchString;
 
     // All data being collected
     private String scoutName;
@@ -54,7 +48,10 @@ public class Match {
     private boolean defense;
     private String comments;
 
-    public static Match getInstance(){return match;}
+    public static Match getInstance() {
+        return match;
+    }
+
 
     // Default entries
     private Match() {
@@ -65,40 +62,44 @@ public class Match {
     }
 
     public void reset() {
-        teamNumber = 0;
-        noShow = false;
-        startingLevel = -1;
-        preload = -1;
-//        noAuto = false;
-        movedForward = false;
-        placedPiece = false;
-        doubleAuto = -1;
-//        placedLocation = 0;
-//        achievedNothing = false;
-        dead = -1;
-        teleopPiecePositions = new int[20];
-        numCargoL1 = 0;
-        numCargoL2 = 0;
-        numCargoL3 = 0;
-        numCargoShip = 0;
-        numHatchL1 = 0;
-        numHatchL2 = 0;
-        numHatchL3 = 0;
-        numHatchShip = 0;
-        droppedCargo = 0;
-        droppedHatch = 0;
-        attemptLevel = -1;
-//        attemptSuccess = -1;
-        levelReached = -1;
-        climbTime = 0;
-        defense = false;
-        comments = "";
+        if (!hasOtherMatch()) {
+            teamNumber = 0;
+            noShow = false;
+            startingLevel = -1;
+            preload = -1;
+            movedForward = false;
+            placedPiece = false;
+            doubleAuto = -1;
+            dead = -1;
+            teleopPiecePositions = new int[20];
+            numCargoL1 = 0;
+            numCargoL2 = 0;
+            numCargoL3 = 0;
+            numCargoShip = 0;
+            numHatchL1 = 0;
+            numHatchL2 = 0;
+            numHatchL3 = 0;
+            numHatchShip = 0;
+            droppedCargo = 0;
+            droppedHatch = 0;
+            attemptLevel = -1;
+            levelReached = -1;
+            climbTime = 0;
+            defense = false;
+            comments = "";
+        } else {
+            match = otherMatch;
+            otherMatch = null;
+            oldMatchString = null;
+        }
     }
 
     public void incMatch(Context ctxt) {
-        String[] matches = ctxt.getResources().getStringArray(R.array.matches);
-        if (matchNumber < matches.length - 1 && TextUtils.isDigitsOnly(matches[matchNumber])) {
-            matchNumber ++;
+        if (!hasOtherMatch()) {
+            String[] matches = ctxt.getResources().getStringArray(R.array.matches);
+            if (matchNumber < matches.length - 1 && TextUtils.isDigitsOnly(matches[matchNumber])) {
+                matchNumber++;
+            }
         }
     }
 
@@ -195,6 +196,39 @@ public class Match {
             errors += "Did one robot really place " + (totalHatch > 0 ? totalHatch + " hatches" : "") +
                     (totalHatch > 0 && totalCargo > 0 ? " and " : "") + (totalCargo > 0 ? totalCargo + " cargo" : "") + "?\n";
         return errors.trim();
+    }
+
+    public void loadFromString(String data, Context ctxt) {
+        otherMatch = match;
+        oldMatchString = data;
+
+        String[] dataArray = data.split(",");
+
+        teamNumber = Arrays.asList(ctxt.getResources().getStringArray(R.array.teams)).indexOf(dataArray[0]);
+        matchNumber = Arrays.asList(ctxt.getResources().getStringArray(R.array.matches)).indexOf(dataArray[1]);
+        allianceColor = Integer.parseInt(dataArray[2]);
+        startingLevel = Integer.parseInt(dataArray[3]);
+        noShow = dataArray[4].equals("1");
+        movedForward = dataArray[5].equals("1");
+        placedPiece = dataArray[6].equals("1");
+        doubleAuto   = Integer.parseInt(dataArray[7]);
+        numCargoShip = Integer.parseInt(dataArray[8]);
+        numCargoL1   = Integer.parseInt(dataArray[8]);
+        numCargoL2   = Integer.parseInt(dataArray[9]);
+        numCargoL3   = Integer.parseInt(dataArray[10]);
+        numHatchShip = Integer.parseInt(dataArray[11]);
+        numHatchL1   = Integer.parseInt(dataArray[12]);
+        numHatchL2   = Integer.parseInt(dataArray[13]);
+        numHatchL3   = Integer.parseInt(dataArray[14]);
+        droppedHatch = Integer.parseInt(dataArray[15]);
+        droppedCargo = Integer.parseInt(dataArray[16]);
+        attemptLevel = Integer.parseInt(dataArray[17]);
+        levelReached = Integer.parseInt(dataArray[19]);
+        climbTime    = Integer.parseInt(dataArray[20]);
+        dead         = Integer.parseInt(dataArray[21]);
+        defense = dataArray[22].equals("1");
+        comments = dataArray[23];
+        scoutName = dataArray[24];
     }
 
     // Getters and setters for all match data
@@ -426,5 +460,13 @@ public class Match {
 
     public void setDoubleAuto(int doubleAuto) {
         this.doubleAuto = doubleAuto;
+    }
+
+    public static boolean hasOtherMatch() {
+        return otherMatch != null;
+    }
+
+    public static String getOldMatchString() {
+        return oldMatchString;
     }
 }

@@ -9,6 +9,12 @@
         app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/edit_icon"
+        android:icon="@drawable/ic_edit"
+        android:title="Edit Submitted Data"
+        app:showAsAction="ifRoom"/>
+
+    <item
         android:id="@+id/upload_icon"
         android:icon="@android:drawable/stat_sys_upload_done"
         android:title="Upload Data"

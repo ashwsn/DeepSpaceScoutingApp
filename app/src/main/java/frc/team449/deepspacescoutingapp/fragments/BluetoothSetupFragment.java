@@ -75,14 +75,14 @@ public class BluetoothSetupFragment extends DialogFragment {
         connectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                connect(v);
+                connect();
             }
         });
 
         return v;
     }
 
-    public void connect(View v){
+    public void connect(){
         progressBar.setVisibility(View.VISIBLE);
         final Thread t = new Thread(new Runnable() {
             @Override

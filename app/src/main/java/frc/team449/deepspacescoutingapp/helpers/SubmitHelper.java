@@ -63,6 +63,10 @@ public class SubmitHelper {
 
         String data = Match.getInstance().toString(ctxt);
 
+        if (Match.hasOtherMatch()) {
+            data = "REPLACE" + Match.getOldMatchString() + "\n" + data;
+        }
+
         // Submit over Bluetooth
         boolean written = BluetoothHelper.getInstance().write(data);
 

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/popupBg"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--Minimum width-->
+        <View
+            android:layout_width="400dp"
+            android:layout_height="0dp" />
+
+
+        <TextView
+            style="@style/Text"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Edit Past Matches"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            style="@style/Text"
+            android:textSize="28dp"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Select a match to edit:" />
+
+        <Spinner
+            android:id="@+id/match"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/editButton"
+                style="@style/PageButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Edit" />
+
+            <Button
+                android:id="@+id/closeButton"
+                style="@style/PageButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/popup_cancel_button" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

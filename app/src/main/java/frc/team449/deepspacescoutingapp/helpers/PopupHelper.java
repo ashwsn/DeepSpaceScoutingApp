@@ -9,6 +9,7 @@ import java.io.IOException;
 
 import frc.team449.deepspacescoutingapp.R;
 import frc.team449.deepspacescoutingapp.fragments.BluetoothSetupFragment;
+import frc.team449.deepspacescoutingapp.fragments.EditPromptFragment;
 import frc.team449.deepspacescoutingapp.fragments.PopupFragment;
 
 public class PopupHelper {
@@ -34,6 +35,12 @@ public class PopupHelper {
         } else {
             info("Bluetooth Connected","Bluetooth is already connected.\nIf that is false, or you are having issues, try restarting the app (and maybe the server)", ctxt);
         }
+    }
+
+    public static void editPrompt(AppCompatActivity ctxt) {
+        FragmentManager fm = ctxt.getSupportFragmentManager();
+        EditPromptFragment fragment = new EditPromptFragment();
+        fragment.show(fm, "dialog");
     }
 
     public static void uploader(final AppCompatActivity ctxt) {

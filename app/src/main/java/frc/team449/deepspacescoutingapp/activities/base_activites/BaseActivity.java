@@ -68,6 +68,10 @@ public abstract class BaseActivity extends AppCompatActivity {
             case R.id.clear_icon:
                 PopupHelper.clearData(this);
                 return true;
+            case R.id.edit_icon:
+                saveData();
+                PopupHelper.editPrompt(this);
+                return true;
             case R.id.help_icon:
                 helpPopup(R.string.help_appwide);
                 return true;
@@ -160,4 +164,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
         }
     }
+
+    protected void saveData() {}
 }

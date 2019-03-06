@@ -115,7 +115,8 @@ public class Prematch extends BaseActivity {
         }
     }
 
-    private void saveData() {
+    @Override
+    protected void saveData() {
         switch (allianceColor.getCheckedRadioButtonId()) {
             case R.id.redAlliance:
                 Match.getInstance().setAllianceColor(0);

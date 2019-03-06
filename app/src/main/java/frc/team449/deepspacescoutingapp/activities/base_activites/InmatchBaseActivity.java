@@ -42,8 +42,6 @@ public abstract class InmatchBaseActivity extends BaseActivity {
 
     protected abstract void setupNavButtons();
 
-    protected abstract void saveData();
-
     public void toPrev(View v){
         gotoPage(prevActivity);
     }
