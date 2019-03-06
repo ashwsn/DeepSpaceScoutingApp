@@ -22,15 +22,36 @@
         <!--app:layout_constraintStart_toEndOf="@id/noAutoText"-->
         <!--app:layout_constraintTop_toTopOf="@id/noAutoText" />-->
 
+
+    <TextView
+        android:id="@+id/infoText1"
+        style="@style/Text"
+        android:layout_marginStart="@dimen/startMargin"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        android:textStyle="bold"
+        android:text="DURING SANDSTORM ONLY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/infoText2"
+        style="@style/Text"
+        android:layout_marginStart="@dimen/startMargin"
+        android:layout_marginTop="10dp"
+        android:text="Did the robot ..."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/infoText1" />
+
+
     <!--Moved Forward Text-->
     <TextView
         android:id="@+id/movedForwardText"
         style="@style/Text"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="@dimen/spaceBetweenFields"
-        android:text="Made it out of the HAB?"
+        android:text="Make it out of the HAB?"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/infoText2" />
 
 
     <ImageButton
@@ -54,7 +75,7 @@
         style="@style/Text"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="@dimen/spaceBetweenFields"
-        android:text="Placed Preloaded Piece?"
+        android:text="Place Preloaded Piece?"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/movedForwardText" />
 
@@ -78,7 +99,7 @@
         style="@style/Text"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="@dimen/spaceBetweenFields"
-        android:text="Placed 2nd Piece (sandstorm)?"
+        android:text="Place 2nd Piece?"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/placedText" />
 

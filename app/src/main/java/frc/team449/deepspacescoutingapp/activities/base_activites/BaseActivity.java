@@ -83,6 +83,9 @@ public abstract class BaseActivity extends AppCompatActivity {
             case R.id.noShowHelp:
                 helpPopup(R.string.help_noshow);
                 break;
+            case R.id.matchHelp:
+                helpPopup(R.string.help_matchNum);
+                break;
             case R.id.startingLevelHelp:
                 helpPopup(R.string.help_startingLevel);
                 break;
