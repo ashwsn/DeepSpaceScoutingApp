@@ -78,6 +78,7 @@
     <style name="TelopButton">
         <item name="android:layout_width">@dimen/field_location_size</item>
         <item name="android:layout_height">@dimen/field_location_size</item>
+        <item name="android:background">@drawable/teleop_button_bg</item>
         <item name="android:onClick">changeState</item>
     </style>
 

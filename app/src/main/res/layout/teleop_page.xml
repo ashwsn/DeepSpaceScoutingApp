@@ -21,8 +21,8 @@
     <TextView
         android:id="@+id/infoText1"
         style="@style/Text"
-        android:textSize="22dp"
-        android:text="Click the boxes to place hatches, cargo or both"
+        android:textSize="18dp"
+        android:text="Click the circles to place hatches, cargo or both"
         android:layout_marginStart="@dimen/startMargin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/gamePieceText"/>
@@ -31,7 +31,7 @@
         android:id="@+id/infoText2"
         style="@style/Text"
         android:textStyle="bold"
-        android:textSize="20dp"
+        android:textSize="18dp"
         android:text="INCLUDE pieces placed during Sandstorm"
         android:layout_marginStart="@dimen/startMargin"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
     <TextView
         android:id="@+id/infoText3"
         style="@style/Text"
-        android:textSize="20dp"
+        android:textSize="18dp"
         android:text="(Only those placed by YOUR robot, not the alliance)"
         android:layout_marginStart="@dimen/startMargin"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,10 +50,23 @@
         android:id="@+id/lrocket"
         style="@style/Wrap"
         android:orientation="vertical"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="80dp"
         app:layout_constraintTop_toBottomOf="@id/infoText3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/rrocket">
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/lrocketTopBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bluetop"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/lrocketTopRed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/redtop"/>
 
         <LinearLayout
             style="@style/Wrap"
@@ -94,14 +107,61 @@
 
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/lrocketLeftBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/blueleft"
+        app:layout_constraintEnd_toStartOf="@id/lrocket"
+        app:layout_constraintBottom_toBottomOf="@id/lrocket"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/lrocketRightBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/blueright"
+        app:layout_constraintStart_toEndOf="@id/lrocket"
+        app:layout_constraintBottom_toBottomOf="@id/lrocket"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/lrocketLeftRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/redleft"
+        app:layout_constraintEnd_toStartOf="@id/lrocket"
+        app:layout_constraintBottom_toBottomOf="@id/lrocket"/>
+
+    <ImageView
+        android:id="@+id/lrocketRightRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/redright"
+        app:layout_constraintStart_toEndOf="@id/lrocket"
+        app:layout_constraintBottom_toBottomOf="@id/lrocket"/>
+
     <LinearLayout
         android:id="@+id/rrocket"
         style="@style/Wrap"
         android:orientation="vertical"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="80dp"
         app:layout_constraintTop_toBottomOf="@id/infoText3"
-        app:layout_constraintStart_toEndOf="@id/lrocket"
         app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/rrocketTopBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bluetop"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/rrocketTopRed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/redtop"/>
 
         <LinearLayout
             style="@style/Wrap"
@@ -142,65 +202,138 @@
 
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/rrocketLeftBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/blueleft"
+        app:layout_constraintEnd_toStartOf="@id/rrocket"
+        app:layout_constraintBottom_toBottomOf="@id/rrocket"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/rrocketRightBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/blueright"
+        app:layout_constraintStart_toEndOf="@id/rrocket"
+        app:layout_constraintBottom_toBottomOf="@id/rrocket"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/rrocketLeftRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/redleft"
+        app:layout_constraintEnd_toStartOf="@id/rrocket"
+        app:layout_constraintBottom_toBottomOf="@id/rrocket"/>
+
+    <ImageView
+        android:id="@+id/rrocketRightRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/redright"
+        app:layout_constraintStart_toEndOf="@id/rrocket"
+        app:layout_constraintBottom_toBottomOf="@id/rrocket"/>
+
     <LinearLayout
         android:id="@+id/cargoShip"
         style="@style/Wrap"
-        android:orientation="horizontal"
-        android:layout_marginTop="25dp"
+        android:background="@drawable/cargoship_bg"
+        android:backgroundTint="@color/red"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
         app:layout_constraintTop_toBottomOf="@id/lrocket"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <LinearLayout
-            style="@style/Wrap"
-            android:orientation="vertical">
-            <ImageButton
-                android:id="@+id/c14"
-                style="@style/TelopButton"/>
+        <android.support.constraint.ConstraintLayout
+            style="@style/Wrap">
+            <LinearLayout
+                style="@style/Wrap"
+                android:id="@+id/cargoShip1"
+                android:orientation="horizontal"
+                android:padding="5dp">
+                <ImageButton
+                    android:id="@+id/c11"
+                    style="@style/TelopButton"/>
 
-            <ImageButton
-                android:id="@+id/c24"
-                style="@style/TelopButton"/>
-        </LinearLayout>
+                <ImageButton
+                    android:id="@+id/c12"
+                    style="@style/TelopButton"/>
 
-        <LinearLayout
-            style="@style/Wrap"
-            android:orientation="vertical">
-            <ImageButton
-                android:id="@+id/c13"
-                style="@style/TelopButton"/>
+                <ImageButton
+                    android:id="@+id/c13"
+                    style="@style/TelopButton"/>
 
-            <ImageButton
-                android:id="@+id/c23"
-                style="@style/TelopButton"/>
-        </LinearLayout>
+                <ImageButton
+                    android:id="@+id/c14"
+                    style="@style/TelopButton"/>
+            </LinearLayout>
 
-        <LinearLayout
-            style="@style/Wrap"
-            android:orientation="vertical">
-            <ImageButton
-                android:id="@+id/c12"
-                style="@style/TelopButton"/>
+            <View
+                android:id="@+id/cargoShipOutlineInner1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/cargoship_outline_red"
+                app:layout_constraintStart_toStartOf="@id/cargoShip1"
+                app:layout_constraintEnd_toEndOf="@id/cargoShip1"
+                app:layout_constraintTop_toTopOf="@id/cargoShip1"
+                app:layout_constraintBottom_toBottomOf="@id/cargoShip1" />
+        </android.support.constraint.ConstraintLayout>
 
-            <ImageButton
-                android:id="@+id/c22"
-                style="@style/TelopButton"/>
-        </LinearLayout>
+        <TextView
+            style="@style/Text"
+            android:layout_gravity="center"
+            android:textSize="24sp"
+            android:text="Cargo Ship"/>
 
-        <LinearLayout
-            style="@style/Wrap"
-            android:orientation="vertical">
-            <ImageButton
-                android:id="@+id/c11"
-                style="@style/TelopButton"/>
+        <android.support.constraint.ConstraintLayout
+            style="@style/Wrap">
+            <LinearLayout
+                style="@style/Wrap"
+                android:id="@+id/cargoShip2"
+                android:orientation="horizontal"
+                android:padding="5dp">
+                <ImageButton
+                    android:id="@+id/c21"
+                    style="@style/TelopButton"/>
 
-            <ImageButton
-                android:id="@+id/c21"
-                style="@style/TelopButton"/>
-        </LinearLayout>
+                <ImageButton
+                    android:id="@+id/c22"
+                    style="@style/TelopButton"/>
+
+                <ImageButton
+                    android:id="@+id/c23"
+                    style="@style/TelopButton"/>
+
+                <ImageButton
+                    android:id="@+id/c24"
+                    style="@style/TelopButton"/>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/cargoShipOutlineInner2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/cargoship_outline_red"
+                app:layout_constraintStart_toStartOf="@id/cargoShip2"
+                app:layout_constraintEnd_toEndOf="@id/cargoShip2"
+                app:layout_constraintTop_toTopOf="@id/cargoShip2"
+                app:layout_constraintBottom_toBottomOf="@id/cargoShip2" />
+        </android.support.constraint.ConstraintLayout>
 
     </LinearLayout>
 
+    <View
+        android:id="@+id/cargoShipOutline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/cargoship_outline_red"
+        app:layout_constraintStart_toStartOf="@id/cargoShip"
+        app:layout_constraintEnd_toEndOf="@id/cargoShip"
+        app:layout_constraintTop_toTopOf="@id/cargoShip"
+        app:layout_constraintBottom_toBottomOf="@id/cargoShip" />
 
 
     <LinearLayout

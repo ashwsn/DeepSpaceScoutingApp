@@ -13,6 +13,7 @@
     <color name="fieldDefault">#FFFFFF</color>
     <color name="hintText">#77FFFFFF</color>
     <color name="spinnerArrow">#CCCCCC</color>
+    <color name="rocketbg">#a7a7a7</color>
 
     <color name="red">#a7000a</color>
     <color name="blue">#0a00a7</color>

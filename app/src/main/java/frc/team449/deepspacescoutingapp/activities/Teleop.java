@@ -1,7 +1,9 @@
 package frc.team449.deepspacescoutingapp.activities;
 
+import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -40,6 +42,9 @@ public class Teleop extends InmatchBaseActivity {
     // [l11, l12, l13, l21, l22, l23, c11, c12, c13, c14, c21, c22, c23, c24, r11, r12, r13, r21, r22, r23]
     private int[] piecePositions = new int[20];
 
+    private int[] blueIds = {R.id.lrocketTopBlue, R.id.rrocketTopBlue, R.id.lrocketLeftBlue, R.id.lrocketRightBlue, R.id.rrocketLeftBlue, R.id.rrocketRightBlue};
+    private int[] redIds = {R.id.lrocketTopRed, R.id.rrocketTopRed, R.id.lrocketLeftRed, R.id.lrocketRightRed, R.id.rrocketLeftRed, R.id.rrocketRightRed};
+
     // Displays teleop page on activity call
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +73,25 @@ public class Teleop extends InmatchBaseActivity {
                 locations.put(i, 0);
             }
             setImage(i, locations.get(i));
+        }
+
+        boolean isBlue = Match.getInstance().getAllianceColor() == 1;
+        int blueVisiblity = (isBlue ? View.VISIBLE : View.GONE);
+        int redVisiblity = (!isBlue ? View.VISIBLE : View.GONE);
+        for (int id : blueIds)
+            findViewById(id).setVisibility(blueVisiblity);
+        for (int id: redIds)
+            findViewById(id).setVisibility(redVisiblity);
+        if (isBlue) {
+            findViewById(R.id.cargoShip).setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue)));
+            findViewById(R.id.cargoShipOutlineInner1).setBackground(getDrawable(R.drawable.cargoship_outline_blue));
+            findViewById(R.id.cargoShipOutlineInner2).setBackground(getDrawable(R.drawable.cargoship_outline_blue));
+            findViewById(R.id.cargoShipOutline).setBackground(getDrawable(R.drawable.cargoship_outline_blue));
+        } else {
+            findViewById(R.id.cargoShip).setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
+            findViewById(R.id.cargoShipOutlineInner1).setBackground(getDrawable(R.drawable.cargoship_outline_red));
+            findViewById(R.id.cargoShipOutlineInner2).setBackground(getDrawable(R.drawable.cargoship_outline_red));
+            findViewById(R.id.cargoShipOutline).setBackground(getDrawable(R.drawable.cargoship_outline_red));
         }
     }
 
