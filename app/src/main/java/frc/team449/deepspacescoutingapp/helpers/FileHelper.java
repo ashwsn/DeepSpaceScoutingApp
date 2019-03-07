@@ -1,15 +1,13 @@
 package frc.team449.deepspacescoutingapp.helpers;
 
 import android.content.Context;
-import android.util.Log;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
 
 public class FileHelper {
 
@@ -22,12 +20,17 @@ public class FileHelper {
         fw.close();
     }
 
-    public static String getFromFile(String filename, Context ctxt) throws FileNotFoundException {
+    public static String getFromFile(String filename, Context ctxt) {
         File file = new File(ctxt.getFilesDir(), filename);
         try {
-            return new Scanner(file).useDelimiter("\\Z").next();
-        } catch (NoSuchElementException e) {
-            Log.i("FileHelper.getFromFile","File is empty");
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String st;
+            StringBuilder all = new StringBuilder();
+            while ((st = br.readLine()) != null)
+                all.append(st).append("\n");
+            return all.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
             return "";
         }
     }

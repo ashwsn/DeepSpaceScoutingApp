@@ -104,10 +104,14 @@ public class BluetoothSetupFragment extends DialogFragment {
                     e.printStackTrace();
                 }
 
-                if (BluetoothHelper.getInstance().isConnected()) {
-                    PopupHelper.info(getString(R.string.bluetooth_connected_title),String.format(getString(R.string.bluetooth_connected_prompt),master), (AppCompatActivity) getContext());
-                } else {
-                    PopupHelper.info(getString(R.string.bluetooth_connect_error_title),getString(R.string.bluetooth_connect_error_prompt), (AppCompatActivity) getContext());
+                try {
+                    if (BluetoothHelper.getInstance().isConnected()) {
+                        PopupHelper.info(getString(R.string.bluetooth_connected_title), String.format(getString(R.string.bluetooth_connected_prompt), master), (AppCompatActivity) getContext());
+                    } else {
+                        PopupHelper.info(getString(R.string.bluetooth_connect_error_title), getString(R.string.bluetooth_connect_error_prompt), (AppCompatActivity) getContext());
+                    }
+                } catch (IllegalStateException e) {
+                    e.printStackTrace();
                 }
                 dismiss();
             }

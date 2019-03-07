@@ -5,12 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
 
 import frc.team449.deepspacescoutingapp.R;
 import frc.team449.deepspacescoutingapp.activities.Submitted;
@@ -63,7 +58,7 @@ public class SubmitHelper {
 
         String data = Match.getInstance().toString(ctxt);
 
-        if (Match.hasOtherMatch()) {
+        if (Match.getInstance().isReplacement()) {
             data = "REPLACE" + Match.getOldMatchString() + "\n" + data;
         }
 
