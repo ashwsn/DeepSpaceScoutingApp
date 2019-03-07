@@ -194,7 +194,7 @@ public class Match {
 
     public String softCheck() {
         String errors = "";
-        if (climbTime != 0 && ((climbTime < 3 || levelReached == 2) && climbTime < 6))
+        if (climbTime != 0 && ((climbTime < 2 || levelReached == 2) && climbTime < 7))
             errors += "Did they really climb in " + climbTime + " seconds?\n";
         if (climbTime > 30)
             errors += "Did it really take " + climbTime + " seconds to climb?\n";
