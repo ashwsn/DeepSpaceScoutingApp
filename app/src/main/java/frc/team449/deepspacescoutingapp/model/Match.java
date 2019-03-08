@@ -2,18 +2,23 @@ package frc.team449.deepspacescoutingapp.model;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import frc.team449.deepspacescoutingapp.R;
 
 public class Match {
 
     private static Match match = new Match();
+
     private static Match otherMatch;
     private static String oldMatchString;
+    private boolean isReplacement;
 
     // All data being collected
     private String scoutName;
@@ -23,14 +28,11 @@ public class Match {
     private int startingLevel;
     private int preload;
     private boolean noShow;
-//    private boolean noAuto;
     private boolean movedForward;
     private boolean placedPiece;
     private int doubleAuto;
-//    private int placedLocation;
-//    private boolean achievedNothing;
     private int dead;
-    private int[] teleopPiecePositions; // not transferred to computer
+    private int[] teleopPiecePositions;
     private int numCargoL1;
     private int numCargoL2;
     private int numCargoL3;
@@ -42,7 +44,6 @@ public class Match {
     private int droppedHatch;
     private int droppedCargo;
     private int attemptLevel;
-//    private int attemptSuccess;
     private int levelReached;
     private int climbTime;
     private boolean defense;
@@ -62,7 +63,7 @@ public class Match {
     }
 
     public void reset() {
-        if (!hasOtherMatch()) {
+        if (!isReplacement()) {
             teamNumber = 0;
             noShow = false;
             startingLevel = -1;
@@ -87,6 +88,7 @@ public class Match {
             climbTime = 0;
             defense = false;
             comments = "";
+            isReplacement = false;
         } else {
             match = otherMatch;
             otherMatch = null;
@@ -95,12 +97,20 @@ public class Match {
     }
 
     public void incMatch(Context ctxt) {
-        if (!hasOtherMatch()) {
+        if (!isReplacement()) {
             String[] matches = ctxt.getResources().getStringArray(R.array.matches);
             if (matchNumber < matches.length - 1 && TextUtils.isDigitsOnly(matches[matchNumber])) {
                 matchNumber++;
             }
         }
+    }
+
+    private String intArrayToString(int[] a) {
+        List<String> t = new ArrayList<>();
+        for (int i : a)
+            t.add(String.valueOf(i));
+        Log.i("!!!!toString!!!!",TextUtils.join(".",t));
+        return TextUtils.join(".", t);
     }
 
     public String toString(Context ctxt) {
@@ -131,9 +141,10 @@ public class Match {
                 climbTime+","+ // climb time
                 dead+","+ // dead
                 (defense ? 1: 0) + "," + // defense
-                (comments==null ? "" : comments.replace('\n','/').replace(',',';')) + "," + // comments
-                scoutName.replace('\n','/').replace(',',';') + "," + // scout name
-                s.format(new Date()) + "\n";
+                (comments==null ? "" : comments.replace('\n','/').replace(',','.').replace(';','.')) + "," + // comments
+                scoutName.replace('\n','/').replace(',','.').replace(';','.') + "," + // scout name
+                s.format(new Date()) + "," +
+                intArrayToString(teleopPiecePositions);
     }
 
     public String checkData() {
@@ -162,16 +173,13 @@ public class Match {
                 errors += "Please select a preloaded piece\n";
         if (doubleAuto == -1)
             doubleAuto = 0;
-//        if (attemptSuccess == -1) {
-//            if (attemptLevel != 0)
-//                errors += "Was the climb successful?\n";
-//            else attemptSuccess = 1;
-//        }
         if (attemptLevel == -1) {
-            if (noShow)
+            if (noShow) {
                 attemptLevel = 0;
-            else
+                levelReached = 0;
+            } else {
                 errors += "Please select a HAB level attempt\n";
+            }
         } else if (levelReached == -1) {
             if (attemptLevel != 0)
                 errors += "What HAB level was reached?\n";
@@ -186,7 +194,7 @@ public class Match {
 
     public String softCheck() {
         String errors = "";
-        if (climbTime != 0 && ((climbTime < 3 || levelReached == 2) && climbTime < 6))
+        if (climbTime != 0 && ((climbTime < 2 || levelReached == 2) && climbTime < 7))
             errors += "Did they really climb in " + climbTime + " seconds?\n";
         if (climbTime > 30)
             errors += "Did it really take " + climbTime + " seconds to climb?\n";
@@ -199,36 +207,78 @@ public class Match {
     }
 
     public void loadFromString(String data, Context ctxt) {
-        otherMatch = match;
+        otherMatch = cloneMatch(match);
         oldMatchString = data;
 
         String[] dataArray = data.split(",");
+        isReplacement = true;
 
         teamNumber = Arrays.asList(ctxt.getResources().getStringArray(R.array.teams)).indexOf(dataArray[0]);
         matchNumber = Arrays.asList(ctxt.getResources().getStringArray(R.array.matches)).indexOf(dataArray[1]);
         allianceColor = Integer.parseInt(dataArray[2]);
         startingLevel = Integer.parseInt(dataArray[3]);
-        noShow = dataArray[4].equals("1");
-        movedForward = dataArray[5].equals("1");
-        placedPiece = dataArray[6].equals("1");
-        doubleAuto   = Integer.parseInt(dataArray[7]);
-        numCargoShip = Integer.parseInt(dataArray[8]);
-        numCargoL1   = Integer.parseInt(dataArray[8]);
-        numCargoL2   = Integer.parseInt(dataArray[9]);
-        numCargoL3   = Integer.parseInt(dataArray[10]);
-        numHatchShip = Integer.parseInt(dataArray[11]);
-        numHatchL1   = Integer.parseInt(dataArray[12]);
-        numHatchL2   = Integer.parseInt(dataArray[13]);
-        numHatchL3   = Integer.parseInt(dataArray[14]);
-        droppedHatch = Integer.parseInt(dataArray[15]);
-        droppedCargo = Integer.parseInt(dataArray[16]);
-        attemptLevel = Integer.parseInt(dataArray[17]);
-        levelReached = Integer.parseInt(dataArray[19]);
-        climbTime    = Integer.parseInt(dataArray[20]);
-        dead         = Integer.parseInt(dataArray[21]);
-        defense = dataArray[22].equals("1");
-        comments = dataArray[23];
-        scoutName = dataArray[24];
+        preload = Integer.parseInt(dataArray[4]);
+        noShow = dataArray[5].equals("1");
+        movedForward = dataArray[6].equals("1");
+        placedPiece = dataArray[7].equals("1");
+        doubleAuto   = Integer.parseInt(dataArray[8]);
+        numCargoShip = Integer.parseInt(dataArray[9]);
+        numCargoL1   = Integer.parseInt(dataArray[10]);
+        numCargoL2   = Integer.parseInt(dataArray[11]);
+        numCargoL3   = Integer.parseInt(dataArray[12]);
+        numHatchShip = Integer.parseInt(dataArray[13]);
+        numHatchL1   = Integer.parseInt(dataArray[14]);
+        numHatchL2   = Integer.parseInt(dataArray[15]);
+        numHatchL3   = Integer.parseInt(dataArray[16]);
+        droppedHatch = Integer.parseInt(dataArray[17]);
+        droppedCargo = Integer.parseInt(dataArray[18]);
+        attemptLevel = Integer.parseInt(dataArray[19]);
+        levelReached = Integer.parseInt(dataArray[21]);
+        climbTime    = Integer.parseInt(dataArray[22]);
+        dead         = Integer.parseInt(dataArray[23]);
+        defense = dataArray[24].equals("1");
+        comments = dataArray[25];
+        scoutName = dataArray[26];
+        Log.i("++++Loaded++++",dataArray[28]);
+        String[] stringTeleopPiecePositions = dataArray[28].split("\\.");
+        teleopPiecePositions = new int[stringTeleopPiecePositions.length];
+        for (int i = 0; i < stringTeleopPiecePositions.length; i++) {
+            String s = stringTeleopPiecePositions[i];
+            teleopPiecePositions[i] = Integer.parseInt(s);
+        }
+    }
+
+    private static Match cloneMatch(Match m) {
+        Match newmatch = new Match();
+
+        newmatch.setScoutName(m.getScoutName());
+        newmatch.setMatchNumber(m.getMatchNumber());
+        newmatch.setTeamNumber(m.getTeamNumber());
+        newmatch.setAllianceColor(m.getAllianceColor());
+        newmatch.setStartingLevel(m.getStartingLevel());
+        newmatch.setPreload(m.getPreload());
+        newmatch.setNoShow(m.isNoShow());
+        newmatch.setMovedForward(m.isMovedForward());
+        newmatch.setPlacedPiece(m.isPlacedPiece());
+        newmatch.setDoubleAuto(m.getDoubleAuto());
+        newmatch.setDead(m.getDead());
+        newmatch.setTeleopPiecePositions(m.getTeleopPiecePositions().clone());
+        newmatch.setNumCargoL1(m.getNumCargoL1());
+        newmatch.setNumCargoL2(m.getNumCargoL2());
+        newmatch.setNumCargoL3(m.getNumCargoL3());
+        newmatch.setNumHatchL1(m.getNumHatchL1());
+        newmatch.setNumHatchL2(m.getNumHatchL2());
+        newmatch.setNumHatchL3(m.getNumHatchL3());
+        newmatch.setNumCargoShip(m.getNumCargoShip());
+        newmatch.setNumHatchShip(m.getNumHatchShip());
+        newmatch.setDroppedHatch(m.getDroppedHatch());
+        newmatch.setDroppedCargo(m.getDroppedCargo());
+        newmatch.setAttemptLevel(m.getAttemptLevel());
+        newmatch.setLevelReached(m.getLevelReached());
+        newmatch.setClimbTime(m.getClimbTime());
+        newmatch.setDefense(m.getDefense());
+        newmatch.setComments(m.getComments());
+        return newmatch;
     }
 
     // Getters and setters for all match data
@@ -462,8 +512,8 @@ public class Match {
         this.doubleAuto = doubleAuto;
     }
 
-    public static boolean hasOtherMatch() {
-        return otherMatch != null;
+    public boolean isReplacement() {
+        return isReplacement;
     }
 
     public static String getOldMatchString() {

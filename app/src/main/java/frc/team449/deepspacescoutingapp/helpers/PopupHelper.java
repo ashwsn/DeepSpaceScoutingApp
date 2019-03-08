@@ -48,14 +48,10 @@ public class PopupHelper {
                 "All Data", new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            if (BluetoothHelper.getInstance().isConnected())
-                                BluetoothHelper.getInstance().write(FileHelper.getFromFile("alldata.csv", ctxt));
-                            else
-                                bluetoothPopup(ctxt);
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
-                        }
+                        if (BluetoothHelper.getInstance().isConnected())
+                            BluetoothHelper.getInstance().write(FileHelper.getFromFile("alldata.csv", ctxt));
+                        else
+                            bluetoothPopup(ctxt);
                     }
                 }, "New Data", new Runnable() {
                     @Override
