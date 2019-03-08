@@ -2,6 +2,7 @@
 <resources>
     <string-array name="teams">
         <item>"Team #"</item>
+        <item>449</item>
         <item>116</item>
         <item>316</item>
         <item>339</item>

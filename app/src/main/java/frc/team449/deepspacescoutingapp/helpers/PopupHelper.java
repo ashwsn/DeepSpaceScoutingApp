@@ -79,21 +79,30 @@ public class PopupHelper {
         prompt("Clear Data", "Do you want to clear all locally stored data, or just data which has not been uploaded?\nTo cancel, press anywhere outside of this dialogue.",
                 "All Data", new Runnable() {
                     @Override
-                    public void run() {
-                        try {
-                            FileHelper.clearFile("alldata.csv", ctxt);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                    public void run() {clearConfirm("alldata.csv",ctxt);
                     }
                 }, "New Data", new Runnable() {
                     @Override
                     public void run() {
+                       clearConfirm("newdata.csv",ctxt);
+                    }
+                }, ctxt);
+    }
+
+    public static void clearConfirm(final String file, final AppCompatActivity ctxt) {
+        prompt("Clear Data", "Are you sure you want to clear " + file,
+                "Clear", new Runnable() {
+                    @Override
+                    public void run() {
                         try {
-                            FileHelper.clearFile("newdata.csv", ctxt);
+                            FileHelper.clearFile(file, ctxt);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+                    }
+                }, "Cancel", new Runnable() {
+                    @Override
+                    public void run() {
                     }
                 }, ctxt);
     }
