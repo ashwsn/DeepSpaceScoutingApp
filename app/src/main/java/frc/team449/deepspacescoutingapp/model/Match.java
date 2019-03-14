@@ -324,12 +324,6 @@ public class Match {
         this.startingLevel = startingLevel;
     }
 
-//    public boolean isNoAuto() { return noAuto; }
-
-//    public void setNoAuto(boolean noAuto) {
-//        this.noAuto = noAuto;
-//    }
-
     public boolean isMovedForward() {
         return movedForward;
     }
@@ -343,20 +337,6 @@ public class Match {
     public void setPlacedPiece(boolean placedPiece) {
         this.placedPiece = placedPiece;
     }
-
-//    public int getPlacedLocation() {
-//        return placedLocation;
-//    }
-
-//    public void setPlacedLocation(int placedLocation) {
-//        this.placedLocation = placedLocation;
-//    }
-
-//    public boolean isAchievedNothing() {
-//        return achievedNothing;
-//    }
-
-//    public void setAchievedNothing(boolean achievedNothing) { this.achievedNothing = achievedNothing; }
 
     public int getDead() {
         return dead;
@@ -437,10 +417,6 @@ public class Match {
     public int getAttemptLevel() { return attemptLevel; }
 
     public void setAttemptLevel(int attemptLevel) { this.attemptLevel = attemptLevel; }
-
-//    public int getAttemptSuccess() { return attemptSuccess; }
-//
-//    public void setAttemptSuccess(int attemptSuccess) { this.attemptSuccess = attemptSuccess; }
 
     public int getLevelReached() { return levelReached; }
 

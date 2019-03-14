@@ -13,7 +13,6 @@ import frc.team449.deepspacescoutingapp.model.Match;
 
 public class General extends InmatchBaseActivity {
 
-//    private CheckBox achievedNothing;
     private RadioGroup dead;
     private CheckBox defense;
     private EditText comments;
@@ -23,8 +22,6 @@ public class General extends InmatchBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.general_page);
 
-//        achievedNothing = findViewById(R.id.achievedNothing);
-//        achievedNothing.setChecked(Match.getInstance().isAchievedNothing());
         dead = findViewById(R.id.dead);
         defense = findViewById(R.id.defense);
 
@@ -52,14 +49,13 @@ public class General extends InmatchBaseActivity {
 
     @Override
     protected void setupNavButtons() {
-        prevButton.setText("Endgame");
+        prevButton.setText("< Endgame");
         nextButton.setText("Submit");
         prevActivity = Endgame.class;
     }
 
     @Override
     protected void saveData(){
-//        Match.getInstance().setAchievedNothing(achievedNothing.isChecked());
         Match.getInstance().setDefense(defense.isChecked());
         switch (dead.getCheckedRadioButtonId()) {
             case R.id.alive:

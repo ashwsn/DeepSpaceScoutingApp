@@ -32,14 +32,6 @@ public class Prematch extends BaseActivity {
     private RadioGroup allianceColor;
     private RadioGroup startingLevel;
     private RadioGroup preload;
-//    private Drawable fieldDrawable;
-//    private ImageView fieldImage;
-//    private static final float[] NEGATIVE = {
-//            -1.0f,     0,     0,    0, 255, // red
-//            0, -1.0f,     0,    0, 255, // green
-//            0,     0, -1.0f,    0, 255, // blue
-//            0,     0,     0, 1.0f,   0  // alpha
-//    };
 
     // Displays prematch page on activity call
     @Override
@@ -103,11 +95,6 @@ public class Prematch extends BaseActivity {
                 preload.check(R.id.preloadCargo);
                 break;
         }
-
-//        fieldDrawable = getResources().getDrawable(R.drawable.field_drawing);
-//        fieldDrawable.setColorFilter(new ColorMatrixColorFilter(NEGATIVE));
-//        fieldImage = findViewById(R.id.fieldDrawing);
-//        fieldImage.setImageDrawable(fieldDrawable);
 
         if (justLaunched) {
             justLaunched = false;

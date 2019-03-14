@@ -15,12 +15,9 @@ import frc.team449.deepspacescoutingapp.model.Match;
 public class Sandstorm extends InmatchBaseActivity {
 
     // Input fields
-//    private CheckBox noAuto;
     private CheckBox movedForward;
     private CheckBox placedPiece;
     private RadioGroup doubleAuto;
-//    private Spinner placedLocation;
-//    private ArrayAdapter<CharSequence> locAdapter;
 
     // Displays auto page on activity call
     @Override
@@ -28,8 +25,6 @@ public class Sandstorm extends InmatchBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sandstorm_page);
 
-//        noAuto = findViewById(R.id.noAuto);
-//        noAuto.setChecked(Match.getInstance().isNoAuto());
         movedForward = findViewById(R.id.movedForward);
         movedForward.setChecked(Match.getInstance().isMovedForward());
         placedPiece = findViewById(R.id.placed);
@@ -49,18 +44,12 @@ public class Sandstorm extends InmatchBaseActivity {
                 doubleAuto.check(R.id.placedCargo);
                 break;
         }
-//        placedLocation = findViewById(R.id.placedLocation);
-//        locAdapter = ArrayAdapter.createFromResource(this, R.array.field_locations, R.layout.dropdown);
-//        locAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        placedLocation.setAdapter(locAdapter);
-//        placedLocation.setOnItemSelectedListener(onItemSelectedListener);
-//        placedLocation.setSelection(Match.getInstance().getPlacedLocation());
     }
 
     @Override
     protected void setupNavButtons(){
-        prevButton.setText("Prematch");
-        nextButton.setText("Teleop");
+        prevButton.setText("< Prematch");
+        nextButton.setText("Teleop >");
         prevActivity = Prematch.class;
         nextActivity = Teleop.class;
     }
@@ -84,18 +73,5 @@ public class Sandstorm extends InmatchBaseActivity {
                 break;
         }
     }
-
-//    private static final AdapterView.OnItemSelectedListener onItemSelectedListener = new AdapterView.OnItemSelectedListener(){
-//
-//        @Override
-//        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//            Match.getInstance().setPlacedLocation(position);
-//        }
-//
-//        @Override
-//        public void onNothingSelected(AdapterView<?> parent) {
-//            Match.getInstance().setPlacedLocation(0);
-//        }
-//    };
 
 }

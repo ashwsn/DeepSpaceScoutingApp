@@ -5,25 +5,6 @@
     tools:context="frc.team449.deepspacescoutingapp.activities.General"
     style="@style/Background">
 
-    <!--&lt;!&ndash;Achieved Nothing Text&ndash;&gt;-->
-    <!--<TextView-->
-        <!--style="@style/Text"-->
-        <!--android:id="@+id/achievedNothingText"-->
-        <!--android:layout_marginStart="@dimen/startMargin"-->
-        <!--android:layout_marginTop="15dp"-->
-        <!--android:text="Achieved Nothing?"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent"/>-->
-
-    <!--<CheckBox-->
-        <!--style="@style/Checkbox"-->
-        <!--android:id="@+id/achievedNothing"-->
-        <!--android:layout_marginTop="@dimen/checkboxCenter"-->
-        <!--android:layout_marginStart="95dp"-->
-        <!--android:text=""-->
-        <!--app:layout_constraintTop_toTopOf="@id/achievedNothingText"-->
-        <!--app:layout_constraintStart_toEndOf="@id/achievedNothingText"/>-->
-
     <!--Dead Text-->
     <TextView
         style="@style/Text"

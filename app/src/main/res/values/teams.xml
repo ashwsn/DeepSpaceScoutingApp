@@ -2,44 +2,39 @@
 <resources>
     <string-array name="teams">
         <item>"Team #"</item>
+        <item>346</item>
+        <item>384</item>
+        <item>401</item>
         <item>449</item>
-        <item>116</item>
-        <item>316</item>
-        <item>339</item>
-        <item>611</item>
-        <item>612</item>
-        <item>614</item>
-        <item>620</item>
-        <item>623</item>
-        <item>888</item>
-        <item>1123</item>
-        <item>1418</item>
-        <item>1629</item>
-        <item>1719</item>
-        <item>1731</item>
-        <item>1895</item>
-        <item>2028</item>
-        <item>2186</item>
-        <item>2199</item>
-        <item>2363</item>
-        <item>2421</item>
-        <item>2534</item>
-        <item>2819</item>
-        <item>2961</item>
-        <item>2988</item>
+        <item>539</item>
+        <item>540</item>
+        <item>619</item>
+        <item>977</item>
+        <item>1086</item>
+        <item>1262</item>
+        <item>1522</item>
+        <item>1598</item>
+        <item>1915</item>
+        <item>2068</item>
+        <item>2890</item>
+        <item>3072</item>
+        <item>3136</item>
+        <item>3258</item>
         <item>3274</item>
-        <item>3373</item>
         <item>3455</item>
-        <item>3941</item>
-        <item>4099</item>
-        <item>4242</item>
-        <item>4464</item>
+        <item>3748</item>
+        <item>3939</item>
+        <item>4466</item>
         <item>4505</item>
-        <item>5338</item>
-        <item>5549</item>
-        <item>6504</item>
-        <item>6543</item>
-        <item>6584</item>
-        <item>6863</item>
+        <item>5279</item>
+        <item>5724</item>
+        <item>5804</item>
+        <item>5950</item>
+        <item>5954</item>
+        <item>6194</item>
+        <item>6312</item>
+        <item>6802</item>
+        <item>7879</item>
+        <item>7886</item>
     </string-array>
 </resources>
