@@ -124,4 +124,13 @@
 
     </RadioGroup>
 
+    <TextView
+        style="@style/Text"
+        android:text="PLEASE RECORD THE LOCATION OF PIECES PLACED ON THE NEXT PAGE"
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/startMargin"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        app:layout_constraintTop_toBottomOf="@id/placed2"
+        app:layout_constraintStart_toStartOf="parent"/>
+
 </android.support.constraint.ConstraintLayout>

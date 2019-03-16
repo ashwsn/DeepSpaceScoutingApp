@@ -9,19 +9,31 @@ import java.io.IOException;
 
 import frc.team449.deepspacescoutingapp.R;
 import frc.team449.deepspacescoutingapp.activities.Submitted;
+import frc.team449.deepspacescoutingapp.model.ErrorInfo;
 import frc.team449.deepspacescoutingapp.model.Match;
 
 public class SubmitHelper {
     public static void submit(final Context ctxt) {
-        String errors = Match.getInstance().checkData();
-        if (!errors.equals("")) {
-            PopupHelper.info(ctxt.getString(R.string.data_errors_title), errors, (AppCompatActivity) ctxt);
+        final ErrorInfo errors = Match.getInstance().checkData();
+        if (!errors.getErrorString().equals("")) {
+            PopupHelper.prompt(ctxt.getString(R.string.data_errors_title), errors.getErrorString(), "Fix It", new Runnable() {
+                @Override
+                public void run() {
+                    Log.i("!!!!!!!!!!!!!","HARD ERRORS!!!!!!!!!");
+                    ctxt.startActivity(new Intent(ctxt, errors.getPageToGoTo()));
+                }
+            }, "", new Runnable() {
+                @Override
+                public void run() {}
+            }, (AppCompatActivity) ctxt);
         } else {
-            String softErrors = Match.getInstance().softCheck();
-            if (!softErrors.equals("")) {
-                PopupHelper.prompt("Is this data correct?", softErrors, "Fix It", new Runnable() {
+            ErrorInfo softErrors = Match.getInstance().softCheck();
+            if (!softErrors.getErrorString().equals("")) {
+                PopupHelper.prompt("Is this data correct?", softErrors.getErrorString(), "Fix It", new Runnable() {
                     @Override
                     public void run() {
+                        Log.i("@@@@@@@@@@@@@@@","SOFT ERRORS!!!!!!!!!");
+                        ctxt.startActivity(new Intent(ctxt, errors.getPageToGoTo()));
                     }
                 }, "Submit", new Runnable() {
                     @Override

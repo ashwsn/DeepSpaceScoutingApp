@@ -95,7 +95,6 @@ public class PopupFragment  extends DialogFragment {
                 addClickListeners();
             }
         }
-
     }
 
     public void setActions(Runnable action1, Runnable action2) {

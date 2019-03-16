@@ -11,6 +11,9 @@ import java.util.Date;
 import java.util.List;
 
 import frc.team449.deepspacescoutingapp.R;
+import frc.team449.deepspacescoutingapp.activities.Endgame;
+import frc.team449.deepspacescoutingapp.activities.Prematch;
+import frc.team449.deepspacescoutingapp.activities.Teleop;
 
 public class Match {
 
@@ -147,30 +150,42 @@ public class Match {
                 intArrayToString(teleopPiecePositions);
     }
 
-    public String checkData() {
-        String errors = "";
+    public ErrorInfo checkData() {
+        ErrorInfo error = new ErrorInfo();
         // check for errors
-        if (scoutName.equals(""))
-            errors += "Scout name cannot be empty\n";
-        if (matchNumber == 0)
-            errors += "Please select a match number\n";
-        if (teamNumber == 0)
-            errors += "Please select a team number\n";
-        if (allianceColor == -1)
-            errors += "Please select the alliance color\n";
-        if (dead == -1)
-            dead = 0;
-        if (startingLevel == -1){
-            if (noShow)
-                startingLevel = 0;
-            else
-                errors += "Please select a starting level\n";
+        if (scoutName.equals("")) {
+            error.addToErrorString("Scout name cannot be empty");
+            error.addPageToGoTo(Prematch.class);
         }
-        if (preload == -1)
-            if (noShow)
-                preload = 0;
-            else
-                errors += "Please select a preloaded piece\n";
+        if (matchNumber == 0) {
+            error.addToErrorString("Please select a match number");
+            error.addPageToGoTo(Prematch.class);
+        }
+        if (teamNumber == 0) {
+            error.addToErrorString("Please select a team number");
+            error.addPageToGoTo(Prematch.class);
+        }
+        if (allianceColor == -1) {
+            error.addToErrorString("Please select the alliance color");
+            error.addPageToGoTo(Prematch.class);
+        }
+        if (dead == -1) {
+            dead = 0;
+        }
+        if (startingLevel == -1){
+            if (noShow) startingLevel = 0;
+            else {
+                error.addToErrorString("Please select a starting level");
+                error.addPageToGoTo(Prematch.class);
+            }
+        }
+        if (preload == -1) {
+            if (noShow) preload = 0;
+            else {
+                error.addToErrorString("Please select a preloaded piece");
+                error.addPageToGoTo(Prematch.class);
+            }
+        }
         if (doubleAuto == -1)
             doubleAuto = 0;
         if (attemptLevel == -1) {
@@ -178,32 +193,42 @@ public class Match {
                 attemptLevel = 0;
                 levelReached = 0;
             } else {
-                errors += "Please select a HAB level attempt\n";
+                error.addToErrorString("Please select a HAB level attempt");
+                error.addPageToGoTo(Endgame.class);
             }
         } else if (levelReached == -1) {
-            if (attemptLevel != 0)
-                errors += "What HAB level was reached?\n";
-            else levelReached = 0;
+            if (attemptLevel != 0) {
+                error.addToErrorString("What HAB level was reached?");
+                error.addPageToGoTo(Endgame.class);
+            } else levelReached = 0;
         }
-        if (climbTime == 0 && (levelReached > 1))
-            errors += "How long did it take to climb?\n";
+        if (climbTime == 0 && (levelReached > 1)) {
+            error.addToErrorString("How long did it take to climb?");
+            error.addPageToGoTo(Endgame.class);
+        }
         if (levelReached < 2 && climbTime != 0)
             climbTime = 0;
-        return errors.trim();
+        return error;
     }
 
-    public String softCheck() {
-        String errors = "";
-        if (climbTime != 0 && ((climbTime < 2 || levelReached == 2) && climbTime < 7))
-            errors += "Did they really climb in " + climbTime + " seconds?\n";
-        if (climbTime > 30)
-            errors += "Did it really take " + climbTime + " seconds to climb?\n";
+    public ErrorInfo softCheck() {
+        ErrorInfo error = new ErrorInfo();
+        if (climbTime != 0 && ((climbTime < 2 || levelReached == 2) && climbTime < 7)) {
+            error.addToErrorString("Did they really climb in " + climbTime + " seconds?");
+            error.addPageToGoTo(Endgame.class);
+        }
+        if (climbTime > 30) {
+            error.addToErrorString("Did it really take " + climbTime + " seconds to climb?");
+            error.addPageToGoTo(Endgame.class);
+        }
         int totalHatch = numHatchShip + numHatchL1 + numHatchL2 + numHatchL3;
         int totalCargo = numCargoShip + numCargoL1 + numCargoL2 + numCargoL3;
-        if (totalHatch + totalCargo > 6)
-            errors += "Did one robot really place " + (totalHatch > 0 ? totalHatch + " hatches" : "") +
-                    (totalHatch > 0 && totalCargo > 0 ? " and " : "") + (totalCargo > 0 ? totalCargo + " cargo" : "") + "?\n";
-        return errors.trim();
+        if (totalHatch + totalCargo > 8) {
+            error.addToErrorString("Did one robot really place " + (totalHatch > 0 ? totalHatch + " hatches" : "") +
+                    (totalHatch > 0 && totalCargo > 0 ? " and " : "") + (totalCargo > 0 ? totalCargo + " cargo" : "") + "?");
+            error.addPageToGoTo(Teleop.class);
+        }
+        return error;
     }
 
     public void loadFromString(String data, Context ctxt) {
