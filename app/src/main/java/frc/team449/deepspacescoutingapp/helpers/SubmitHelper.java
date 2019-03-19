@@ -19,7 +19,6 @@ public class SubmitHelper {
             PopupHelper.prompt(ctxt.getString(R.string.data_errors_title), errors.getErrorString(), "Fix It", new Runnable() {
                 @Override
                 public void run() {
-                    Log.i("!!!!!!!!!!!!!","HARD ERRORS!!!!!!!!!");
                     ctxt.startActivity(new Intent(ctxt, errors.getPageToGoTo()));
                 }
             }, "", new Runnable() {
@@ -27,13 +26,12 @@ public class SubmitHelper {
                 public void run() {}
             }, (AppCompatActivity) ctxt);
         } else {
-            ErrorInfo softErrors = Match.getInstance().softCheck();
+            final ErrorInfo softErrors = Match.getInstance().softCheck();
             if (!softErrors.getErrorString().equals("")) {
                 PopupHelper.prompt("Is this data correct?", softErrors.getErrorString(), "Fix It", new Runnable() {
                     @Override
                     public void run() {
-                        Log.i("@@@@@@@@@@@@@@@","SOFT ERRORS!!!!!!!!!");
-                        ctxt.startActivity(new Intent(ctxt, errors.getPageToGoTo()));
+                        ctxt.startActivity(new Intent(ctxt, softErrors.getPageToGoTo()));
                     }
                 }, "Submit", new Runnable() {
                     @Override
@@ -103,5 +101,4 @@ public class SubmitHelper {
         ctxt.startActivity(toSubmitted);
 
     }
-
 }

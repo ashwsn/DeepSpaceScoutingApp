@@ -38,12 +38,7 @@ public class ErrorInfo {
     }
 
     public void addPageToGoTo(Class pageToGoTo) {
-        Log.i("============", String.valueOf(order.get(this.pageToGoTo)));
-        Log.i("++++++++++++", String.valueOf(order.get(pageToGoTo)));
         if (this.pageToGoTo == null || order.get(this.pageToGoTo) > order.get(pageToGoTo))
             this.pageToGoTo = pageToGoTo;
-
-        Log.i("!!!!!!!!!!!!", String.valueOf(order.get(this.pageToGoTo)));
-        Log.i("------------", String.valueOf(order.get(pageToGoTo)));
     }
 }

@@ -84,6 +84,7 @@ public class PopupFragment  extends DialogFragment {
             button1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (action1 != null) action1.run();
                     dismiss();
                 }
             });
