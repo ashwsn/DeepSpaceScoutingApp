@@ -23,8 +23,6 @@ public class General extends InmatchBaseActivity {
         setContentView(R.layout.general_page);
 
         dead = findViewById(R.id.dead);
-        defense = findViewById(R.id.defense);
-
         switch (Match.getInstance().getDead()) {
             case -1:
                 dead.clearCheck();
@@ -42,6 +40,9 @@ public class General extends InmatchBaseActivity {
                 dead.check(R.id.deadAll);
                 break;
         }
+
+        defense = findViewById(R.id.defense);
+        defense.setChecked(Match.getInstance().getDefense());
 
         comments = findViewById(R.id.comments);
         comments.setText(Match.getInstance().getComments());
