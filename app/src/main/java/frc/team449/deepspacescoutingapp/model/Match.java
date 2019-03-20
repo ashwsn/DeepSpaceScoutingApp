@@ -22,6 +22,7 @@ public class Match {
     private static Match otherMatch;
     private static String oldMatchString;
     private boolean isReplacement;
+    private boolean isRecovery;
 
     // All data being collected
     private String scoutName;
@@ -91,7 +92,6 @@ public class Match {
             climbTime = 0;
             defense = false;
             comments = "";
-            isReplacement = false;
         } else {
             match = otherMatch;
             otherMatch = null;
@@ -100,7 +100,7 @@ public class Match {
     }
 
     public void incMatch(Context ctxt) {
-        if (!isReplacement()) {
+        if (!isRecovery) {
             String[] matches = ctxt.getResources().getStringArray(R.array.matches);
             if (matchNumber < matches.length - 1 && TextUtils.isDigitsOnly(matches[matchNumber])) {
                 matchNumber++;
@@ -119,7 +119,7 @@ public class Match {
     public String toString(Context ctxt) {
         SimpleDateFormat s = new SimpleDateFormat("dd.MM HH:mm:ss");
         // each instance variable separated by a comma
-        return  ctxt.getResources().getStringArray(R.array.teams)[teamNumber]+","+ // team #
+        return  (ctxt.getResources().getStringArray(R.array.teams)[teamNumber]+","+ // team #
                 ctxt.getResources().getStringArray(R.array.matches)[matchNumber]+","+ // match #
                 allianceColor + "," + //alliance color
                 startingLevel+","+ // starting level
@@ -144,10 +144,10 @@ public class Match {
                 climbTime+","+ // climb time
                 dead+","+ // dead
                 (defense ? 1: 0) + "," + // defense
-                (comments==null ? "" : comments.replace('\n','/').replace(',','.').replace(';','.')) + "," + // comments
-                scoutName.replace('\n','/').replace(',','.').replace(';','.') + "," + // scout name
+                (comments==null ? "" : comments.replace(',','.')) + "," + // comments
+                scoutName.replace(',','.') + "," + // scout name
                 s.format(new Date()) + "," +
-                intArrayToString(teleopPiecePositions);
+                intArrayToString(teleopPiecePositions)).replace('\n','/').replace(';','.').replace('"','\'');
     }
 
     public ErrorInfo checkData() {
@@ -258,13 +258,12 @@ public class Match {
         droppedHatch = Integer.parseInt(dataArray[17]);
         droppedCargo = Integer.parseInt(dataArray[18]);
         attemptLevel = Integer.parseInt(dataArray[19]);
-        levelReached = Integer.parseInt(dataArray[21]);
+        levelReached = Integer.parseInt(dataArray[21]); //yup, 20 is supposed to get skipped
         climbTime    = Integer.parseInt(dataArray[22]);
         dead         = Integer.parseInt(dataArray[23]);
         defense = dataArray[24].equals("1");
         comments = dataArray[25];
         scoutName = dataArray[26];
-        Log.i("++++Loaded++++",dataArray[28]);
         String[] stringTeleopPiecePositions = dataArray[28].split("\\.");
         teleopPiecePositions = new int[stringTeleopPiecePositions.length];
         for (int i = 0; i < stringTeleopPiecePositions.length; i++) {
@@ -275,6 +274,8 @@ public class Match {
 
     private static Match cloneMatch(Match m) {
         Match newmatch = new Match();
+
+        newmatch.isRecovery = true;
 
         newmatch.setScoutName(m.getScoutName());
         newmatch.setMatchNumber(m.getMatchNumber());
