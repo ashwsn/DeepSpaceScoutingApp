@@ -48,12 +48,15 @@ public class EditPromptFragment extends DialogFragment {
         String[] splitMatch;
         for (String match : data) {
             splitMatch = match.split(",");
-            if (splitMatch.length > 1 && !splitMatch[0].contains("REPLACE")) {
+            if (splitMatch[0].contains("REPLACE")) {
+                int i = allData.indexOf(match.substring("REPLACE".length()));
+                allData.remove(i);
+                matches.remove(i);
+            } else if (splitMatch.length > 1) {
                 matches.add(0, "Match " + splitMatch[1] + ", Team " + splitMatch[0]);
-                allData.add(0,match);
+                allData.add(0, match);
             }
         }
-
 
         final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getActivity(),
                 R.layout.dropdown, matches);
