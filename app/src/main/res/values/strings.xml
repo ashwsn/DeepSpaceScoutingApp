@@ -11,7 +11,7 @@
     <string name="data_errors_title">Your data have errors.</string>
 
     <string name="not_connected_title">Bluetooth not connected.</string>
-    <string name="not_connected_prompt">This device is not connected to Bluetooth. The data you submit will be stored locally, but not sent to the scouting laptop.\nWould you like to connect now?\n\nIf you are not a scouting leader, DO NOT SUBMIT. Try to connect, if you can\'t, get a scouting leader. If a scouting leader has given you permission to submit, only then can you do so. Make sure to upload new data once you can connect (with the upload icon up top).</string>
+    <string name="not_connected_prompt">This device is not connected to Bluetooth. The data you submit will be stored locally, but not sent to the scouting laptop.\nWould you like to connect now?\n\nPlease try to connect before submitting, only submit if it fails to connect (and tell a scouting leader).</string>
 
     <string name="bluetooth_connected_title">Bluetooth Connected</string>
     <string name="bluetooth_connected_prompt">Bluetooth has successfully connected to %1$s</string>
@@ -36,7 +36,7 @@
     <string name="help_default">Please talk to a scouting leader for help.</string>
     <string name="help_noshow">If the team\'s robot is not on the field for this match, select the box.</string>
     <string name="help_matchNum">Record the match number.\nIf this is a rematch, just put the match number that it is a rematch for.</string>
-    <string name="help_placement">Each time the robot you are watching places a game piece, record it here.\nClick a circle once to place a hatch, twice for a cargo, and three times if they place both. A fourth click will clear it.\n\nIt does not matter which rocket is which, or which side of the cargo ship is which.\n\nPlease only record pieces placed by YOUR robot, and INCLUDE those placed in the Sandstorm period.</string>
+    <string name="help_placement">Each time the robot you are watching places a game piece, record it here.\nClick a circle once to place a hatch, twice for a cargo, and three times if they place both. A fourth click will clear it.\n\nIt does not matter which rocket is which, or which side of the cargo ship is which.\n\nPlease only record pieces placed by YOUR robot, and INCLUDE those placed in the Sandstorm period.\n\nIf the robot places multiple cargo in one location, don't record it.</string>
     <string name="help_drop">Each time your robot drops a game piece that they had previously been holding, for any reason (including if they are trying to place it and miss), please record it here by clicking the + button.</string>
     <string name="help_startingLevel">What HAB level did the robot start on?\nLevel 1: the low base with a small ramp\nLevel 2: the two short platforms about 6 inches above level 1.\nIf the robot is a no show, you can leave this blank (or just put 1).</string>
     <string name="help_preload">What game element did the robot start the match with?</string>
