@@ -186,6 +186,9 @@ public class Match {
                 error.addPageToGoTo(Prematch.class);
             }
         }
+        if (preload == 0 && placedPiece){
+            error.addToErrorString("How did they place the preloaded piece if they didn't preload?");
+        }
         if (doubleAuto == -1)
             doubleAuto = 0;
         if (attemptLevel == -1) {
@@ -213,7 +216,7 @@ public class Match {
 
     public ErrorInfo softCheck() {
         ErrorInfo error = new ErrorInfo();
-        if (climbTime != 0 && ((climbTime < 2 || levelReached == 2) && climbTime < 7)) {
+        if (climbTime != 0 && ((climbTime < 2 && levelReached == 2) || climbTime < 7)) {
             error.addToErrorString("Did they really climb in " + climbTime + " seconds?");
             error.addPageToGoTo(Endgame.class);
         }
