@@ -71,7 +71,7 @@ public class General extends InmatchBaseActivity {
             case R.id.deadAll:
                 Match.getInstance().setDead(3);
             default:
-                Match.getInstance().setDead(4);
+                Match.getInstance().setDead(-1);
                 break;
         }
         Match.getInstance().setComments(comments.getText().toString());
