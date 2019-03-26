@@ -80,10 +80,14 @@ public class BluetoothHelper {
         } else Log.e("BluetoothHelper.initCon","blueAdapter is null");
     }
 
-    boolean write(String s) {
+    boolean write(String str) {
         if (socket != null && socket.isConnected()) {
             try {
-                outputStream.write(s.getBytes());
+                // Only submit one line at a time so it doesn't exceed the size and get cut off
+                for (String s : str.split("\n")) {
+                    outputStream.write(s.getBytes());
+                    outputStream.flush();
+                }
                 return true;
             } catch (NullPointerException e) {
                 e.printStackTrace();
