@@ -226,7 +226,7 @@ public class Match {
         }
         int totalHatch = numHatchShip + numHatchL1 + numHatchL2 + numHatchL3;
         int totalCargo = numCargoShip + numCargoL1 + numCargoL2 + numCargoL3;
-        if (totalHatch + totalCargo > 8) {
+        if (totalHatch + totalCargo > 9) {
             error.addToErrorString("Did one robot really place " + (totalHatch > 0 ? totalHatch + " hatches" : "") +
                     (totalHatch > 0 && totalCargo > 0 ? " and " : "") + (totalCargo > 0 ? totalCargo + " cargo" : "") + "?");
             error.addPageToGoTo(Teleop.class);

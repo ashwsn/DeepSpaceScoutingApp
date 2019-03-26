@@ -126,7 +126,7 @@
 
     <TextView
         style="@style/Text"
-        android:text="Record pieces placed in Sandstorm on the next page as well"
+        android:text="Include pieces placed in Sandstorm on the next page"
         android:textStyle="bold"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginEnd="@dimen/startMargin"
