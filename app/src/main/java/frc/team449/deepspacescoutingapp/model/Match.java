@@ -92,6 +92,7 @@ public class Match {
             climbTime = 0;
             defense = false;
             comments = "";
+            isRecovery = false;
         } else {
             match = otherMatch;
             otherMatch = null;
