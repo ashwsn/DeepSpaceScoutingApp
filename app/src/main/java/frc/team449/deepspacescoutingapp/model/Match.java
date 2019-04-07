@@ -217,7 +217,7 @@ public class Match {
 
     public ErrorInfo softCheck() {
         ErrorInfo error = new ErrorInfo();
-        if (climbTime != 0 && ((climbTime < 2 && levelReached == 2) || climbTime < 7)) {
+        if (climbTime != 0 && ((climbTime < 2 && levelReached == 2) || climbTime < 4)) {
             error.addToErrorString("Did they really climb in " + climbTime + " seconds?");
             error.addPageToGoTo(Endgame.class);
         }
@@ -227,7 +227,7 @@ public class Match {
         }
         int totalHatch = numHatchShip + numHatchL1 + numHatchL2 + numHatchL3;
         int totalCargo = numCargoShip + numCargoL1 + numCargoL2 + numCargoL3;
-        if (totalHatch + totalCargo > 9) {
+        if (totalHatch + totalCargo > 12) {
             error.addToErrorString("Did one robot really place " + (totalHatch > 0 ? totalHatch + " hatches" : "") +
                     (totalHatch > 0 && totalCargo > 0 ? " and " : "") + (totalCargo > 0 ? totalCargo + " cargo" : "") + "?");
             error.addPageToGoTo(Teleop.class);
