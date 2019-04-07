@@ -205,13 +205,13 @@ public class Match {
                 error.addToErrorString("What HAB level was reached?");
                 error.addPageToGoTo(Endgame.class);
             } else levelReached = 0;
+        } else if (levelReached < 2 && climbTime != 0) {
+            climbTime = 0;
         }
         if (climbTime == 0 && (levelReached > 1)) {
             error.addToErrorString("How long did it take to climb?");
             error.addPageToGoTo(Endgame.class);
         }
-        if (levelReached < 2 && climbTime != 0)
-            climbTime = 0;
         return error;
     }
 
