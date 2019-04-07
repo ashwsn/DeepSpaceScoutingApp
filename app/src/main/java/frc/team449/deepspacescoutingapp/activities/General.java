@@ -15,6 +15,7 @@ public class General extends InmatchBaseActivity {
 
     private RadioGroup dead;
     private CheckBox defense;
+    private RadioGroup defenseQuality;
     private EditText comments;
 
     @Override
@@ -44,6 +45,25 @@ public class General extends InmatchBaseActivity {
         defense = findViewById(R.id.defense);
         defense.setChecked(Match.getInstance().getDefense());
 
+        defenseQuality = findViewById(R.id.defenseQuality);
+        switch (Match.getInstance().getDefenseQuality()) {
+            case -1:
+                dead.clearCheck();
+                break;
+            case 0:
+                dead.check(R.id.defenseNA);
+                break;
+            case 1:
+                dead.check(R.id.defenseBad);
+                break;
+            case 2:
+                dead.check(R.id.defenseNeutral);
+                break;
+            case 3:
+                dead.check(R.id.defenseGood);
+                break;
+        }
+
         comments = findViewById(R.id.comments);
         comments.setText(Match.getInstance().getComments());
     }
@@ -69,6 +89,23 @@ public class General extends InmatchBaseActivity {
                 Match.getInstance().setDead(2);
                 break;
             case R.id.deadAll:
+                Match.getInstance().setDead(3);
+            default:
+                Match.getInstance().setDead(-1);
+                break;
+        }
+
+        switch (defenseQuality.getCheckedRadioButtonId()) {
+            case R.id.defenseNA:
+                Match.getInstance().setDead(0);
+                break;
+            case R.id.defenseBad:
+                Match.getInstance().setDead(1);
+                break;
+            case R.id.defenseNeutral:
+                Match.getInstance().setDead(2);
+                break;
+            case R.id.defenseGood:
                 Match.getInstance().setDead(3);
             default:
                 Match.getInstance().setDead(-1);

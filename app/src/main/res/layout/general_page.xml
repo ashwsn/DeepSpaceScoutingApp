@@ -78,6 +78,63 @@
         app:layout_constraintTop_toTopOf="@id/defenseText"
         app:layout_constraintStart_toEndOf="@id/defenseText"/>
 
+    <TextView
+        style="@style/Text"
+        android:id="@+id/defenseQualityText"
+        android:layout_marginStart="@dimen/startMargin"
+        android:layout_marginTop="15dp"
+        android:text="How was the defense?"
+        app:layout_constraintTop_toBottomOf="@id/defense"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <ImageButton
+        android:id="@+id/defenseQualityHelp"
+        style="@style/Help"
+        app:layout_constraintStart_toEndOf="@id/defenseQualityText"
+        app:layout_constraintTop_toTopOf="@id/defenseQualityText"
+        app:layout_constraintBottom_toBottomOf="@+id/defenseQualityText"/>
+
+    <RadioGroup
+        style="@style/Wrap"
+        android:id="@+id/defenseQuality"
+        android:layout_marginTop="@dimen/spaceBetweenFields"
+        android:layout_marginStart="@dimen/startMargin"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/defenseQualityText">
+
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/defenseNA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="N/A" />
+
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/defenseBad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/thumb_down"/>
+
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/defenseNeutral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/thumbs_both" />
+
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/defenseGood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/thumb_up" />
+
+    </RadioGroup>
+
     <!--Comments Text-->
     <TextView
         style="@style/Text"
@@ -85,7 +142,7 @@
         android:id="@+id/commentsText"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="@dimen/spaceBetweenFields"
-        app:layout_constraintTop_toBottomOf="@id/defense"
+        app:layout_constraintTop_toBottomOf="@id/defenseQuality"
         app:layout_constraintStart_toStartOf="parent" />
 
     <!--Comments-->

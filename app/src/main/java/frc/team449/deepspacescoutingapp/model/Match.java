@@ -51,6 +51,7 @@ public class Match {
     private int levelReached;
     private int climbTime;
     private boolean defense;
+    private int defenseQuality;
     private String comments;
 
     public static Match getInstance() {
@@ -91,6 +92,7 @@ public class Match {
             levelReached = -1;
             climbTime = 0;
             defense = false;
+            defenseQuality = -1;
             comments = "";
             isRecovery = false;
         } else {
@@ -145,6 +147,7 @@ public class Match {
                 climbTime+","+ // climb time
                 dead+","+ // dead
                 (defense ? 1: 0) + "," + // defense
+                defenseQuality+","+ // defense quality
                 (comments==null ? "" : comments.replace(',','.')) + "," + // comments
                 scoutName.replace(',','.') + "," + // scout name
                 s.format(new Date()) + "," +
@@ -266,9 +269,10 @@ public class Match {
         climbTime    = Integer.parseInt(dataArray[22]);
         dead         = Integer.parseInt(dataArray[23]);
         defense = dataArray[24].equals("1");
-        comments = dataArray[25];
-        scoutName = dataArray[26];
-        String[] stringTeleopPiecePositions = dataArray[28].split("\\.");
+        defenseQuality = Integer.parseInt(dataArray[25]);
+        comments = dataArray[26];
+        scoutName = dataArray[27];
+        String[] stringTeleopPiecePositions = dataArray[29].split("\\.");
         teleopPiecePositions = new int[stringTeleopPiecePositions.length];
         for (int i = 0; i < stringTeleopPiecePositions.length; i++) {
             String s = stringTeleopPiecePositions[i];
@@ -307,6 +311,7 @@ public class Match {
         newmatch.setLevelReached(m.getLevelReached());
         newmatch.setClimbTime(m.getClimbTime());
         newmatch.setDefense(m.getDefense());
+        newmatch.setDefenseQuality(m.getDefenseQuality());
         newmatch.setComments(m.getComments());
         return newmatch;
     }
@@ -524,5 +529,13 @@ public class Match {
 
     public static String getOldMatchString() {
         return oldMatchString;
+    }
+
+    public int getDefenseQuality() {
+        return defenseQuality;
+    }
+
+    public void setDefenseQuality(int defenseQuality) {
+        this.defenseQuality = defenseQuality;
     }
 }
