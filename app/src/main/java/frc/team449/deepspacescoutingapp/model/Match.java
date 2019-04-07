@@ -50,8 +50,7 @@ public class Match {
     private int attemptLevel;
     private int levelReached;
     private int climbTime;
-    private boolean defense;
-    private int defenseQuality;
+    private int defense;
     private String comments;
 
     public static Match getInstance() {
@@ -91,8 +90,7 @@ public class Match {
             attemptLevel = -1;
             levelReached = -1;
             climbTime = 0;
-            defense = false;
-            defenseQuality = -1;
+            defense = -1;
             comments = "";
             isRecovery = false;
         } else {
@@ -146,8 +144,7 @@ public class Match {
                 levelReached+","+ // hab level reached
                 climbTime+","+ // climb time
                 dead+","+ // dead
-                (defense ? 1: 0) + "," + // defense
-                defenseQuality+","+ // defense quality
+                defense +","+ // defense quality
                 (comments==null ? "" : comments.replace(',','.')) + "," + // comments
                 scoutName.replace(',','.') + "," + // scout name
                 s.format(new Date()) + "," +
@@ -268,11 +265,10 @@ public class Match {
         levelReached = Integer.parseInt(dataArray[21]); //yup, 20 is supposed to get skipped
         climbTime    = Integer.parseInt(dataArray[22]);
         dead         = Integer.parseInt(dataArray[23]);
-        defense = dataArray[24].equals("1");
-        defenseQuality = Integer.parseInt(dataArray[25]);
-        comments = dataArray[26];
-        scoutName = dataArray[27];
-        String[] stringTeleopPiecePositions = dataArray[29].split("\\.");
+        defense      = Integer.parseInt(dataArray[24]);
+        comments = dataArray[25];
+        scoutName = dataArray[26];
+        String[] stringTeleopPiecePositions = dataArray[28].split("\\."); //yep, skip 27
         teleopPiecePositions = new int[stringTeleopPiecePositions.length];
         for (int i = 0; i < stringTeleopPiecePositions.length; i++) {
             String s = stringTeleopPiecePositions[i];
@@ -311,7 +307,6 @@ public class Match {
         newmatch.setLevelReached(m.getLevelReached());
         newmatch.setClimbTime(m.getClimbTime());
         newmatch.setDefense(m.getDefense());
-        newmatch.setDefenseQuality(m.getDefenseQuality());
         newmatch.setComments(m.getComments());
         return newmatch;
     }
@@ -473,14 +468,6 @@ public class Match {
         this.allianceColor = allianceColor;
     }
 
-    public boolean getDefense() {
-        return defense;
-    }
-
-    public void setDefense(boolean defense) {
-        this.defense = defense;
-    }
-
     public int getDroppedHatch() {
         return droppedHatch;
     }
@@ -531,11 +518,11 @@ public class Match {
         return oldMatchString;
     }
 
-    public int getDefenseQuality() {
-        return defenseQuality;
+    public int getDefense() {
+        return defense;
     }
 
-    public void setDefenseQuality(int defenseQuality) {
-        this.defenseQuality = defenseQuality;
+    public void setDefense(int defense) {
+        this.defense = defense;
     }
 }

@@ -2,7 +2,6 @@ package frc.team449.deepspacescoutingapp.activities;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
@@ -14,8 +13,7 @@ import frc.team449.deepspacescoutingapp.model.Match;
 public class General extends InmatchBaseActivity {
 
     private RadioGroup dead;
-    private CheckBox defense;
-    private RadioGroup defenseQuality;
+    private RadioGroup defense;
     private EditText comments;
 
     @Override
@@ -43,24 +41,21 @@ public class General extends InmatchBaseActivity {
         }
 
         defense = findViewById(R.id.defense);
-        defense.setChecked(Match.getInstance().getDefense());
-
-        defenseQuality = findViewById(R.id.defenseQuality);
-        switch (Match.getInstance().getDefenseQuality()) {
+        switch (Match.getInstance().getDefense()) {
             case -1:
-                dead.clearCheck();
+                defense.clearCheck();
                 break;
             case 0:
-                dead.check(R.id.defenseNA);
+                defense.check(R.id.defenseNA);
                 break;
             case 1:
-                dead.check(R.id.defenseBad);
+                defense.check(R.id.defenseBad);
                 break;
             case 2:
-                dead.check(R.id.defenseNeutral);
+                defense.check(R.id.defenseNeutral);
                 break;
             case 3:
-                dead.check(R.id.defenseGood);
+                defense.check(R.id.defenseGood);
                 break;
         }
 
@@ -77,7 +72,6 @@ public class General extends InmatchBaseActivity {
 
     @Override
     protected void saveData(){
-        Match.getInstance().setDefense(defense.isChecked());
         switch (dead.getCheckedRadioButtonId()) {
             case R.id.alive:
                 Match.getInstance().setDead(0);
@@ -95,20 +89,20 @@ public class General extends InmatchBaseActivity {
                 break;
         }
 
-        switch (defenseQuality.getCheckedRadioButtonId()) {
+        switch (defense.getCheckedRadioButtonId()) {
             case R.id.defenseNA:
-                Match.getInstance().setDead(0);
+                Match.getInstance().setDefense(0);
                 break;
             case R.id.defenseBad:
-                Match.getInstance().setDead(1);
+                Match.getInstance().setDefense(1);
                 break;
             case R.id.defenseNeutral:
-                Match.getInstance().setDead(2);
+                Match.getInstance().setDefense(2);
                 break;
             case R.id.defenseGood:
-                Match.getInstance().setDead(3);
+                Match.getInstance().setDefense(3);
             default:
-                Match.getInstance().setDead(-1);
+                Match.getInstance().setDefense(-1);
                 break;
         }
         Match.getInstance().setComments(comments.getText().toString());
