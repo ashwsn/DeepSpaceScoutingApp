@@ -2,7 +2,6 @@ package frc.team449.deepspacescoutingapp.activities;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
@@ -14,7 +13,7 @@ import frc.team449.deepspacescoutingapp.model.Match;
 public class General extends InmatchBaseActivity {
 
     private RadioGroup dead;
-    private CheckBox defense;
+    private RadioGroup defense;
     private EditText comments;
 
     @Override
@@ -42,7 +41,23 @@ public class General extends InmatchBaseActivity {
         }
 
         defense = findViewById(R.id.defense);
-        defense.setChecked(Match.getInstance().getDefense());
+        switch (Match.getInstance().getDefense()) {
+            case -1:
+                defense.clearCheck();
+                break;
+            case 0:
+                defense.check(R.id.defenseNA);
+                break;
+            case 1:
+                defense.check(R.id.defenseBad);
+                break;
+            case 2:
+                defense.check(R.id.defenseNeutral);
+                break;
+            case 3:
+                defense.check(R.id.defenseGood);
+                break;
+        }
 
         comments = findViewById(R.id.comments);
         comments.setText(Match.getInstance().getComments());
@@ -57,7 +72,6 @@ public class General extends InmatchBaseActivity {
 
     @Override
     protected void saveData(){
-        Match.getInstance().setDefense(defense.isChecked());
         switch (dead.getCheckedRadioButtonId()) {
             case R.id.alive:
                 Match.getInstance().setDead(0);
@@ -72,6 +86,23 @@ public class General extends InmatchBaseActivity {
                 Match.getInstance().setDead(3);
             default:
                 Match.getInstance().setDead(-1);
+                break;
+        }
+
+        switch (defense.getCheckedRadioButtonId()) {
+            case R.id.defenseNA:
+                Match.getInstance().setDefense(0);
+                break;
+            case R.id.defenseBad:
+                Match.getInstance().setDefense(1);
+                break;
+            case R.id.defenseNeutral:
+                Match.getInstance().setDefense(2);
+                break;
+            case R.id.defenseGood:
+                Match.getInstance().setDefense(3);
+            default:
+                Match.getInstance().setDefense(-1);
                 break;
         }
         Match.getInstance().setComments(comments.getText().toString());

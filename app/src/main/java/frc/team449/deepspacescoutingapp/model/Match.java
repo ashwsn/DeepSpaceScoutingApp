@@ -50,7 +50,7 @@ public class Match {
     private int attemptLevel;
     private int levelReached;
     private int climbTime;
-    private boolean defense;
+    private int defense;
     private String comments;
 
     public static Match getInstance() {
@@ -90,7 +90,7 @@ public class Match {
             attemptLevel = -1;
             levelReached = -1;
             climbTime = 0;
-            defense = false;
+            defense = -1;
             comments = "";
             isRecovery = false;
         } else {
@@ -144,7 +144,7 @@ public class Match {
                 levelReached+","+ // hab level reached
                 climbTime+","+ // climb time
                 dead+","+ // dead
-                (defense ? 1: 0) + "," + // defense
+                defense +","+ // defense quality
                 (comments==null ? "" : comments.replace(',','.')) + "," + // comments
                 scoutName.replace(',','.') + "," + // scout name
                 s.format(new Date()) + "," +
@@ -265,10 +265,10 @@ public class Match {
         levelReached = Integer.parseInt(dataArray[21]); //yup, 20 is supposed to get skipped
         climbTime    = Integer.parseInt(dataArray[22]);
         dead         = Integer.parseInt(dataArray[23]);
-        defense = dataArray[24].equals("1");
+        defense      = Integer.parseInt(dataArray[24]);
         comments = dataArray[25];
         scoutName = dataArray[26];
-        String[] stringTeleopPiecePositions = dataArray[28].split("\\.");
+        String[] stringTeleopPiecePositions = dataArray[28].split("\\."); //yep, skip 27
         teleopPiecePositions = new int[stringTeleopPiecePositions.length];
         for (int i = 0; i < stringTeleopPiecePositions.length; i++) {
             String s = stringTeleopPiecePositions[i];
@@ -468,14 +468,6 @@ public class Match {
         this.allianceColor = allianceColor;
     }
 
-    public boolean getDefense() {
-        return defense;
-    }
-
-    public void setDefense(boolean defense) {
-        this.defense = defense;
-    }
-
     public int getDroppedHatch() {
         return droppedHatch;
     }
@@ -524,5 +516,13 @@ public class Match {
 
     public static String getOldMatchString() {
         return oldMatchString;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
     }
 }
