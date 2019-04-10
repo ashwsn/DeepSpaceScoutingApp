@@ -133,6 +133,7 @@ public class Teleop extends InmatchBaseActivity {
                 case 3:
                     incrementHatch(i);
                     incrementCargo(i);
+                    break;
             }
         }
         Match.getInstance().setTeleopPiecePositions(piecePositions);

@@ -212,6 +212,8 @@ public class Match {
             error.addToErrorString("How long did it take to climb?");
             error.addPageToGoTo(Endgame.class);
         }
+        if (defense == -1)
+            defense = 0;
         return error;
     }
 

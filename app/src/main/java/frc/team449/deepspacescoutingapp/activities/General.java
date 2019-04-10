@@ -84,6 +84,7 @@ public class General extends InmatchBaseActivity {
                 break;
             case R.id.deadAll:
                 Match.getInstance().setDead(3);
+                break;
             default:
                 Match.getInstance().setDead(-1);
                 break;
@@ -101,6 +102,7 @@ public class General extends InmatchBaseActivity {
                 break;
             case R.id.defenseGood:
                 Match.getInstance().setDefense(3);
+                break;
             default:
                 Match.getInstance().setDefense(-1);
                 break;
