@@ -19,8 +19,6 @@ import frc.team449.deepspacescoutingapp.helpers.PopupHelper;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    private boolean progressBar;
-
     @Override
     public void setContentView(int layoutResID){
         CoordinatorLayout cl = setupLayout(layoutResID,R.layout.base_activity);
@@ -57,12 +55,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy(){
         super.onDestroy();
         saveData();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (!progressBar) actuallyHideProgressBar();
     }
 
     @Override
@@ -180,15 +172,21 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void saveData() {}
 
     public void showProgressBar() {
-        findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
-        progressBar = true;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void hideProgressBar() {
-        progressBar = false;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                findViewById(R.id.progressBar).setVisibility(View.GONE);
+            }
+        });
     }
 
-    private void actuallyHideProgressBar() {
-        findViewById(R.id.progressBar).setVisibility(View.GONE);
-    }
 }

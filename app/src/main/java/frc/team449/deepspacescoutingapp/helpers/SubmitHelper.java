@@ -75,11 +75,11 @@ public class SubmitHelper {
                                     }
                                 }, activity);
                     }
+                    activity.hideProgressBar();
                 }
             });
             t.start();
         }
-        activity.hideProgressBar();
     }
 
     private static void submitData(final BaseActivity activity) {
