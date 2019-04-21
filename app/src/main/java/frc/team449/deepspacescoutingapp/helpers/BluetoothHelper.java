@@ -24,6 +24,8 @@ public class BluetoothHelper {
     private BluetoothSocket socket;
     private OutputStream outputStream;
 
+    private String defaultMaster;
+
     public boolean isConnected() {
         return write(" ");
     }
@@ -43,7 +45,12 @@ public class BluetoothHelper {
         return paired;
     }
 
+    public void initializeConnection() throws IOException {
+        initializeConnection(defaultMaster);
+    }
+
     public void initializeConnection(String targetMasterName) throws IOException {
+        defaultMaster = targetMasterName;
         if (blueAdapter != null) {
             if (blueAdapter.isEnabled()) {
                 //These are the devices that the tablet is paired with

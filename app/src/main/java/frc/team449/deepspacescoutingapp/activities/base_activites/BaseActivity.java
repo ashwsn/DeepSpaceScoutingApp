@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -17,6 +18,8 @@ import frc.team449.deepspacescoutingapp.R;
 import frc.team449.deepspacescoutingapp.helpers.PopupHelper;
 
 public abstract class BaseActivity extends AppCompatActivity {
+
+    private boolean progressBar;
 
     @Override
     public void setContentView(int layoutResID){
@@ -54,6 +57,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy(){
         super.onDestroy();
         saveData();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!progressBar) actuallyHideProgressBar();
     }
 
     @Override
@@ -169,4 +178,17 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void saveData() {}
+
+    public void showProgressBar() {
+        findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
+        progressBar = true;
+    }
+
+    public void hideProgressBar() {
+        progressBar = false;
+    }
+
+    private void actuallyHideProgressBar() {
+        findViewById(R.id.progressBar).setVisibility(View.GONE);
+    }
 }
