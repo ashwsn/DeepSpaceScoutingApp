@@ -87,7 +87,7 @@ public class BluetoothHelper {
         } else Log.e("BluetoothHelper.initCon","blueAdapter is null");
     }
 
-    boolean write(String str) {
+    public boolean write(String str) {
         if (socket != null && socket.isConnected()) {
             try {
                 // Only submit one line at a time so it doesn't exceed the size and get cut off

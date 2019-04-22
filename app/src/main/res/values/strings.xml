@@ -10,8 +10,8 @@
 
     <string name="data_errors_title">Your data have errors.</string>
 
-    <string name="not_connected_title">Bluetooth not connected.</string>
-    <string name="not_connected_prompt">This device is not connected to Bluetooth. The data you submit will be stored locally, but not sent to the scouting laptop.\nWould you like to connect now?\n\nPlease try to connect before submitting, only submit if it fails to connect (and tell a scouting leader).</string>
+    <string name="not_connected_title">Bluetooth failed to connect.</string>
+    <string name="not_connected_prompt">This device is not connected to Bluetooth. The data you submit will be stored locally, but not sent to the scouting laptop.\nWould you like try to reconnect now?</string>
 
     <string name="bluetooth_connected_title">Bluetooth Connected</string>
     <string name="bluetooth_connected_prompt">Bluetooth has successfully connected to %1$s</string>
@@ -24,7 +24,7 @@
 
     <string name="info_popup_button">Okay</string>
     <string name="bluetooth_popup_connect_button">Connect</string>
-    <string name="bluetooth_warning_ignore_button">Submit anyway</string>
+    <string name="bluetooth_warning_ignore_button">Submit</string>
     <string name="popup_cancel_button">Cancel</string>
 
 

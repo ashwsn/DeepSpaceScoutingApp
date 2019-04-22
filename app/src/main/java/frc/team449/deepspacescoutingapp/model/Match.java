@@ -113,7 +113,6 @@ public class Match {
         List<String> t = new ArrayList<>();
         for (int i : a)
             t.add(String.valueOf(i));
-        Log.i("!!!!toString!!!!",TextUtils.join(".",t));
         return TextUtils.join(".", t);
     }
 

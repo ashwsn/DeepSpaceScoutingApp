@@ -60,6 +60,13 @@ public class SubmitHelper {
                         e.printStackTrace();
                     }
                     if (BluetoothHelper.getInstance().isConnected()) {
+                        try {
+                            boolean written = BluetoothHelper.getInstance().write(FileHelper.getFromFile("newdata.csv", activity));
+                            if (written) FileHelper.clearFile("newdata.csv", activity);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            Log.e("SubmitHelper.finalSub", "IO Error while auto uploading newdata.csv");
+                        }
                         submitData(activity);
                     } else {
                         PopupHelper.prompt(activity.getString(R.string.not_connected_title), activity.getString(R.string.not_connected_prompt),
@@ -82,8 +89,8 @@ public class SubmitHelper {
         }
     }
 
-    private static void submitData(final BaseActivity activity) {
-        String data = Match.getInstance().toString(activity);
+    private static void submitData(final Context ctxt) {
+        String data = Match.getInstance().toString(ctxt);
 
         if (Match.getInstance().isReplacement()) {
             data = "REPLACE" + Match.getOldMatchString() + "\n" + data;
@@ -95,14 +102,14 @@ public class SubmitHelper {
 
         // Make a local backup
         try {
-            FileHelper.addToFile("alldata.csv",data,activity);
+            FileHelper.addToFile("alldata.csv",data,ctxt);
         } catch (IOException e) {
             e.printStackTrace();
             Log.e("SubmitHelper.submitData", "IO Error while making local backup");
         }
         if (!written) {
             try {
-                FileHelper.addToFile("newdata.csv",data,activity);
+                FileHelper.addToFile("newdata.csv",data,ctxt);
             } catch (IOException e) {
                 e.printStackTrace();
                 Log.e("SubmitHelper.submitData", "IO Error while making local backup");
@@ -111,11 +118,11 @@ public class SubmitHelper {
 
         // Reset the match data
         Match.getInstance().reset();
-        Match.getInstance().incMatch(activity);
+        Match.getInstance().incMatch(ctxt);
 
         // Go to confirmation page
-        Intent toSubmitted = new Intent(activity, Submitted.class);
-        activity.startActivity(toSubmitted);
+        Intent toSubmitted = new Intent(ctxt, Submitted.class);
+        ctxt.startActivity(toSubmitted);
 
     }
 }

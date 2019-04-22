@@ -3,6 +3,7 @@ package frc.team449.deepspacescoutingapp.fragments;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import java.util.List;
 
 import frc.team449.deepspacescoutingapp.R;
 import frc.team449.deepspacescoutingapp.helpers.BluetoothHelper;
+import frc.team449.deepspacescoutingapp.helpers.FileHelper;
 import frc.team449.deepspacescoutingapp.helpers.PopupHelper;
 
 public class BluetoothSetupFragment extends DialogFragment {
@@ -106,12 +108,22 @@ public class BluetoothSetupFragment extends DialogFragment {
 
                 try {
                     if (BluetoothHelper.getInstance().isConnected()) {
+                        try {
+                            boolean written = BluetoothHelper.getInstance().write(FileHelper.getFromFile("newdata.csv", getContext()));
+                            if (written) FileHelper.clearFile("newdata.csv", getContext());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            Log.e("BTSetupFrag.connect", "IO Error while auto uploading newdata.csv");
+                        }
                         PopupHelper.info(getString(R.string.bluetooth_connected_title), String.format(getString(R.string.bluetooth_connected_prompt), master), (AppCompatActivity) getContext());
                     } else {
                         PopupHelper.info(getString(R.string.bluetooth_connect_error_title), getString(R.string.bluetooth_connect_error_prompt), (AppCompatActivity) getContext());
                     }
                 } catch (IllegalStateException e) {
                     e.printStackTrace();
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                    Log.e("BTSetupFrag.connect","Context is null");
                 }
                 dismiss();
             }
