@@ -59,7 +59,7 @@
         android:id="@+id/defenseText"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="15dp"
-        android:text="Defense"
+        android:text="Played Defense?"
         app:layout_constraintTop_toBottomOf="@id/dead"
         app:layout_constraintStart_toStartOf="parent"/>
 
@@ -82,34 +82,73 @@
 
         <RadioButton
             style="@style/RadioButton"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:id="@+id/defenseNA"
+            android:id="@+id/defenseNone"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textSize="30sp"
-            android:text="No Defense" />
+            android:text="None" />
 
         <RadioButton
             style="@style/RadioButton"
-            android:id="@+id/defenseBad"
+            android:id="@+id/defensePart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/thumb_down"/>
+            android:text="Part"/>
 
         <RadioButton
             style="@style/RadioButton"
-            android:id="@+id/defenseNeutral"
+            android:id="@+id/defenseAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/thumb_mid" />
+            android:text="All"/>
+
+    </RadioGroup>
+
+    <TextView
+        style="@style/Text"
+        android:id="@+id/defendedText"
+        android:layout_marginStart="@dimen/startMargin"
+        android:layout_marginTop="5dp"
+        android:text="Defended On?"
+        app:layout_constraintTop_toBottomOf="@id/defense"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <ImageButton
+        android:id="@+id/defendedHelp"
+        style="@style/Help"
+        app:layout_constraintStart_toEndOf="@id/defendedText"
+        app:layout_constraintTop_toTopOf="@id/defendedText"
+        app:layout_constraintBottom_toBottomOf="@+id/defendedText"/>
+
+    <RadioGroup
+        style="@style/Wrap"
+        android:id="@+id/defended"
+        android:layout_marginStart="@dimen/startMargin"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/defendedText">
 
         <RadioButton
             style="@style/RadioButton"
-            android:id="@+id/defenseGood"
+            android:id="@+id/defendedNone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="None" />
+
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/defendedPart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/thumb_up" />
+            android:text="Part"/>
+
+        <RadioButton
+            style="@style/RadioButton"
+            android:id="@+id/defendedAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All"/>
 
     </RadioGroup>
 
@@ -120,7 +159,7 @@
         android:id="@+id/commentsText"
         android:layout_marginStart="@dimen/startMargin"
         android:layout_marginTop="@dimen/spaceBetweenFields"
-        app:layout_constraintTop_toBottomOf="@id/defense"
+        app:layout_constraintTop_toBottomOf="@id/defended"
         app:layout_constraintStart_toStartOf="parent" />
 
     <!--Comments-->

@@ -14,6 +14,7 @@ public class General extends InmatchBaseActivity {
 
     private RadioGroup dead;
     private RadioGroup defense;
+    private RadioGroup defended;
     private EditText comments;
 
     @Override
@@ -46,16 +47,29 @@ public class General extends InmatchBaseActivity {
                 defense.clearCheck();
                 break;
             case 0:
-                defense.check(R.id.defenseNA);
+                defense.check(R.id.defenseNone);
                 break;
             case 1:
-                defense.check(R.id.defenseBad);
+                defense.check(R.id.defensePart);
                 break;
             case 2:
-                defense.check(R.id.defenseNeutral);
+                defense.check(R.id.defenseAll);
                 break;
-            case 3:
-                defense.check(R.id.defenseGood);
+        }
+
+        defended = findViewById(R.id.defended);
+        switch (Match.getInstance().getDefended()) {
+            case -1:
+                defended.clearCheck();
+                break;
+            case 0:
+                defended.check(R.id.defendedNone);
+                break;
+            case 1:
+                defended.check(R.id.defendedPart);
+                break;
+            case 2:
+                defended.check(R.id.defendedAll);
                 break;
         }
 
@@ -91,22 +105,35 @@ public class General extends InmatchBaseActivity {
         }
 
         switch (defense.getCheckedRadioButtonId()) {
-            case R.id.defenseNA:
+            case R.id.defenseNone:
                 Match.getInstance().setDefense(0);
                 break;
-            case R.id.defenseBad:
+            case R.id.defensePart:
                 Match.getInstance().setDefense(1);
                 break;
-            case R.id.defenseNeutral:
+            case R.id.defenseAll:
                 Match.getInstance().setDefense(2);
-                break;
-            case R.id.defenseGood:
-                Match.getInstance().setDefense(3);
                 break;
             default:
                 Match.getInstance().setDefense(-1);
                 break;
         }
+
+        switch (defended.getCheckedRadioButtonId()) {
+            case R.id.defendedNone:
+                Match.getInstance().setDefended(0);
+                break;
+            case R.id.defendedPart:
+                Match.getInstance().setDefended(1);
+                break;
+            case R.id.defendedAll:
+                Match.getInstance().setDefended(2);
+                break;
+            default:
+                Match.getInstance().setDefended(-1);
+                break;
+        }
+
         Match.getInstance().setComments(comments.getText().toString());
     }
 

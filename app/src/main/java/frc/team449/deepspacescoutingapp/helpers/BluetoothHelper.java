@@ -92,7 +92,7 @@ public class BluetoothHelper {
             try {
                 // Only submit one line at a time so it doesn't exceed the size and get cut off
                 for (String s : str.split("\n")) {
-                    outputStream.write(s.getBytes());
+                    outputStream.write((s+"\n").getBytes());
                     outputStream.flush();
                 }
                 return true;

@@ -51,6 +51,7 @@ public class Match {
     private int levelReached;
     private int climbTime;
     private int defense;
+    private int defended;
     private String comments;
 
     public static Match getInstance() {
@@ -91,6 +92,7 @@ public class Match {
             levelReached = -1;
             climbTime = 0;
             defense = -1;
+            defended = -1;
             comments = "";
             isRecovery = false;
         } else {
@@ -143,7 +145,8 @@ public class Match {
                 levelReached+","+ // hab level reached
                 climbTime+","+ // climb time
                 dead+","+ // dead
-                defense +","+ // defense quality
+                defense +","+ // defense
+                defended+","+ // defended
                 (comments==null ? "" : comments.replace(',','.')) + "," + // comments
                 scoutName.replace(',','.') + "," + // scout name
                 s.format(new Date()) + "," +
@@ -213,6 +216,8 @@ public class Match {
         }
         if (defense == -1)
             defense = 0;
+        if (defended == -1)
+            defended = 0;
         return error;
     }
 
@@ -267,9 +272,10 @@ public class Match {
         climbTime    = Integer.parseInt(dataArray[22]);
         dead         = Integer.parseInt(dataArray[23]);
         defense      = Integer.parseInt(dataArray[24]);
-        comments = dataArray[25];
-        scoutName = dataArray[26];
-        String[] stringTeleopPiecePositions = dataArray[28].split("\\."); //yep, skip 27
+        defended     = Integer.parseInt(dataArray[25]);
+        comments = dataArray[26];
+        scoutName = dataArray[27];
+        String[] stringTeleopPiecePositions = dataArray[29].split("\\."); //yep, skip 28
         teleopPiecePositions = new int[stringTeleopPiecePositions.length];
         for (int i = 0; i < stringTeleopPiecePositions.length; i++) {
             String s = stringTeleopPiecePositions[i];
@@ -308,6 +314,7 @@ public class Match {
         newmatch.setLevelReached(m.getLevelReached());
         newmatch.setClimbTime(m.getClimbTime());
         newmatch.setDefense(m.getDefense());
+        newmatch.setDefended(m.getDefended());
         newmatch.setComments(m.getComments());
         return newmatch;
     }
@@ -525,5 +532,13 @@ public class Match {
 
     public void setDefense(int defense) {
         this.defense = defense;
+    }
+
+    public int getDefended() {
+        return defended;
+    }
+
+    public void setDefended(int defended) {
+        this.defended = defended;
     }
 }
