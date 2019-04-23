@@ -107,7 +107,7 @@
         style="@style/Text"
         android:id="@+id/defendedText"
         android:layout_marginStart="@dimen/startMargin"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:text="Defended On?"
         app:layout_constraintTop_toBottomOf="@id/defense"
         app:layout_constraintStart_toStartOf="parent"/>
