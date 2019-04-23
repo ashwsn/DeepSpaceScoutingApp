@@ -133,6 +133,9 @@ public abstract class BaseActivity extends AppCompatActivity {
             case R.id.defenseHelp:
                 helpPopup(R.string.help_defense);
                 break;
+            case R.id.defendedHelp:
+                helpPopup(R.string.help_defended);
+                break;
             default:
                 helpPopup(R.string.help_default);
                 break;
